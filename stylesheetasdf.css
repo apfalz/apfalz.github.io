@@ -4,9 +4,7 @@
     height: 6em;
     background-color: #58FAF4;    
     position:absolute;
-    margin-left: 30em;
-    margin-top: 5em;
-    border: none;
+
                 
 }
 
@@ -37,8 +35,7 @@
     width: 9em;
     height: 5em;
     background-color: #CECEF6;  
-    position:absolute;
-    
+    position:absolute;  
 }
 
 
@@ -47,4 +44,30 @@
     height: 5em;
     background-color: #81F7D8;  
     position:absolute;
+}
+
+#textOne {
+    color: "red";
+    position:absolute;
+    display:run-in;
+}
+
+#textTwo {
+    position:absolute;
+    display:run-in;
+}
+
+#textThree {
+    position:absolute;
+    display:run-in;
+}
+
+#textFour {
+    position:absolute;
+    display:run-in;
+}
+
+#textFive {
+    position:absolute;
+    display:run-in;
 }

@@ -6,7 +6,25 @@
         <link rel="stylesheet" href="stylesheetasdf.css" type="text/css" />
         <script type="text/javascript"> 
             
-          function newPositionOne(whichDiv) {
+            function setTextColor(whichP) {
+            
+                var firstDigit = Math.floor(Math.random() * 10).toString();
+                var secondDigit = Math.floor(Math.random() * 10).toString();
+                var thirdDigit = Math.floor(Math.random() * 10).toString();
+                var fourthDigit = Math.floor(Math.random() * 10).toString();
+                var fifthDigit = Math.floor(Math.random() * 10).toString();
+                var sixthDigit = Math.floor(Math.random() * 10).toString();
+                var newHexCode = "#" + firstDigit + secondDigit + thirdDigit + fourthDigit + fifthDigit + sixthDigit;
+                var newLeftMargin = Math.floor(Math.random() * 500);
+                var newFontSize = Math.floor(Math.random() * 10);
+                
+                whichP.style.fontSize=newFontSize+"em";
+                whichP.style.color = newHexCode;            
+                whichP.style.marginLeft = newLeftMargin+"px";
+                
+                }
+            
+            function newPositionOne(whichDiv) {
                 var randOne = Math.random() * 500; 
                 randOne = Math.floor(randOne);
                 var px = "px";
@@ -46,25 +64,26 @@
                 var sixthDigit = Math.floor(Math.random() * 10).toString();
                 var hoverColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
                 whichDiv.style.backgroundColor = hoverColor;
-            }
-            
-            
+                }
             
           
+            
         </script> 
     </head>
 <body.onload = myFunction()>
-    <h1>
-        <em>Home</em>
-    </h1>    
-    <div id="one"; onclick="newColorOne(one); newPositionOne(one)"; onmouseover="hoverColorOne(one)"; onload= "newColorOne(one); newPositionOne(one)"> </div>
-    <div id="two"; onclick = "newColorOne(two); newPositionOne(two)"; onmouseover="hoverColorOne(two)">
-    </div>
-    <div id="three"; onclick = "newColorOne(three); newPositionOne(three)"; onmouseover="hoverColorOne(three)">
-    </div>
-    <div id="four"; onclick = "newColorOne(four); newPositionOne(four)"; onmouseover="hoverColorOne(four); ">
-    </div> 
-    <div id="five"; onclick = "newColorOne(five); newPositionOne(five)"; onmouseover="hoverColorOne(five)"; onload="newColorOne(five); newPositionOne(five)" ></div> 
+    
+        <p id="textOne"; onmouseover="setTextColor(textOne)">Andrew Pfalz</p><br>
+        <p id="textTwo"; onmouseover="setTextColor(textTwo)"><em>Andrew Pfalz</em></p>    <br>
+        <p id="textThree"; onmouseover="setTextColor(textThree)"><em>Andrew Pfalz</em></p> <br>   
+        <p id="textFour"; onmouseover="setTextColor(textFour)"><em>Andrew Pfalz</em></p>    <br>
+        <p id="textFive"; onmouseover="setTextColor(textFive)"><em>Andrew Pfalz</em></p>    <br>
+        <p id="textSix"; onmouseover="setTextColor(textSix)"><em>Andrew Pfalz</em></p>    <br>
+    
+    <div id="one"; onmouseover="newColorOne(one); newPositionOne(one)"; onmouseover="hoverColorOne(one)"; onload= "newColorOne(one); newPositionOne(one)"> </div>
+    <div id="two"; onmouseover = "newColorOne(two); newPositionOne(two)"; onmouseover="hoverColorOne(two)"></div>
+    <div id="three"; onmouseover = "newColorOne(three); newPositionOne(three)"; onmouseover="hoverColorOne(three)"></div>
+    <div id="four"; onmouseover = "newColorOne(four); newPositionOne(four)"; onmouseover="hoverColorOne(four); "></div> 
+    <div id="five"; onmouseover = "newColorOne(five); newPositionOne(five)"; onmouseover="hoverColorOne(five)"; onload="newColorOne(five); newPositionOne(five)" ></div> 
     
 </body>
 </html>
