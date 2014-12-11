@@ -1,0 +1,97 @@
+a {
+    text-decoration: none;
+    font-size: 1em;
+    font-family: Garamond;
+    color:#045FB4;
+    
+}
+
+#linktosecondpage {
+    text-decoration: none;
+    font-size: 20em;
+    font-family: Garamond;
+    color: green;
+}
+
+#linkone {
+    font-size: 1em;
+    color: yellow;
+    font-family: fantasy;
+}
+
+#one {
+    width: 5em;
+    height: 6em;
+    background-color: #58FAF4;    
+    display: inline-block;
+    position:fixed;
+    margin-left: 30em;
+    margin-top: 5em;
+    border: none;
+                
+}
+#one:hover {
+    background-color: #088A85;
+}
+    
+#two {
+    width: 7em;
+    height: 8em;
+    background-color: #81DAF5;    
+    display: inline;
+    position:fixed;
+    margin-left: 12em;
+    margin-top: 5em;
+}
+
+#two:hover {
+    background-color: #04B486;
+}
+
+
+#three {
+    width: 6em;
+    height: 8em;
+    background-color: #81F7D8; 
+    display: inline;
+    position:fixed;
+    margin-left: 40em;
+    margin-top: -4em;
+}
+
+#three:hover {
+    background-color: #0080FF;
+}
+
+#four {
+    width: 9em;
+    height: 5em;
+    background-color: #CECEF6;  
+    display: inline;
+    position:fixed;
+    
+}
+
+#four:hover {
+    background-color: #AC58FA;
+    
+}
+
+#newNumber {
+    margin-top: 40em;
+    background-color: #81F7D8;
+    width: 10em;
+    height: 10em;
+}
+
+p {
+    font-size: .05em;
+    color: black;
+}
+table {
+    background-color: yellow;
+}
+h1 {
+    color: #123456;
+    position:fixed;
+}
