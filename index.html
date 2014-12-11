@@ -6,28 +6,65 @@
         <link rel="stylesheet" href="stylesheetasdf.css" type="text/css" />
         <script type="text/javascript"> 
             
-     
-                var rand = Math.random() * 100; 
-         
-                 
+          function newPositionOne(whichDiv) {
+                var randOne = Math.random() * 500; 
+                randOne = Math.floor(randOne);
+                var px = "px";
+                var randomLeftMargin = randOne + px;          
+                whichDiv.style.marginLeft = randomLeftMargin;
+                var randTwo = Math.random() * 500;
+                randTwo = Math.floor(randTwo);
+                var randomTopMargin = randTwo + px;
+                whichDiv.style.marginTop = randomTopMargin;
+                }
+            
+            function newColorOne(whichDiv) {
+                var firstDigit = Math.floor(Math.random() * 10).toString();
+                var secondDigit = Math.floor(Math.random() * 10).toString();
+                var thirdDigit = Math.floor(Math.random() * 10).toString();
+                var fourthDigit = Math.floor(Math.random() * 10).toString();
+                var fifthDigit = Math.floor(Math.random() * 10).toString();
+                var sixthDigit = Math.floor(Math.random() * 10).toString();
+                var newHexCode = "#" + firstDigit + secondDigit + thirdDigit + fourthDigit + fifthDigit + sixthDigit;
+            
+                whichDiv.style.backgroundColor = newHexCode;
+                
+                var newHeight = Math.floor((Math.random() * 25) + 1);
+                whichDiv.style.height = newHeight + "em";
+                
+                var newWidth = Math.floor((Math.random() * 25) + 1);
+                whichDiv.style.width = newWidth + "em";
+
+                }
+            
+            function hoverColorOne(whichDiv) {
+                var firstDigit = Math.floor(Math.random() * 10).toString();
+                var secondDigit = Math.floor(Math.random() * 10).toString();
+                var thirdDigit = Math.floor(Math.random() * 10).toString();
+                var fourthDigit = Math.floor(Math.random() * 10).toString();
+                var fifthDigit = Math.floor(Math.random() * 10).toString();
+                var sixthDigit = Math.floor(Math.random() * 10).toString();
+                var hoverColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+                whichDiv.style.backgroundColor = hoverColor;
+            }
+            
+            
+            
+          
         </script> 
     </head>
 <body.onload = myFunction()>
     <h1>
-        <em>Test Page Title</em>
+        <em>Home</em>
     </h1>    
-    <div id="one"><a href="http://google.com", id="linkone">asfdjk;l</a>
+    <div id="one"; onclick="newColorOne(one); newPositionOne(one)"; onmouseover="hoverColorOne(one)"; onload= "newColorOne(one); newPositionOne(one)"> </div>
+    <div id="two"; onclick = "newColorOne(two); newPositionOne(two)"; onmouseover="hoverColorOne(two)">
     </div>
-    <div id="two"><a href="http://google.com">linkdasdfasdfsadfasdfasdfasdfasdfaasdfsadfasd</a>
+    <div id="three"; onclick = "newColorOne(three); newPositionOne(three)"; onmouseover="hoverColorOne(three)">
     </div>
-    <div id="three"><a href="http://google.com">linkdasdfasdsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfsadfasd</a>
-    </div>
-    <div id="four"><a href="http://google.com">linkdasdfasdfasdfsasdfasdfasdfasdfadfasd</a>
-    </div> <br><br><br><br><br><br><br><br>
- 
-   
-   <p>sample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample textsample text</p>
-    <div id="newNumber"; onclick = "this.innerHTML=rand"; style="margin-left:rand px ">random number being created...</div> 
+    <div id="four"; onclick = "newColorOne(four); newPositionOne(four)"; onmouseover="hoverColorOne(four); ">
+    </div> 
+    <div id="five"; onclick = "newColorOne(five); newPositionOne(five)"; onmouseover="hoverColorOne(five)"; onload="newColorOne(five); newPositionOne(five)" ></div> 
     
 </body>
 </html>
