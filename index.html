@@ -15,12 +15,13 @@
                 var fifthDigit = Math.floor(Math.random() * 10).toString();
                 var sixthDigit = Math.floor(Math.random() * 10).toString();
                 var newHexCode = "#" + firstDigit + secondDigit + thirdDigit + fourthDigit + fifthDigit + sixthDigit;
-                var newLeftMargin = Math.floor(Math.random() * 500);
+                var newLeftMargin = Math.floor(Math.random() * 50);
                 var newFontSize = Math.floor(Math.random() * 10);
                 
                 whichP.style.fontSize=newFontSize+"em";
                 whichP.style.color = newHexCode;            
                 whichP.style.marginLeft = newLeftMargin+"px";
+                whichP.style.marginTop = newLeftMargin+"px";
                 
                 }
             
@@ -28,11 +29,11 @@
                 var randOne = Math.random() * 500; 
                 randOne = Math.floor(randOne);
                 var px = "px";
-                var randomLeftMargin = randOne + px;          
+                var randomLeftMargin = randOne + "px";          
                 whichDiv.style.marginLeft = randomLeftMargin;
                 var randTwo = Math.random() * 500;
                 randTwo = Math.floor(randTwo);
-                var randomTopMargin = randTwo + px;
+                var randomTopMargin = randTwo + "px";
                 whichDiv.style.marginTop = randomTopMargin;
                 }
             
@@ -70,7 +71,7 @@
             
         </script> 
     </head>
-<body.onload = myFunction()>
+<body onload= "setTextColor(textOne); setTextColor(textTwo); setTextColor(textThree); setTextColor(textFour); setTextColor(textFive); setTextColor(textSix); newColorOne(one); newColorOne(two); newColorOne(three); newColorOne(four); newColorOne(five)">
     
         <p id="textOne"; onmouseover="setTextColor(textOne)">Andrew Pfalz</p><br>
         <p id="textTwo"; onmouseover="setTextColor(textTwo)"><em>Andrew Pfalz</em></p>    <br>

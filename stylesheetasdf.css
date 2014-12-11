@@ -2,20 +2,21 @@
 #one {
     width: 5em;
     height: 6em;
-    background-color: #58FAF4;    
     position:absolute;
-
+    background-color: #81F7D8;  
+    display:run-in;
                 
 }
 
     
 #two {
     width: 7em;
-    height: 8em;
-    background-color: #81DAF5;    
+    height: 8em;  
     position:absolute;
     margin-left: 12em;
     margin-top: 5em;
+    background-color: #81F7D8; 
+    display:run-in;
 }
 
 
@@ -24,18 +25,20 @@
 #three {
     width: 6em;
     height: 8em;
-    background-color: #81F7D8; 
     position:absolute;
     margin-left: 40em;
     margin-top: -4em;
+    background-color: #81F7D8;  
+    display:run-in;
 }
 
 
 #four {
     width: 9em;
     height: 5em;
-    background-color: #CECEF6;  
     position:absolute;  
+    background-color: #81F7D8;  
+    display:run-in;
 }
 
 
@@ -44,10 +47,11 @@
     height: 5em;
     background-color: #81F7D8;  
     position:absolute;
+    display:run-in;
 }
 
 #textOne {
-    color: "red";
+
     position:absolute;
     display:run-in;
 }
