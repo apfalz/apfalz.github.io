@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Works</title>
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+     <script type="text/javascript">
+        
+        function newMenu(whichWorksDiv) {
+            
+        var newDivWidth = Math.floor((Math.random() * 5) + 3) + "em";
+        var newDivHeight = Math.floor((Math.random() * 5) + 3) + "em";
+        whichWorksDiv.style.width = newDivWidth;
+        }
+        
+        function newMenuColor(whichWorksDiv) {
+        var firstDigit = Math.floor(Math.random() * 10).toString();
+        var secondDigit = Math.floor(Math.random() * 10).toString();
+        var thirdDigit = Math.floor(Math.random() * 10).toString();
+        var fourthDigit = Math.floor(Math.random() * 10).toString();
+        var fifthDigit = Math.floor(Math.random() * 10).toString();
+        var sixthDigit = Math.floor(Math.random() * 10).toString();
+        var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+        whichWorksDiv.style.backgroundColor = divColor;
+        }
+    </script>
+
+<body onload="newMenu(bioDiv); newMenu(contactDiv); newMenuColor(bioDiv); newMenuColor(contactDiv); newMenuColor(worksDiv)" >
+
+<div style="width:100em" id="worksDiv"; onmouseover="newMenuColor(worksDiv)"; onclick="newMenu(worksDiv)"><a id="worksLink"; href="works.html">works</a></div><br>
+<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a id="contactLink";  href="contact.html">contact</a></div><br>
+<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a id="bioLink"; href="bio.html">bio</a></div>
+<div id="itCanbeHardDiv">It can be hard to fall asleep when you're on fire</div>
+  
+</head>
+<body>
+    <p style="margin-left:11em">It can be hard to fall asleep when you're on fire<br>For flute and live electronics<br>2014</p>
+
+    <iframe id="itCanBeHard" style="margin-left:11em" width="50%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/143898791&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    <p>World premiere by Willie Santiago at East Carolina University April 2014</p>
+    <iframe style="margin-left:11em" width="600" height="338" src="//www.youtube.com/embed/LN7-2GppeZk" frameborder="no" allowfullscreen></iframe>
+    <p>Second performance by Laura Pillman at University of North Texas Electric LaTex Festival November 2014</p>
+</body>
+</html>

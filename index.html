@@ -15,8 +15,8 @@
                 var fifthDigit = Math.floor(Math.random() * 10).toString();
                 var sixthDigit = Math.floor(Math.random() * 10).toString();
                 var newHexCode = "#" + firstDigit + secondDigit + thirdDigit + fourthDigit + fifthDigit + sixthDigit;
-                var newLeftMargin = Math.floor(Math.random() * 50);
-                var newFontSize = Math.floor(Math.random() * 10);
+                var newLeftMargin = Math.floor(Math.random() * 25);
+                var newFontSize = Math.floor((Math.random() * 10) + 1);
                 
                 whichP.style.fontSize=newFontSize+"em";
                 whichP.style.color = newHexCode;            
@@ -70,16 +70,13 @@
             
         </script> 
     </head>
-<body onload= "setTextColor(textOne); setTextColor(textTwo); setTextColor(textThree); setTextColor(textFour); setTextColor(textFive); setTextColor(textSix); newColorOne(one); newColorOne(two); newColorOne(three); newColorOne(four); newColorOne(five)">
+<body onload= "setTextColor(textOne); newColorOne(one); newColorOne(two); newColorOne(three); newColorOne(four); newColorOne(five)">
     
-        <p id="textOne"; onmouseover="setTextColor(textOne)">Andrew Pfalz</p><br>
-        <p id="textTwo"; onmouseover="setTextColor(textTwo)"><em>Andrew Pfalz</em></p>    <br>
-        <p id="textThree"; onmouseover="setTextColor(textThree)"><em>Andrew Pfalz</em></p> <br>   
-        <p id="textFour"; onmouseover="setTextColor(textFour)"><em>Andrew Pfalz</em></p>    <br>
-        <p id="textFive"; onmouseover="setTextColor(textFive)"><em>Andrew Pfalz</em></p>    <br>
-        <p id="textSix"; onmouseover="setTextColor(textSix)"><em>Andrew Pfalz</em></p>    <br>
+     
     
-        <p><a href="home.html">Enter</a></p>
+        <p><a style="font-family:sans-serif"; href="home.html">Enter</a></p><br><br><br><br>
+    
+       <p id="textOne"; onmouseover="setTextColor(textOne)">Andrew Pfalz</p>
     
     <div id="one"; onmouseover="newColorOne(one); newPositionOne(one)"; onmouseover="hoverColorOne(one)"; onload= "newColorOne(one); newPositionOne(one)"> </div>
     <div id="two"; onmouseover = "newColorOne(two); newPositionOne(two)"; onmouseover="hoverColorOne(two)"></div>
