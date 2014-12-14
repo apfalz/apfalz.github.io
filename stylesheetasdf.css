@@ -1,3 +1,13 @@
+.worksParagraph {
+    margin-left: 11em;
+    font-family: sans-serif;
+}
+
+.menuLink {
+    font-family: sans-serif;
+    color: white;
+    text-decoration: none;
+}
 
 #one {
     width: 5em;
@@ -101,3 +111,16 @@
    // background-color: #81F7D8;  
     display:inline-block;
 }      
+
+#itCanBeHardDiv {
+  //  width: 9em;
+  //  height: 1em;
+    position:absolute;  
+   // background-color: #81F7D8;  
+    display:block;
+}
+
+#itCanBeHardLink {
+    text-decoration: none;
+    color: white;
+}
