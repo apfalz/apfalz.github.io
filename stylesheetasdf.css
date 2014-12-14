@@ -75,3 +75,46 @@
     position:absolute;
     display:run-in;
 }
+
+#worksLink {
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+    
+}
+
+#contactLink {
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+}
+
+#bioLink {
+    font-size:1em;
+    color: white;
+    text-decoration: none;
+}
+
+#bioDiv {    
+    width: 9em;
+    height: 1em;
+    position:absolute;  
+    background-color: #81F7D8;  
+    display:inline-block;
+}            
+
+#contactDiv {    
+    width: 9em;
+    height: 1em;
+    position:absolute;  
+    background-color: #81F7D8;  
+    display:inline-block;
+}      
+
+#worksDiv {    
+    width: 9em;
+    height: 1em;
+    position:absolute;  
+    background-color: #81F7D8;  
+    display:inline-block;
+}      

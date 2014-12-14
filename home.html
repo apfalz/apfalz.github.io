@@ -1,0 +1,36 @@
+<html>
+   
+<head>
+ <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+    <script type="text/javascript">
+        
+        function newMenu(whichHomeDiv) {
+            
+        var newDivWidth = Math.floor((Math.random() * 5) + 3) + "em";
+        var newDivHeight = Math.floor((Math.random() * 5) + 3) + "em";
+        whichHomeDiv.style.width = newDivWidth;
+
+            
+        var firstDigit = Math.floor(Math.random() * 10).toString();
+        var secondDigit = Math.floor(Math.random() * 10).toString();
+        var thirdDigit = Math.floor(Math.random() * 10).toString();
+        var fourthDigit = Math.floor(Math.random() * 10).toString();
+        var fifthDigit = Math.floor(Math.random() * 10).toString();
+        var sixthDigit = Math.floor(Math.random() * 10).toString();
+        var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+        whichHomeDiv.style.backgroundColor = divColor;
+        }
+    
+    
+    
+    
+    </script>
+</head>
+<body onload="newMenu(bioDiv); newMenu(contactDiv); newMenu(worksDiv)" >
+<p> hello world</p>
+    
+<div id="worksDiv"; onmouseover="newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a id="worksLink"; href="works.html">works</a></div><br>
+<div id="contactDiv"; onmouseover="newMenu(contactDiv)"; onclick="newMenu(contactDiv)"><a id="contactLink";  href="contact.html">contact</a></div><br>
+<div id="bioDiv"; onmouseover="newMenu(bioDiv)"; onclick="newMenu(bioDiv)"><a id="bioLink"; href="bio.html">bio</a></div>
+</body>
+</html>
