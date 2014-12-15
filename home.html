@@ -27,6 +27,9 @@
             var newVertDivHeight = Math.floor((Math.random() * 20) + 8);
             whichVertDiv.style.marginTop = newDivTop +"em";
             whichVertDiv.style.height = newVertDivHeight + 'em';
+        }
+         
+         function newVertColor(whichVertDiv) {
             var firstDigit = Math.floor(Math.random() * 10).toString();
             var secondDigit = Math.floor(Math.random() * 10).toString();
             var thirdDigit = Math.floor(Math.random() * 10).toString();
@@ -48,34 +51,204 @@
          function newBisectorPosition(whichDiv) {
              var newMargin = Math.floor((Math.random() * 5) + 35); 
              whichDiv.style.marginLeft = newMargin + "em";
+             var newWidth = Math.floor((Math.random() * 10)  + 15);
+             whichDiv.style.width = newWidth + "em";
+         }
+         
+         function twonewBisectorPosition(whichDiv) {
+             var newMargin = Math.floor((Math.random() * 5) + 65); 
+             whichDiv.style.marginLeft = newMargin + "em";
+             var newWidth = Math.floor((Math.random() * 10)  + 15);
+             whichDiv.style.width = newWidth + "em";
+         }
+         
+        function threenewBisectorPosition(whichDiv) {
+             var newMargin = Math.floor((Math.random() * 5) + 45); 
+             whichDiv.style.marginLeft = newMargin + "em";
+            var newWidth = Math.floor((Math.random() * 10)  + 15);
+             whichDiv.style.width = newWidth + "em";
          }
     </script>
 
-<body onload="newMenu(bioDiv); newMenu(contactDiv); newMenu(worksDiv); newMenuColor(bioDiv); newMenuColor(contactDiv); newMenuColor(worksDiv); newVertDivPosition(vertDivOne); newVertDivPosition(vertDivTwo); newVertDivPosition(vertDivThree); newVertDivPosition(vertDivFour); newVertDivPosition(vertDivFive); newVertDivPosition(vertDivSix); newVertDivPosition(vertDivSeven); newVertDivPosition(vertDivEight); newVertDivPosition(vertDivNine); newVertDivPosition(vertDivTen); getNewRGB(bisectorOne); getNewRGB(bisectorTwo); getNewRGB(bisectorThree); getNewRGB(bisectorFour)">
+<body onload="newMenu(bioDiv); 
+              newMenu(contactDiv); 
+              newMenu(worksDiv); 
+              newMenuColor(bioDiv); 
+              newMenuColor(contactDiv); 
+              newMenuColor(worksDiv); 
+              
+              newVertDivPosition(vertDivOne); 
+              newVertDivPosition(vertDivTwo); 
+              newVertDivPosition(vertDivThree); 
+              newVertDivPosition(vertDivFour); 
+              newVertDivPosition(vertDivFive); 
+              newVertDivPosition(vertDivSix); 
+              newVertDivPosition(vertDivSeven); 
+              newVertDivPosition(vertDivEight); 
+              newVertDivPosition(vertDivNine); 
+              newVertDivPosition(vertDivTen); 
+              
+              getNewRGB(bisectorOne); 
+              getNewRGB(bisectorTwo); 
+              getNewRGB(bisectorThree); 
+              getNewRGB(bisectorFour); 
+              
+              newVertDivPosition(twovertDivOne); 
+              newVertDivPosition(twovertDivTwo); 
+              newVertDivPosition(twovertDivThree); 
+              newVertDivPosition(twovertDivFour); 
+              newVertDivPosition(twovertDivFive); 
+              newVertDivPosition(twovertDivSix); 
+              newVertDivPosition(twovertDivSeven); 
+              newVertDivPosition(twovertDivEight); 
+              newVertDivPosition(twovertDivNine); 
+              newVertDivPosition(twovertDivTen); 
+              
+              getNewRGB(twobisectorOne); 
+              getNewRGB(twobisectorTwo); 
+              getNewRGB(twobisectorThree); 
+              getNewRGB(twobisectorFour);
+              getNewRGB(twobisectorFive); 
+              getNewRGB(twobisectorSix); 
+              getNewRGB(twobisectorSeven);
+              
+              newVertColor(vertDivOne);
+              newVertColor(vertDivTwo);
+              newVertColor(vertDivThree);
+              newVertColor(vertDivFour);
+              newVertColor(vertDivFive);
+              newVertColor(vertDivSix);
+              newVertColor(vertDivSeven);
+              newVertColor(vertDivEight);
+              newVertColor(vertDivNine);
+              newVertColor(vertDivTen);
+              
+              getNewRGB(twovertDivOne);
+              getNewRGB(twovertDivTwo);
+              getNewRGB(twovertDivThree);
+              getNewRGB(twovertDivFour);
+              getNewRGB(twovertDivFive);
+              getNewRGB(twovertDivSix);
+              getNewRGB(twovertDivSeven);
+              getNewRGB(twovertDivEight);
+              getNewRGB(twovertDivNine);
+              getNewRGB(twovertDivTen);
+              
+              getNewRGB(threevertDivOne);
+              getNewRGB(threevertDivTwo);
+              getNewRGB(threevertDivThree);
+              getNewRGB(threevertDivFour);
+              getNewRGB(threevertDivFive);
+              getNewRGB(threevertDivSix);
+              getNewRGB(threevertDivSeven);
+              getNewRGB(threevertDivEight);
+              getNewRGB(threevertDivNine);
+              getNewRGB(threevertDivTen);
+              
+              newVertDivPosition(threevertDivOne); 
+              newVertDivPosition(threevertDivTwo); 
+              newVertDivPosition(threevertDivThree); 
+              newVertDivPosition(threevertDivFour); 
+              newVertDivPosition(threevertDivFive); 
+              newVertDivPosition(threevertDivSix); 
+              newVertDivPosition(threevertDivSeven); 
+              newVertDivPosition(threevertDivEight); 
+              newVertDivPosition(threevertDivNine); 
+              newVertDivPosition(threevertDivTen); 
+              
+              newVertColor(threebisectorOne);
+              newVertColor(threebisectorTwo);
+              newVertColor(threebisectorThree);
+              newVertColor(threebisectorFour);
+              newVertColor(threebisectorFive);
+              newVertColor(threebisectorSix);
+              newVertColor(threebisectorSeven);
+              
+              ">
 
     <!-- menu divs -->
 <div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
 <div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
 <div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br>
     
-    <!-- decorative divs -->
+    <!-- decorative divs group one -->
     
-<div class="vertDiv"; id="vertDivOne"; style="z-index:0"; onmouseover="newVertDivPosition(vertDivOne)"></div>
-<div class="vertDiv" id="vertDivTwo"; style="margin-left:41em; z-index:3"; onmouseover="newVertDivPosition(vertDivTwo)"></div>
-<div class="vertDiv"; id="vertDivThree"; style="margin-left:42em; z-index:0"; onmouseover="newVertDivPosition(vertDivThree)"></div>
-<div class="vertDiv"; id="vertDivFour"; style="margin-left:43em; z-index:3"; onmouseover="newVertDivPosition(vertDivFour)"></div>
-<div class="vertDiv"; id="vertDivFive"; style="margin-left:44em; z-index:0"; onmouseover="newVertDivPosition(vertDivFive)"></div>
-<div class="vertDiv"; id="vertDivSix"; style="margin-left:45em; z-index:3"; onmouseover="newVertDivPosition(vertDivSix)"></div>
-<div class="vertDiv" id="vertDivSeven"; style="margin-left:46em; z-index:0"; onmouseover="newVertDivPosition(vertDivSeven)"></div>
-<div class="vertDiv"; id="vertDivEight"; style="margin-left:47em; z-index:3"; onmouseover="newVertDivPosition(vertDivEight)"></div>
-<div class="vertDiv"; id="vertDivNine"; style="margin-left:48em; z-index:0"; onmouseover="newVertDivPosition(vertDivNine)"></div>
-<div class="vertDiv"; id="vertDivTen"; style="margin-left:49em; z-index:3"; onmouseover="newVertDivPosition(vertDivTen)"></div>  
+<div class="vertDiv"; id="vertDivOne"; style="z-index:0"; onmouseover="newVertDivPosition(vertDivOne); newVertColor(vertDivOne)"></div>
+<div class="vertDiv"; id="vertDivTwo"; style="margin-left:41em; z-index:3"; onmouseover="newVertDivPosition(vertDivTwo); newVertColor(vertDivTwo)"></div>
+<div class="vertDiv"; id="vertDivThree"; style="margin-left:42em; z-index:0"; onmouseover="newVertDivPosition(vertDivThree); newVertColor(vertDivThree)"></div>
+<div class="vertDiv"; id="vertDivFour"; style="margin-left:43em; z-index:3"; onmouseover="newVertDivPosition(vertDivFour); newVertColor(vertDivFour)"></div>
+<div class="vertDiv"; id="vertDivFive"; style="margin-left:44em; z-index:0"; onmouseover="newVertDivPosition(vertDivFive); newVertColor(vertDivFive)"></div>
+<div class="vertDiv"; id="vertDivSix"; style="margin-left:45em; z-index:3"; onmouseover="newVertDivPosition(vertDivSix); newVertColor(vertDivSix)"></div>
+<div class="vertDiv"; id="vertDivSeven"; style="margin-left:46em; z-index:0"; onmouseover="newVertDivPosition(vertDivSeven); newVertColor(vertDivSeven)"></div>
+<div class="vertDiv"; id="vertDivEight"; style="margin-left:47em; z-index:3"; onmouseover="newVertDivPosition(vertDivEight); newVertColor(vertDivEight)"></div>
+<div class="vertDiv"; id="vertDivNine"; style="margin-left:48em; z-index:0"; onmouseover="newVertDivPosition(vertDivNine); newVertColor(vertDivNine)"></div>
+<div class="vertDiv"; id="vertDivTen"; style="margin-left:49em; z-index:3"; onmouseover="newVertDivPosition(vertDivTen); newVertColor(vertDivTen)"></div>  
     
-    <!-- bisectors -->
+    <!-- bisectors group one-->
     <br><br>
 <div class ="bisector"; id="bisectorOne"; style="margin-left:38em;  height:1em; width:15em; background-color:black; z-index:2"; onmouseover="getNewRGB(bisectorOne); newBisectorPosition(bisectorOne)"></div><br><br>
 <div class ="bisector"; id="bisectorTwo"; style="margin-left:42em; height:1em; width:15em; background-color: black; z-index:2"; onmouseover="getNewRGB(bisectorTwo); newBisectorPosition(bisectorTwo)"></div><br><br>
 <div class ="bisector"; id="bisectorThree"; style="margin-left:39em; height:1em; width:15em; background-color:black; z-index=2"; onmouseover="getNewRGB(bisectorThree); newBisectorPosition(bisectorThree)"></div><br><br>
 <div class ="bisector"; id="bisectorFour"; style="margin-left:37em; height:1em; width:15em; background-color:black; z-index-2"; onmouseover="getNewRGB(bisectorFour); newBisectorPosition(bisectorFour)"></div>
+    
+        <!-- decorative divs group two -->
+    
+<div class="vertDiv"; id="twovertDivOne"; style="margin-left:70em; margin-top:10em; z-index:4"; onmouseover="newVertDivPosition(twovertDivOne); getNewRGB(twovertDivOne)"></div>
+<div class="vertDiv"; id="twovertDivTwo"; style="margin-left:71em; margin-top:10em; z-index:2"; onmouseover="newVertDivPosition(twovertDivTwo); getNewRGB(twovertDivTwo)"></div>
+<div class="vertDiv"; id="twovertDivThree"; style="margin-left:72em; margin-top:10em; z-index:4"; onmouseover="newVertDivPosition(twovertDivThree); getNewRGB(twovertDivThree)"></div>
+<div class="vertDiv"; id="twovertDivFour"; style="margin-left:73em; margin-top:10em; z-index:2"; onmouseover="newVertDivPosition(twovertDivFour); getNewRGB(twovertDivFour)"></div> 
+<div class="vertDiv"; id="twovertDivFive"; style="margin-left:74em; margin-top:10em; z-index:4"; onmouseover="newVertDivPosition(twovertDivFive); getNewRGB(twovertDivFive)"></div> 
+<div class="vertDiv"; id="twovertDivSix"; style="margin-left:75em; margin-top:10em; z-index:2"; onmouseover="newVertDivPosition(twovertDivSix); getNewRGB(twovertDivSix)"></div>
+<div class="vertDiv"; id="twovertDivSeven"; style="margin-left:76em; margin-top:10em; z-index:4"; onmouseover="newVertDivPosition(twovertDivSeven); getNewRGB(twovertDivSeven)"></div>
+<div class="vertDiv"; id="twovertDivEight"; style="margin-left:77em; margin-top:10em; z-index:2"; onmouseover="newVertDivPosition(twovertDivEight); getNewRGB(twovertDivEight)"></div>
+<div class="vertDiv"; id="twovertDivNine"; style="margin-left:78em; margin-top:10em; z-index:4"; onmouseover="newVertDivPosition(twovertDivNine); getNewRGB(twovertDivNine)"></div>
+<div class="vertDiv"; id="twovertDivTen"; style="margin-left:79em; margin-top:10em; z-index:2"; onmouseover="newVertDivPosition(twovertDivTen); getNewRGB(twovertDivTen)"></div>  
+    
+    <!-- bisectors group two-->
+    <br><br>
+<div class ="bisector"; id="twobisectorOne"; style="margin-left:68em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(twobisectorOne); twonewBisectorPosition(twobisectorOne)"></div><br>
+    
+<div class ="bisector"; id="twobisectorTwo"; style="margin-left:64em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(twobisectorTwo); twonewBisectorPosition(twobisectorTwo)"></div><br>
+    
+<div class ="bisector"; id="twobisectorThree"; style="margin-left:71em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(twobisectorThree); twonewBisectorPosition(twobisectorThree)"></div><br>
+    
+<div class ="bisector"; id="twobisectorFour"; style="margin-left:69em; height:1em; width:15em; background-color:black; z-index:3"; onmouseover="getNewRGB(twobisectorFour); twonewBisectorPosition(twobisectorFour)"></div><br>
+    
+    <div class ="bisector"; id="twobisectorFive"; style="margin-left:68em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(twobisectorFive); twonewBisectorPosition(twobisectorFive)"></div><br>
+    
+<div class ="bisector"; id="twobisectorSix"; style="margin-left:64em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(twobisectorSix); twonewBisectorPosition(twobisectorSix)"></div><br>
+    
+<div class ="bisector"; id="twobisectorSeven"; style="margin-left:71em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(twobisectorSeven); twonewBisectorPosition(twobisectorSeven)"></div><br>
+    
+    
+        <!-- decorative divs group three -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="vertDiv"; id="threevertDivOne"; style="margin-left:50em; margin-top:60em; z-index:4"; onmouseover="newVertDivPosition(threevertDivOne); getNewRGB(threevertDivOne)"></div>
+<div class="vertDiv"; id="threevertDivTwo"; style="margin-left:51em; margin-top:60em; z-index:2"; onmouseover="newVertDivPosition(threevertDivTwo); getNewRGB(threevertDivTwo)"></div>
+<div class="vertDiv"; id="threevertDivThree"; style="margin-left:52em; margin-top:60em; z-index:4"; onmouseover="newVertDivPosition(threevertDivThree); getNewRGB(threevertDivThree)"></div>
+    
+<div class="vertDiv"; id="threevertDivFour"; style="margin-left:53em; margin-top:60em; z-index:2"; onmouseover="newVertDivPosition(threevertDivFour); getNewRGB(threevertDivFour)"></div> 
+<div class="vertDiv"; id="threevertDivFive"; style="margin-left:54em; margin-top:60em; z-index:4"; onmouseover="newVertDivPosition(threevertDivFive); getNewRGB(threevertDivFive)"></div> 
+<div class="vertDiv"; id="threevertDivSix"; style="margin-left:55em; margin-top:60em; z-index:2"; onmouseover="newVertDivPosition(threevertDivSix); getNewRGB(threevertDivSix)"></div>
+<div class="vertDiv"; id="threevertDivSeven"; style="margin-left:56em; margin-top:60em; z-index:4"; onmouseover="newVertDivPosition(threevertDivSeven); getNewRGB(threevertDivSeven)"></div>
+<div class="vertDiv"; id="threevertDivEight"; style="margin-left:57em; margin-top:60em; z-index:2"; onmouseover="newVertDivPosition(threevertDivEight); getNewRGB(threevertDivEight)"></div>
+<div class="vertDiv"; id="threevertDivNine"; style="margin-left:58em; margin-top:60em; z-index:4"; onmouseover="newVertDivPosition(threevertDivNine); getNewRGB(threevertDivNine)"></div>
+<div class="vertDiv"; id="threevertDivTen"; style="margin-left:59em; margin-top:60em; z-index:2"; onmouseover="newVertDivPosition(threevertDivTen); getNewRGB(threevertDivTen)"></div>  
+    
+        <!-- bisectors group three-->
+    <br><br>
+<div class ="bisector"; id="threebisectorOne"; style="margin-left:48em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(threebisectorOne); threenewBisectorPosition(threebisectorOne)"></div><br>
+    
+<div class ="bisector"; id="threebisectorTwo"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(threebisectorTwo); threenewBisectorPosition(threebisectorTwo)"></div><br>
+    
+<div class ="bisector"; id="threebisectorThree"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(threebisectorThree); threenewBisectorPosition(threebisectorThree)"></div><br>
+    
+<div class ="bisector"; id="threebisectorFour"; style="margin-left:49em; height:1em; width:15em; background-color:black; z-index:3"; onmouseover="getNewRGB(threebisectorFour); threenewBisectorPosition(threebisectorFour)"></div><br>
+    
+    <div class ="bisector"; id="threebisectorFive"; style="margin-left:48em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(threebisectorFive); threenewBisectorPosition(threebisectorFive)"></div><br>
+    
+<div class ="bisector"; id="threebisectorSix"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(threebisectorSix); threenewBisectorPosition(threebisectorSix)"></div><br>
+    
+<div class ="bisector"; id="threebisectorSeven"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(threebisectorSeven); threenewBisectorPosition(threebisectorSeven)"></div><br>
 </body>
 </html>
