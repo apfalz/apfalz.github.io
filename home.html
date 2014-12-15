@@ -250,5 +250,27 @@
 <div class ="bisector"; id="threebisectorSix"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(threebisectorSix); threenewBisectorPosition(threebisectorSix)"></div><br>
     
 <div class ="bisector"; id="threebisectorSeven"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(threebisectorSeven); threenewBisectorPosition(threebisectorSeven)"></div><br>
-</body>
+    
+<p>Image to use:</p>
+<img id="scream" src="http://itsstreamingbr.dotd.la.gov:1935/snapshots?application=br-rtp-live&snap=br-cam-015.stream&ext=.jpg" alt="The Scream" width="220" height="277">
+
+<p>Canvas:</p>
+<canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3"; onclick="test()" >
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+function test() {
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var img = document.getElementById("scream");
+var colorArrayData = ctx.getImageData(0, 0, 300, 300);
+//ctx.putImageData(thing, 10, 10);
+    ctx.drawImage(img, 0, 0, 300, 300);
+    var evidence = colorArrayData.data[25];
+console.log("this is " + evidence);
+}
+
+</script>
+    
+    </body>
 </html>
