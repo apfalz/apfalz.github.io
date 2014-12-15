@@ -7,6 +7,19 @@
     font-family: sans-serif;
     color: white;
     text-decoration: none;
+    font-size: 2em;
+}
+
+.vertDiv {
+    position:absolute;
+    display:run-in;
+    margin-left: 40em;
+    height:15em;
+    width: 1em;
+}
+
+.bisector {
+    position: absolute;
 }
 
 #one {
@@ -70,57 +83,46 @@
 
 
 #worksLink {
-    font-size: 1em;
+    font-size: 2em;
     color: white;
     text-decoration: none;
     
 }
 
 #contactLink {
-    font-size: 1em;
+    font-size: 2em;
     color: white;
     text-decoration: none;
 }
 
 #bioLink {
-    font-size:1em;
+    font-size:2em;
     color: white;
     text-decoration: none;
 }
 
 #bioDiv {    
    // width: 9em;
-   // height: 1em;
+   // height: 2em;
     position:absolute;  
    // background-color: #81F7D8;  
-    display:inline-block;
+    display:run-in;
 }            
 
 #contactDiv {    
    // width: 9em;
-   // height: 1em;
+   // height: 2em;
     position:absolute;  
    // background-color: #81F7D8;  
-    display:inline-block;
+    display:run-in;
 }      
 
 #worksDiv {    
   //  width: 9em;
-  //  height: 1em;
+  //  height: 2em;
     position:absolute;  
    // background-color: #81F7D8;  
-    display:inline-block;
+    display:run-in;
 }      
 
-#itCanBeHardDiv {
-  //  width: 9em;
-  //  height: 1em;
-    position:absolute;  
-   // background-color: #81F7D8;  
-    display:block;
-}
 
-#itCanBeHardLink {
-    text-decoration: none;
-    color: white;
-}

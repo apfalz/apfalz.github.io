@@ -1,36 +1,81 @@
 <html>
    
 <head>
- <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
-    <script type="text/javascript">
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+     <script type="text/javascript">
         
-        function newMenu(whichHomeDiv) {
-            
-        var newDivWidth = Math.floor((Math.random() * 5) + 3) + "em";
-        var newDivHeight = Math.floor((Math.random() * 5) + 3) + "em";
-        whichHomeDiv.style.width = newDivWidth;
-
-            
-        var firstDigit = Math.floor(Math.random() * 10).toString();
-        var secondDigit = Math.floor(Math.random() * 10).toString();
-        var thirdDigit = Math.floor(Math.random() * 10).toString();
-        var fourthDigit = Math.floor(Math.random() * 10).toString();
-        var fifthDigit = Math.floor(Math.random() * 10).toString();
-        var sixthDigit = Math.floor(Math.random() * 10).toString();
-        var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-        whichHomeDiv.style.backgroundColor = divColor;
+        function newMenu(whichWorksDiv) {      
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";
+            var newDivHeight = Math.floor((Math.random() * 5) + 7) + "em";           
+            whichWorksDiv.style.width = newDivWidth;
         }
-    
-    
-    
-    
+        
+        function newMenuColor(whichWorksDiv)   {
+            var firstDigit = Math.floor(Math.random() * 10).toString();
+            var secondDigit = Math.floor(Math.random() * 10).toString();
+            var thirdDigit = Math.floor(Math.random() * 10).toString();
+            var fourthDigit = Math.floor(Math.random() * 10).toString();
+            var fifthDigit = Math.floor(Math.random() * 10).toString();
+            var sixthDigit = Math.floor(Math.random() * 10).toString();
+            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+            whichWorksDiv.style.backgroundColor = divColor;
+        }
+         
+         
+        function newVertDivPosition(whichVertDiv) {    
+            var newDivTop = Math.floor((Math.random() * 5) - 2);
+            var newVertDivHeight = Math.floor((Math.random() * 20) + 8);
+            whichVertDiv.style.marginTop = newDivTop +"em";
+            whichVertDiv.style.height = newVertDivHeight + 'em';
+            var firstDigit = Math.floor(Math.random() * 10).toString();
+            var secondDigit = Math.floor(Math.random() * 10).toString();
+            var thirdDigit = Math.floor(Math.random() * 10).toString();
+            var fourthDigit = Math.floor(Math.random() * 10).toString();
+            var fifthDigit = Math.floor(Math.random() * 10).toString();
+            var sixthDigit = Math.floor(Math.random() * 10).toString();
+            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+            whichVertDiv.style.backgroundColor = divColor;
+        }
+         
+         function getNewRGB(whichDiv) {
+             var newR = Math.floor((Math.random() * 1000) % 255);
+             var newG = Math.floor((Math.random() * 1000) % 255);
+             var newB = Math.floor((Math.random() * 1000) % 255);
+             whichDiv.style.backgroundColor = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
+          
+         }
+         
+         function newBisectorPosition(whichDiv) {
+             var newMargin = Math.floor((Math.random() * 5) + 35); 
+             whichDiv.style.marginLeft = newMargin + "em";
+         }
     </script>
-</head>
-<body onload="newMenu(bioDiv); newMenu(contactDiv); newMenu(worksDiv)" >
-<p> hello world</p>
+
+<body onload="newMenu(bioDiv); newMenu(contactDiv); newMenu(worksDiv); newMenuColor(bioDiv); newMenuColor(contactDiv); newMenuColor(worksDiv); newVertDivPosition(vertDivOne); newVertDivPosition(vertDivTwo); newVertDivPosition(vertDivThree); newVertDivPosition(vertDivFour); newVertDivPosition(vertDivFive); newVertDivPosition(vertDivSix); newVertDivPosition(vertDivSeven); newVertDivPosition(vertDivEight); newVertDivPosition(vertDivNine); newVertDivPosition(vertDivTen); getNewRGB(bisectorOne); getNewRGB(bisectorTwo); getNewRGB(bisectorThree); getNewRGB(bisectorFour)">
+
+    <!-- menu divs -->
+<div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
+<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br>
     
-<div id="worksDiv"; onmouseover="newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a id="worksLink"; href="works.html">works</a></div><br>
-<div id="contactDiv"; onmouseover="newMenu(contactDiv)"; onclick="newMenu(contactDiv)"><a id="contactLink";  href="contact.html">contact</a></div><br>
-<div id="bioDiv"; onmouseover="newMenu(bioDiv)"; onclick="newMenu(bioDiv)"><a id="bioLink"; href="bio.html">bio</a></div>
+    <!-- decorative divs -->
+    
+<div class="vertDiv"; id="vertDivOne"; style="z-index:0"; onmouseover="newVertDivPosition(vertDivOne)"></div>
+<div class="vertDiv" id="vertDivTwo"; style="margin-left:41em; z-index:3"; onmouseover="newVertDivPosition(vertDivTwo)"></div>
+<div class="vertDiv"; id="vertDivThree"; style="margin-left:42em; z-index:0"; onmouseover="newVertDivPosition(vertDivThree)"></div>
+<div class="vertDiv"; id="vertDivFour"; style="margin-left:43em; z-index:3"; onmouseover="newVertDivPosition(vertDivFour)"></div>
+<div class="vertDiv"; id="vertDivFive"; style="margin-left:44em; z-index:0"; onmouseover="newVertDivPosition(vertDivFive)"></div>
+<div class="vertDiv"; id="vertDivSix"; style="margin-left:45em; z-index:3"; onmouseover="newVertDivPosition(vertDivSix)"></div>
+<div class="vertDiv" id="vertDivSeven"; style="margin-left:46em; z-index:0"; onmouseover="newVertDivPosition(vertDivSeven)"></div>
+<div class="vertDiv"; id="vertDivEight"; style="margin-left:47em; z-index:3"; onmouseover="newVertDivPosition(vertDivEight)"></div>
+<div class="vertDiv"; id="vertDivNine"; style="margin-left:48em; z-index:0"; onmouseover="newVertDivPosition(vertDivNine)"></div>
+<div class="vertDiv"; id="vertDivTen"; style="margin-left:49em; z-index:3"; onmouseover="newVertDivPosition(vertDivTen)"></div>  
+    
+    <!-- bisectors -->
+    <br><br>
+<div class ="bisector"; id="bisectorOne"; style="margin-left:38em;  height:1em; width:15em; background-color:black; z-index:2"; onmouseover="getNewRGB(bisectorOne); newBisectorPosition(bisectorOne)"></div><br><br>
+<div class ="bisector"; id="bisectorTwo"; style="margin-left:42em; height:1em; width:15em; background-color: black; z-index:2"; onmouseover="getNewRGB(bisectorTwo); newBisectorPosition(bisectorTwo)"></div><br><br>
+<div class ="bisector"; id="bisectorThree"; style="margin-left:39em; height:1em; width:15em; background-color:black; z-index=2"; onmouseover="getNewRGB(bisectorThree); newBisectorPosition(bisectorThree)"></div><br><br>
+<div class ="bisector"; id="bisectorFour"; style="margin-left:37em; height:1em; width:15em; background-color:black; z-index-2"; onmouseover="getNewRGB(bisectorFour); newBisectorPosition(bisectorFour)"></div>
 </body>
 </html>
