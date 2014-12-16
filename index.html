@@ -26,13 +26,9 @@
                 }
             
             function newPositionOne(whichDiv) {
-                var randOne = Math.random() * 500; 
-                randOne = Math.floor(randOne);
-                var randomLeftMargin = randOne + "px";          
+                var randomLeftMargin = Math.floor(Math.random() * 500) + "px"; 
+                var randomTopMargin = Math.floor(Math.random() * 500) + "px";
                 whichDiv.style.marginLeft = randomLeftMargin;
-                var randTwo = Math.random() * 500;
-                randTwo = Math.floor(randTwo);
-                var randomTopMargin = randTwo + "px";
                 whichDiv.style.marginTop = randomTopMargin;
                 }
             

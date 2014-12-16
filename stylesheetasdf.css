@@ -1,13 +1,27 @@
 .worksParagraph {
-    margin-left: 11em;
-    font-family: sans-serif;
+    font-family: helvetica,verdana,arial,sans-serif;
+    z-index: 2;
+}
+
+.worksParagraphDiv {
+    margin-left:11em;
+    width: 50%;
+    z-index: 2;
+    
 }
 
 .menuLink {
-    font-family: sans-serif;
+    font-family: helvetica,verdana,arial,sans-serif;
     color: white;
     text-decoration: none;
     font-size: 2em;
+    display:run-in;
+}
+
+.menuDiv {
+    z-index:2;
+    position:absolute;
+    display:run-in;
 }
 
 .vertDiv {
@@ -21,6 +35,12 @@
 .bisector {
     position: absolute;
 }
+
+.piece {
+    position:absolute;
+    display:inline-block;
+}
+
 
 #one {
     width: 5em;
@@ -125,4 +145,8 @@
     display:run-in;
 }      
 
-
+#itCanBeHardCanvas {
+    position:absolute;
+    display:run-in;
+    z-index: 1;
+}

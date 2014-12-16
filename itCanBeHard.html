@@ -7,42 +7,83 @@
         
         function newMenu(whichWorksDiv) {
             
-        var newDivWidth = Math.floor((Math.random() * 5) + 4) + "em";
-        var newDivHeight = Math.floor((Math.random() * 5) + 4) + "em";
-        whichWorksDiv.style.width = newDivWidth;
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";
+            whichWorksDiv.style.width = newDivWidth;
         }
         
         function newMenuColor(whichWorksDiv) {
             
-        var firstDigit = Math.floor(Math.random() * 10).toString();
-        var secondDigit = Math.floor(Math.random() * 10).toString();
-        var thirdDigit = Math.floor(Math.random() * 10).toString();
-        var fourthDigit = Math.floor(Math.random() * 10).toString();
-        var fifthDigit = Math.floor(Math.random() * 10).toString();
-        var sixthDigit = Math.floor(Math.random() * 10).toString();
-        var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-        whichWorksDiv.style.backgroundColor = divColor;
+            var firstDigit = Math.floor(Math.random() * 10).toString();
+            var secondDigit = Math.floor(Math.random() * 10).toString();
+            var thirdDigit = Math.floor(Math.random() * 10).toString();
+            var fourthDigit = Math.floor(Math.random() * 10).toString();
+            var fifthDigit = Math.floor(Math.random() * 10).toString();
+            var sixthDigit = Math.floor(Math.random() * 10).toString();
+            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+            whichWorksDiv.style.backgroundColor = divColor;
         }
          
     </script>
     
 </head>
     
-<body onload="newMenu(bioDiv); newMenu(contactDiv); newMenuColor(bioDiv); newMenuColor(contactDiv); newMenuColor(worksDiv); newMenuColor(itCanBeHardDiv)">
+<body onload="newMenu(bioDiv); 
+              newMenu(contactDiv); 
+              newMenu(homeDiv);
+              newMenuColor(bioDiv); 
+              newMenuColor(contactDiv); 
+              newMenuColor(worksDiv); 
+              newMenuColor(homeDiv); 
+              
+              getNewCircle()">
 
-<div style="width:50em"; id="worksDiv"; onmouseover="newMenuColor(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br>
+<canvas id="itCanBeHardCanvas"; width="1000"; height="1000"; onmouseover="getNewCircle()" onclick="getNewCircle()"></canvas>
+    <script>
+        
+        function getNewCircle() {
+            var radius = Math.floor((Math.random() * 100)+ 1);
+            var newX = Math.floor((Math.random() * 900) + 1);
+            var newY = Math.floor((Math.random() * 900) + 1);
+            var c = document.getElementById("itCanBeHardCanvas");
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(newX, newY, radius, 0, 2*Math.PI);
+            ctx.stroke();
+            var counter = 1; 
+            counter = counter + 1; 
+            
+        }
+ 
+    </script>
     
-<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br>
     
-<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br>
+    
+    
+    <!-- menu divs -->
+<div class="menuDiv"; style="width:50em"; id="worksDiv"; onmouseover="newMenuColor(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+    
+<div class="menuDiv"; id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
+    
+<div class="menuDiv";  id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
 
-<div style="width:2em; length:45em"; id="itCanBeHardDiv"; onmouseover="newMenuColor(itCanBeHardDiv)">.</div><a class="menuLink"; href="itCanBeHard.html">It can be hard to fall asleep when you're on fire</a><br>
+<div class="menuDiv"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>  
 
-    <p class="worksParagraph"><b>It can be hard to fall asleep when you're on fire</b><br>For flute and live electronics<br>2014</p>
-    <p class="worksParagraph">World premiere by Willie Santiago at East Carolina University April 2014</p>
-    <iframe id="itCanBeHard" style="margin-left:11em" width="50%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/143898791&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    <p class="worksParagraph">Second performance by Laura Pillman at University of North Texas Electric LaTex Festival November 2014</p><br>
-   <!--<iframe style="margin-left:11em" width="560" height="315" src="//www.youtube.com/embed/LN7-2GppeZk" frameborder="0" allowfullscreen></iframe> -->
+    
+    
+    
+    
+    <!-- text etc -->
+<div class="worksParagraphDiv"><p class="worksParagraph"><b>It can be hard to fall asleep when you're on fire</b><br>For flute and live electronics<br>2014</p></div>
+    
+<div class="worksParagraphDiv"><p class="worksParagraph">World premiere by Willie Santiago at East Carolina University April 2014</p></div>
+    
+<iframe id="itCanBeHard" style="margin-left:11em; z-index=3"; width="50%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/143898791&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    
+<div class="worksParagraphDiv"><p class="worksParagraph">Pieces are often constructed through overt choices by a small number individuals.  This is not the only possible manner in which music can be made. Crickets and other insects create their songs collectively. By playing along with eight virtual instrumentals, the player in this piece can participate in a similar process where each member of the ensemble contributes to the overall texture. Rather than any one agent deciding exactly how the piece should develop, each voice has a roughly equal say in the way the piece unfolds.</p></div>
+    
+<div class="worksParagraphDiv"><p class="worksParagraph">Second performance by Laura Pillman at University of North Texas Electric LaTex Festival November 2014</p><br></div>
+
+<!-- <iframe style="margin-left:11em" width="560" height="315" src="//www.youtube.com/embed/LN7-2GppeZk" frameborder="0" allowfullscreen></iframe> -->
     
 </body>
 </html>
