@@ -39,6 +39,7 @@
 .piece {
     position:absolute;
     display:inline-block;
+    margin-left:30em;
 }
 
 

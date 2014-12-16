@@ -25,23 +25,10 @@
             var left = Math.floor((Math.random() * 500) + 20) + "px";
             var top = Math.floor((Math.random() * 500) + 20) + "px";
             whichDiv.style.marginLeft = left;
-            whichDiv.style.marginTop = top;
+           
         }
          
-        function newVertDivPosition(whichVertDiv) {    
-            var newDivTop = Math.floor((Math.random() * 5) - 2);
-            var newVertDivHeight = Math.floor((Math.random() * 20) + 8);
-            whichVertDiv.style.marginTop = newDivTop +"em";
-            whichVertDiv.style.height = newVertDivHeight + 'em';
-            var firstDigit = Math.floor(Math.random() * 10).toString();
-            var secondDigit = Math.floor(Math.random() * 10).toString();
-            var thirdDigit = Math.floor(Math.random() * 10).toString();
-            var fourthDigit = Math.floor(Math.random() * 10).toString();
-            var fifthDigit = Math.floor(Math.random() * 10).toString();
-            var sixthDigit = Math.floor(Math.random() * 10).toString();
-            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-            whichVertDiv.style.backgroundColor = divColor;
-        }
+        
          
          function getNewRGB(whichDiv) {
              var newR = Math.floor((Math.random() * 1000) % 255);
@@ -60,47 +47,47 @@
               newMenu(homeDiv);
               newMenuColor(homeDiv);            
               
-              newMenu(itCanBeHard); 
+          
               newMenuColor(itCanBeHard);
               newPiecePosition(itCanBeHard);
               
-              newMenu(atDuskASign);
+            
               newMenuColor(atDuskASign);
               newPiecePosition(atDuskASign);
               
-              newMenu(noManIsAnIsland);
+           
               newMenuColor(noManIsAnIsland);
               newPiecePosition(noManIsAnIsland);
             
-              newMenu(theFeelingOfChoking);
+            
               newMenuColor(theFeelingOfChoking);
               newPiecePosition(theFeelingOfChoking);
               
-              newMenu(theTruthAboutLimits);
+             
               newMenuColor(theTruthAboutLimits);
               newPiecePosition(theTruthAboutLimits);
               
-              newMenu(onGentleIndifference);
+            
               newMenuColor(onGentleIndifference);
               newPiecePosition(onGentleIndifference);
               
-              newMenu(theForestForTheTrees);
+              
               newMenuColor(theForestForTheTrees);
               newPiecePosition(theForestForTheTrees);
               
-              newMenu(youMightBeg);
+             
               newMenuColor(youMightBeg);
               newPiecePosition(youMightBeg);
               
-              newMenu(weAreRestlessThings);
+             
               newMenuColor(weAreRestlessThings);
               newPiecePosition(weAreRestlessThings);
               
-              newMenu(soliloquy);
+              
               newMenuColor(soliloquy);
               newPiecePosition(soliloquy);
               
-              newMenu(buoyancies);
+              
               newMenuColor(buoyancies);
               newPiecePosition(buoyancies);
               
@@ -113,27 +100,29 @@
 <div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
 <div id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>  
     
-<div class="piece"; id="itCanBeHard"; onmouseover="newMenuColor(itCanBeHard); newMenu(itCanBeHard)"; style="margin-left:20em"><a class="menuLink"; href="itCanBeHard.html">It can be hard to fall asleep when you're on fire</a></div>
+    <!-- piece divs -->
     
-<div class="piece"; id="atDuskASign"; onmouseover="newMenuColor(atDuskASign); newMenu(atDuskASign)"; style="margin-left:30em"><a class="menuLink"; href="atDuskASign.html">At dusk, a sign</a></div>
+<div class="piece"; id="itCanBeHard"; onmouseover="newMenuColor(itCanBeHard); "; style="margin-left:20em"><a class="menuLink"; href="itCanBeHard.html">It can be hard to fall asleep when you're on fire</a></div><br><br>
     
-<div class="piece"; id="noManIsAnIsland"; onmouseover="newMenuColor(noManIsAnIsland); newMenu(noManIsAnIsland)"; style="margin-left:40em"><a class="menuLink"; href="noManIsAnIsland.html">No man is an island</a></div>
+<div class="piece"; id="atDuskASign"; onmouseover="newMenuColor(atDuskASign); "; style="margin-left:30em"><a class="menuLink"; href="atDuskASign.html">At dusk, a sign</a></div><br><br>
+    
+<div class="piece"; id="noManIsAnIsland"; onmouseover="newMenuColor(noManIsAnIsland); "; style="margin-left:40em"><a class="menuLink"; href="noManIsAnIsland.html">No man is an island</a></div><br><br>
 
-<div class="piece"; id="theFeelingOfChoking"; onmouseover="newMenuColor(theFeelingOfChoking); newMenu(theFeelingOfChoking)"; style="margin-left:40em"><a class="menuLink"; href="theFeelingOfChokin.html">The feeling of choking on air</a></div>
+<div class="piece"; id="theFeelingOfChoking"; onmouseover="newMenuColor(theFeelingOfChoking); "; style="margin-left:40em"><a class="menuLink"; href="theFeelingOfChokin.html">The feeling of choking on air</a></div><br><br>
     
-<div class="piece"; id="theForestForTheTrees"; onmouseover="newMenuColor(theForestForTheTrees); newMenu(theForestForTheTrees)"; style="margin-left:40em"><a class="menuLink"; href="theForestForTheTrees.html">The forest for the trees</a></div>
+<div class="piece"; id="theForestForTheTrees"; onmouseover="newMenuColor(theForestForTheTrees); "; style="margin-left:40em"><a class="menuLink"; href="theForestForTheTrees.html">The forest for the trees</a></div><br><br>
     
-<div class="piece"; id="theTruthAboutLimits"; onmouseover="newMenuColor(theTruthAboutLimits); newMenu(theTruthAboutLimits)"; style="margin-left:40em"><a class="menuLink"; href="theTruthAboutLimits.html">The truth about limits</a></div>
+<div class="piece"; id="theTruthAboutLimits"; onmouseover="newMenuColor(theTruthAboutLimits); "; style="margin-left:40em"><a class="menuLink"; href="theTruthAboutLimits.html">The truth about limits</a></div><br><br>
 
-<div class="piece"; id="onGentleIndifference"; onmouseover="newMenuColor(onGentleIndifference); newMenu(onGentleIndifference)"; style="margin-left:40em"><a class="menuLink"; href="onGentleIndifference.html">On gentle indifference</a></div>
+<div class="piece"; id="onGentleIndifference"; onmouseover="newMenuColor(onGentleIndifference); "; style="margin-left:40em"><a class="menuLink"; href="onGentleIndifference.html">On gentle indifference</a></div><br><br>
     
-<div class="piece"; id="youMightBeg"; onmouseover="newMenuColor(youMightBeg); newMenu(youMightBeg)"; style="margin-left:40em"><a class="menuLink"; href="youMightBeg.html">You might beg for relief and not get any</a></div>
+<div class="piece"; id="youMightBeg"; onmouseover="newMenuColor(youMightBeg); "; style="margin-left:40em"><a class="menuLink"; href="youMightBeg.html">You might beg for relief and not get any</a></div><br><br>
 
-<div class="piece"; id="weAreRestlessThings"; onmouseover="newMenuColor(weAreRestlessThings); newMenu(weAreRestlessThings)"; style="margin-left:40em"><a class="menuLink"; href="weAreRestlessThings.html">We are restless things</a></div>
+<div class="piece"; id="weAreRestlessThings"; onmouseover="newMenuColor(weAreRestlessThings); "; style="margin-left:40em"><a class="menuLink"; href="weAreRestlessThings.html">We are restless things</a></div><br><br>
     
-<div class="piece"; id="soliloquy"; onmouseover="newMenuColor(soliloquy); newMenu(soliloquy)"; style="margin-left:40em"><a class="menuLink"; href="soliloquy.html">Soliloquy</a></div>
+<div class="piece"; id="soliloquy"; onmouseover="newMenuColor(soliloquy);"; style="margin-left:40em"><a class="menuLink"; href="soliloquy.html">Soliloquy</a></div><br><br>
 
-<div class="piece"; id="buoyancies"; onmouseover="newMenuColor(buoyancies); newMenu(buoyancies)"; style="margin-left:40em"><a class="menuLink"; href="buoyancies.html">Buoyancies and Densities</a></div>
+<div class="piece"; id="buoyancies"; onmouseover="newMenuColor(buoyancies)"; style="margin-left:40em"><a class="menuLink"; href="buoyancies.html">Buoyancies and Densities</a></div><br><br>
     
     
 </head>
