@@ -5,9 +5,10 @@
      <script type="text/javascript">
         
         function newMenu(whichWorksDiv) {      
-            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";
-            var newDivHeight = Math.floor((Math.random() * 5) + 7) + "em";           
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
             whichWorksDiv.style.width = newDivWidth;
+            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
+            whichWorksDiv.style.marginLeft = newLeftMarg;
         }
         
         function newMenuColor(whichWorksDiv)   {
@@ -168,10 +169,10 @@
               ">
 
     <!-- menu divs -->
-<div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>    
+<div class="menuDiv" id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div class="menuDiv" id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
+<div class="menuDiv" id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
+<div class="menuDiv" style="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>    
     
     <!-- decorative divs group one -->
 <div class="vertDiv"; id="vertDivOne"; style="margin-left:20em; z-index:0"; onmouseover="newVertDivPosition(vertDivOne); newVertColor(vertDivOne)"></div>

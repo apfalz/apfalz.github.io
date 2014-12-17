@@ -6,9 +6,10 @@
      <script type="text/javascript">
         
         function newMenu(whichWorksDiv) {
-            
-            var newDivWidth = Math.floor((Math.random() * 11) + 8) + "em";
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
             whichWorksDiv.style.width = newDivWidth;
+            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
+            whichWorksDiv.style.marginLeft = newLeftMarg;
         }
         
         function newMenuColor(whichWorksDiv) {

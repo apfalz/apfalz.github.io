@@ -29,29 +29,31 @@
               newMenuColor(worksDiv);
               newMenuColor(contactDiv);
               newMenuColor(bioDiv);
-              newMenuColor(homeDiv)";
-      
-      onmousemove="countToEight(); addDiv(event)">
+              newMenuColor(homeDiv)"
+      onmousemove=" countToEight();
+                    addDiv(event);">
      <!-- menu divs -->
-<div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+<div class="menuDiv" id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div class="menuDiv" id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
+<div class="menuDiv" id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
+<div class="menuDiv" syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
 
 <div class="worksParagraphDiv">
-    <p class="worksParagraph"><b>The truth about limits</b><br>for tuba and live electronics<br>2013</p>
+<p class="worksParagraph"><b>The truth about limits</b><br>for tuba and live electronics<br>2013</p>
     
     
     <p class="worksParagraph">There is a unique challenge that faces players of single line instruments. Works like the solo suites for Bach require the player to convey sustained chords without being able to literally play them.  The instruments that these pieces were written for likely had longer sustain than modern bowed string instruments. Viola da gamba players make use of this fact by holding down notes in their left hands long after the bow has left the string achieving a chordal effect. 
 <p class="worksParagraph">
 Wind players do not really have the same kind of tricks at their disposal. This piece gives a tuba player access to sustained notes in the way that a pianist can by using the pedal.</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
+<iframe class="soundCloud" width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/138227138&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    
 <script>
     var numberOfMouseMoves = 0;
     var idNum = 0;
     function countToEight() {
         numberOfMouseMoves = (numberOfMouseMoves+ 1) % 12;        
-     //   console.log(numberOfMouseMoves);
+
     }
     
     function addDiv(event) {
@@ -66,26 +68,24 @@ Wind players do not really have the same kind of tricks at their disposal. This 
         
         var newColor = "rgb(" + newR + "," + newG + "," + newB + ")";
         
-        
+        disDiv.style.zIndex = "1"; 
         disDiv.style.display = "run-in";
         disDiv.style.position = "absolute";
         disDiv.style.backgroundColor = newColor; 
         disDiv.style.width = "10em";
         disDiv.style.height = "10em";
         disDiv.style.marginLeft = xPos - 100;
-        disDiv.style.marginTop = yPos - 400;
+        disDiv.style.marginTop = yPos - 600;
         disDiv.id = "num" + numberOfMouseMoves;
         document.body.appendChild(disDiv);   
-      //  console.log(xPos);
-        
+
         idNum += 1;
-        //var whichToKill = document.getElementById("num" + idNum + 4);
-        console.log(newColor);
+
         document.body.removeChild(document.getElementById("num" + ((numberOfMouseMoves + 4) %12)));
         
     } 
 
-</script>  
+</script>       
 
 </body>
 </html>
