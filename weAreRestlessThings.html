@@ -1,0 +1,90 @@
+<html>
+<head>
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+        <script type="text/javascript">
+        
+        function newMenu(whichWorksDiv) {      
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";
+            var newDivHeight = Math.floor((Math.random() * 5) + 7) + "em";           
+            whichWorksDiv.style.width = newDivWidth;
+        }
+        
+        function newMenuColor(whichWorksDiv) {
+            var firstDigit = Math.floor(Math.random() * 10).toString();
+            var secondDigit = Math.floor(Math.random() * 10).toString();
+            var thirdDigit = Math.floor(Math.random() * 10).toString();
+            var fourthDigit = Math.floor(Math.random() * 10).toString();
+            var fifthDigit = Math.floor(Math.random() * 10).toString();
+            var sixthDigit = Math.floor(Math.random() * 10).toString();
+            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+            whichWorksDiv.style.backgroundColor = divColor;
+        }
+        </script>
+</head>
+<body onload="newMenu(worksDiv);
+              newMenu(contactDiv);
+              newMenu(bioDiv);
+              newMenu(homeDiv);
+              newMenuColor(worksDiv);
+              newMenuColor(contactDiv);
+              newMenuColor(bioDiv);
+              newMenuColor(homeDiv)";
+      
+      onmousemove="countToEight(); addDiv(event)">
+     <!-- menu divs -->
+<div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
+<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
+<div syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+
+<div class="worksParagraphDiv">
+    <p class="worksParagraph"><b>The truth about limits</b><br>for tuba and live electronics<br>2013</p>
+    
+    
+    <p class="worksParagraph">There is a unique challenge that faces players of single line instruments. Works like the solo suites for Bach require the player to convey sustained chords without being able to literally play them.  The instruments that these pieces were written for likely had longer sustain than modern bowed string instruments. Viola da gamba players make use of this fact by holding down notes in their left hands long after the bow has left the string achieving a chordal effect. 
+<p class="worksParagraph">
+Wind players do not really have the same kind of tricks at their disposal. This piece gives a tuba player access to sustained notes in the way that a pianist can by using the pedal.</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+<script>
+    var numberOfMouseMoves = 0;
+    var idNum = 0;
+    function countToEight() {
+        numberOfMouseMoves = (numberOfMouseMoves+ 1) % 12;        
+     //   console.log(numberOfMouseMoves);
+    }
+    
+    function addDiv(event) {
+        
+        var disDiv = document.createElement("DIV");
+        var xPos = event.clientX;
+        var yPos = event.clientY;
+        
+        var newR = xPos % 255;
+        var newG = (yPos % 255) + 50;
+        var newB = (xPos % 255);
+        
+        var newColor = "rgb(" + newR + "," + newG + "," + newB + ")";
+        
+        
+        disDiv.style.display = "run-in";
+        disDiv.style.position = "absolute";
+        disDiv.style.backgroundColor = newColor; 
+        disDiv.style.width = "10em";
+        disDiv.style.height = "10em";
+        disDiv.style.marginLeft = xPos - 100;
+        disDiv.style.marginTop = yPos - 400;
+        disDiv.id = "num" + numberOfMouseMoves;
+        document.body.appendChild(disDiv);   
+      //  console.log(xPos);
+        
+        idNum += 1;
+        //var whichToKill = document.getElementById("num" + idNum + 4);
+        console.log(newColor);
+        document.body.removeChild(document.getElementById("num" + ((numberOfMouseMoves + 4) %12)));
+        
+    } 
+
+</script>  
+
+</body>
+</html>

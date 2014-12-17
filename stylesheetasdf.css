@@ -1,3 +1,12 @@
+.soundCloud {
+    margin-left: 11em;
+    width: 50%;
+    height: 100;
+    z-index:3;
+   // display: run-in;
+    position:relative;
+}
+
 .worksParagraph {
     font-family: helvetica,verdana,arial,sans-serif;
     z-index: 2;
@@ -7,9 +16,16 @@
     margin-left:11em;
     width: 50%;
     z-index: 2;
-    
+    position: absolute;
+    display: run-in;
 }
 
+#hardParagraphDiv {
+    margin-left:11em;
+    width:50%;
+    z-index:2;
+    position:inline-block;
+}
 .menuLink {
     font-family: helvetica,verdana,arial,sans-serif;
     color: white;
@@ -129,31 +145,28 @@
 }
 
 #bioDiv {    
-   // width: 9em;
-   // height: 2em;
     position:absolute;  
-   // background-color: #81F7D8;  
     display:run-in;
 }            
 
 #contactDiv {    
-   // width: 9em;
-   // height: 2em;
     position:absolute;  
-   // background-color: #81F7D8;  
     display:run-in;
 }      
 
 #worksDiv {    
-  //  width: 9em;
-  //  height: 2em;
     position:absolute;  
-   // background-color: #81F7D8;  
     display:run-in;
 }      
 
 #itCanBeHardCanvas {
     position:absolute;
+    display:run-in;
+    z-index: 1;
+}
+
+#forestCanvas {
+     position:absolute;
     display:run-in;
     z-index: 1;
 }
