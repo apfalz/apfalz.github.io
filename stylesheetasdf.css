@@ -172,3 +172,13 @@
     display:run-in;
     z-index: 1;
 }
+
+#followNoPathCanvas {
+    display:run-in;
+    position: absolute;
+}
+
+#stampCanvas {
+    display:run-in;
+    position: absolute;
+}

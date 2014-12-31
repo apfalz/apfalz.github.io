@@ -1,0 +1,144 @@
+<html>
+<head>
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+        <script type="text/javascript">
+        
+        function newMenu(whichWorksDiv) {      
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
+            whichWorksDiv.style.width = newDivWidth;
+            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
+            whichWorksDiv.style.marginLeft = newLeftMarg;
+        }
+        
+        function newMenuColor(whichWorksDiv) {
+            var firstDigit = Math.floor(Math.random() * 10).toString();
+            var secondDigit = Math.floor(Math.random() * 10).toString();
+            var thirdDigit = Math.floor(Math.random() * 10).toString();
+            var fourthDigit = Math.floor(Math.random() * 10).toString();
+            var fifthDigit = Math.floor(Math.random() * 10).toString();
+            var sixthDigit = Math.floor(Math.random() * 10).toString();
+            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+            whichWorksDiv.style.backgroundColor = divColor;
+        }
+        </script>
+</head>
+<body onload="newMenu(worksDiv);
+              newMenu(contactDiv);
+              newMenu(bioDiv);
+              newMenu(homeDiv);
+              newMenuColor(worksDiv);
+              newMenuColor(contactDiv);
+              newMenuColor(bioDiv);
+              newMenuColor(homeDiv)";
+              onmousemove="drawThemLines(event)";
+      onclick="stamp(event, stmpCntxt)";
+                   >
+     <!-- menu divs -->
+<div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
+<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
+<div syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+    <canvas id="followNoPathCanvas" height="1000" width="1000" style="border:1px solid #d3d3d3 "></canvas>
+        
+    <canvas id="stampCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
+    
+                                                                                    
+    <script>
+
+  
+
+    c = document.getElementById("followNoPathCanvas");
+    cntxt = c.getContext("2d");
+    d = document.getElementById("stampCanvas");
+    stmpCntxt = d.getContext("2d");
+    oldX = 0;
+    oldY = 0;
+    var color = "white";
+        
+    function makeALine (event, whichCanvas) {       
+    
+        var lineX = Math.floor(Math.random() * 50);
+        var lineY = Math.floor(Math.random() * 50);
+         posX = event.clientX;
+         posY = (event.clientY);
+        var flipX = Math.floor(Math.random() * 10);
+        var flipY = Math.floor(Math.random() * 10);
+        var newR = Math.floor(((Math.random() * 1000) % 255) - 50);
+        var newG = Math.floor(((Math.random() * 1000) % 255) + 50);
+        var newB = Math.floor(((Math.random() * 1000) % 255) - 75);
+        var color = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
+
+        
+
+
+            if (flipX % 2 == 0) {
+                flipX = -1;
+            }else{
+                flipX = 1;
+            };
+
+            if (flipY % 2 == 0) {
+                flipY = -1;
+            }else{ 
+                flipY = 1;
+            };
+
+        whichCanvas.beginPath();
+        whichCanvas.moveTo((posX), (posY));
+        whichCanvas.strokeStyle=color;
+        whichCanvas.lineWidth = "1";
+        whichCanvas.lineTo((posX + lineX * flipX), (posY + lineY * flipY));
+        whichCanvas.stroke();
+    }
+    
+    function drawThemLines (event) {
+        
+        cntxt.clearRect(0, 0, 1000, 1000);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+        new makeALine(event, cntxt);
+    }
+        
+
+        
+    function stamp (event, stmpCntxt) {
+        
+        var newR = Math.floor(((Math.random() * 1000) % 255) - 50);
+        var newG = Math.floor(((Math.random() * 1000) % 255) + 50);
+        var newB = Math.floor(((Math.random() * 1000) % 255) - 75);
+        var newColor = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
+        
+        stmpCntxt.beginPath();
+        stmpCntxt.moveTo(oldX, oldY);
+        stmpCntxt.strokeStyle= color;
+        stmpCntxt.lineWidth="1";
+        stmpCntxt.lineTo(posX, posY);
+        stmpCntxt.stroke();
+        
+        new makeALine(event, stmpCntxt);
+        new makeALine(event, stmpCntxt);
+        new makeALine(event, stmpCntxt);
+        new makeALine(event, stmpCntxt);
+        new makeALine(event, stmpCntxt);
+        new makeALine(event, stmpCntxt);
+        
+        oldX = posX;
+        oldY = posY;
+        color = newColor;
+        
+        
+    }
+    
+    
+    
+    
+    
+    </script>
+    </body>
+    </html>                             

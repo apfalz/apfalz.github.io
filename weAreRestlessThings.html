@@ -31,7 +31,8 @@
               newMenuColor(bioDiv);
               newMenuColor(homeDiv)";
       
-      onmousemove="countToEight(); addDiv(event)">
+      onmousemove="countToEight(); addDiv(event)";
+     >
      <!-- menu divs -->
 <div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
 <div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
@@ -47,43 +48,112 @@
 Wind players do not really have the same kind of tricks at their disposal. This piece gives a tuba player access to sustained notes in the way that a pianist can by using the pedal.</p></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
 <script>
-    var numberOfMouseMoves = 0;
-    var idNum = 0;
-    function countToEight() {
-        numberOfMouseMoves = (numberOfMouseMoves+ 1) % 12;        
-     //   console.log(numberOfMouseMoves);
-    }
-    
-    function addDiv(event) {
         
-        var disDiv = document.createElement("DIV");
+        var numberOfMouseMoves = 0;
+
+        var xPos = 0;
+        var yPos = 0;
+        var xShift = 0; 
+        var yShift = 0;
+        
+    
+    function countToEight() {
         var xPos = event.clientX;
         var yPos = event.clientY;
+        numberOfMouseMoves = (numberOfMouseMoves + 1) % 12; 
+    }
+    
+    function makeADiv(whichDiv, whichColor, scaleForShift, separatorX, separatorY, unique) {
+            
+            var randomPosX = Math.floor(Math.random() * 100);
+            var randomPosY = Math.floor(Math.random() * 100);
+        
+            
+
+            whichDiv.style.display = "run-in";
+            whichDiv.style.position = "absolute";
+            whichDiv.style.backgroundColor = whichColor; 
+            whichDiv.style.width = (xShift/scaleForShift) + "em";
+            whichDiv.style.height = (yShift/scaleForShift) + "em";
+            whichDiv.style.marginLeft = (xPos + randomPosX) - separatorX;
+            whichDiv.style.marginTop = (yPos + randomPosY) - separatorY;
+            whichDiv.id = "identifier" + unique + "num" + numberOfMouseMoves;
+            document.body.appendChild(whichDiv); 
+            var whichOne = ("identifier" + unique + "num" + (numberOfMouseMoves+4) % 12);
+            var thisOne = whichDiv.id;
+            document.body.removeChild(document.getElementById(whichOne));
+
+    }
+
+
+
+    function addDiv(event) {
+        
+        var div1 = document.createElement("DIV");
+        var div2 = document.createElement("DIV");
+        var div3 = document.createElement("DIV");
+        var div4 = document.createElement("DIV");
+        var div5 = document.createElement("DIV");
+        var div6 = document.createElement("DIV");
+        var div7 = document.createElement("DIV");
+    
+        xPos = event.clientX;
+        yPos = event.clientY;
+        
+        xShift = Math.floor((Math.random() * 10) + 1);
+        yShift = Math.floor((Math.random() * 10) + 1);
         
         var newR = xPos % 255;
         var newG = (yPos % 255) + 50;
         var newB = (xPos % 255);
-        
+
         var newColor = "rgb(" + newR + "," + newG + "," + newB + ")";
+        var newColor2 = "rgb(" + newG + "," + newG + "," + newB + ")";
+        var newColor3 = "rgb(" + newB + "," + newG + "," + newR + ")";
+    
         
         
-        disDiv.style.display = "run-in";
-        disDiv.style.position = "absolute";
-        disDiv.style.backgroundColor = newColor; 
-        disDiv.style.width = "10em";
-        disDiv.style.height = "10em";
-        disDiv.style.marginLeft = xPos - 100;
-        disDiv.style.marginTop = yPos - 400;
-        disDiv.id = "num" + numberOfMouseMoves;
-        document.body.appendChild(disDiv);   
-      //  console.log(xPos);
         
-        idNum += 1;
-        //var whichToKill = document.getElementById("num" + idNum + 4);
-        console.log(newColor);
-        document.body.removeChild(document.getElementById("num" + ((numberOfMouseMoves + 4) %12)));
-        
-    } 
+       if (xPos <= 200 ) {
+                makeADiv(div1, newColor, 4, 0, 500, 1); 
+                new makeADiv(div2, "white", 8, 100, 600, 2);
+                new makeADiv(div3, "white", 8, -100, 400, 3);
+                new makeADiv(div4, "white", 8, 150, 300, 4);
+                new makeADiv(div5, "white", 8, -100, 700, 5);
+                
+            } else if (xPos <= 400 && xPos >200) {
+
+                new makeADiv(div1, newColor, 3, 0, 500, 1);
+                new makeADiv(div2, newColor2, 3, 100, 600, 2);
+                new makeADiv(div3, "white", 8, -100, 400, 3);
+                new makeADiv(div4, "white", 8, 150, 300, 4);
+                new makeADiv(div5, "white", 8, -100, 700, 5);
+                
+
+            } else if (xPos <=600 && xPos >400) {
+
+                new makeADiv(div1, newColor, 2, 0, 500, 1);
+                new makeADiv(div2, newColor2, 2, 100, 600, 2);
+                new makeADiv(div3, newColor3, 2, -50, 400, 3);
+                new makeADiv(div4, "white", 8, 100, 300, 4);
+                new makeADiv(div5, "white", 8, -100, 700, 5);
+
+            } else if ( xPos > 600 && xPos <= 800) {
+
+                new makeADiv(div1, newColor, 1, 0, 500, 1);
+                new makeADiv(div2, newColor2, 1, 100, 600, 2);
+                new makeADiv(div3, newColor3, 1, -50, 400, 3);
+                new makeADiv(div4, newColor, 1, 100, 300, 4);
+                new makeADiv(div5, "white", 8, -100, 700, 5);
+            } else {
+                
+                new makeADiv(div1, newColor, 0.5, 0, 500, 1);
+                new makeADiv(div2, newColor2, 0.5, 100, 600, 2);
+                new makeADiv(div3, newColor3, 0.5, -100, 400, 3);
+                new makeADiv(div4, newColor, 0.5, 100, 300, 4);
+                new makeADiv(div5, newColor2, 0.5, -100, 500, 5);
+            }
+        } 
 
 </script>  
 
