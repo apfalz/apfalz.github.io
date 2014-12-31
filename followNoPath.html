@@ -22,25 +22,30 @@
         }
         </script>
 </head>
-<body onload="newMenu(worksDiv);
-              newMenu(contactDiv);
-              newMenu(bioDiv);
-              newMenu(homeDiv);
-              newMenuColor(worksDiv);
-              newMenuColor(contactDiv);
-              newMenuColor(bioDiv);
-              newMenuColor(homeDiv)";
-              onmousemove="drawThemLines(event)";
-      onclick="stamp(event, stmpCntxt)";
+<body onload=     "newMenu(worksDiv);
+                   newMenu(contactDiv);
+                   newMenu(bioDiv);
+                   newMenu(homeDiv);
+                   newMenuColor(worksDiv);
+                   newMenuColor(contactDiv);
+                   newMenuColor(bioDiv);
+                   newMenuColor(homeDiv)";
+      
+      onmousemove="drawThemLines(event);
+                   movingLine(event)";
+      
+      onclick="    stamp(event, stmpCntxt)";
                    >
      <!-- menu divs -->
-<div  id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+<div  id="worksDiv"; class="menuDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div id="contactDiv"; class="menuDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink" class="menuDiv";  href="contact.html">contact</a></div><br><br>
+<div id="bioDiv" class="menuDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
+<div syle="width:100em"; id="homeDiv"; class="menuDiv" onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
     <canvas id="followNoPathCanvas" height="1000" width="1000" style="border:1px solid #d3d3d3 "></canvas>
         
     <canvas id="stampCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
+    
+    <canvas id="movingLineCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
     
                                                                                     
     <script>
@@ -51,6 +56,10 @@
     cntxt = c.getContext("2d");
     d = document.getElementById("stampCanvas");
     stmpCntxt = d.getContext("2d");
+    e = document.getElementById("movingLineCanvas");
+    mvngLn = e.getContext("2d");
+        
+    
     oldX = 0;
     oldY = 0;
     var color = "white";
@@ -131,12 +140,26 @@
         oldX = posX;
         oldY = posY;
         color = newColor;
+    }
+        
+    function movingLine (event) {
+        
+        mvngLn.clearRect(0,0,900,900);
+        var newR = Math.floor(((Math.random() * 1000) % 255) - 50);
+        var newG = Math.floor(((Math.random() * 1000) % 255) + 50);
+        var newB = Math.floor(((Math.random() * 1000) % 255) - 75);
+        var newColor = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
+        
+        mvngLn.beginPath()
+        mvngLn.moveTo(oldX, oldY);
+        mvngLn.strokeStyle= color
+        mvngLn.lineWidth = "1";
+        mvngLn.lineTo(posX, posY);
+        mvngLn.stroke();
+        
         
         
     }
-    
-    
-    
     
     
     </script>

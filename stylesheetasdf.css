@@ -182,3 +182,8 @@
     display:run-in;
     position: absolute;
 }
+
+#movingLineCanvas {
+    display: run-in;
+    position:absolute;
+}
