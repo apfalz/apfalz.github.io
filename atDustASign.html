@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>At dusk, a sign</title>
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+        <script type="text/javascript">
+        
+        function newMenu(whichWorksDiv) {      
+            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
+            whichWorksDiv.style.width = newDivWidth;
+            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
+            whichWorksDiv.style.marginLeft = newLeftMarg;
+        }
+        
+        function newMenuColor(whichWorksDiv) {
+            var firstDigit = Math.floor(Math.random() * 10).toString();
+            var secondDigit = Math.floor(Math.random() * 10).toString();
+            var thirdDigit = Math.floor(Math.random() * 10).toString();
+            var fourthDigit = Math.floor(Math.random() * 10).toString();
+            var fifthDigit = Math.floor(Math.random() * 10).toString();
+            var sixthDigit = Math.floor(Math.random() * 10).toString();
+            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
+            whichWorksDiv.style.backgroundColor = divColor;
+        }
+        </script>
+</head>
+<body onload=     "newMenu(worksDiv);
+                   newMenu(contactDiv);
+                   newMenu(bioDiv);
+                   newMenu(homeDiv);
+                   newMenuColor(worksDiv);
+                   newMenuColor(contactDiv);
+                   newMenuColor(bioDiv);
+                   newMenuColor(homeDiv)";  
+      
+    onmousemove="      makeManyCurves()";
+                   >
+     <!-- menu divs -->
+<div  id="worksDiv"; class="menuDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
+<div id="contactDiv"; class="menuDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink" class="menuDiv";  href="contact.html">contact</a></div><br><br>
+<div id="bioDiv" class="menuDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
+<div syle="width:100em"; id="homeDiv"; class="menuDiv" onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+    
+    <!-- canvas -->
+<canvas id="atDuskASignCanvas" height="1000" width="1000" style="border:1px solid #d3d3d3 "></canvas>
+<canvas id="atDuskASignStamp" height="1000" width="1000" style="border:1px solid #d3d3d3 "></canvas>
+
+<script>
+    var c = document.getElementById("atDuskASignCanvas");
+    var cntxt = c.getContext("2d");
+    var d = document.getElementById("atDuskASignStamp");
+    var stmpcntxt = d.getContext("2d");
+    
+    function makeACurve(event) {
+        var xPos = event.clientX;
+        var posY = event.clientY;
+        
+        var flip 
+        var cp1x = Math.floor(Math.random() * 50);
+        var cp1y = Math.floor(Math.random() * 50);
+        var cp2x = Math.floor(Math.random() * 50);
+        var cp2y = Math.floor(Math.random() * 50);
+        var spx = Math.floor(Math.random() * 50);
+        var spy = Math.floor(Math.random() * 50);
+       
+        
+        
+          if (spx % 2 == 0) {
+                spx = xPos + spx;
+                cp1x = xPos + cp1x;
+                cp2x = xPos + cp2x;
+                
+            }else{
+                spx = xPos - spx;
+                cp1x = xPos - cp1x;
+                cp2x = xPos - cp2x;
+            };
+
+            if (spy % 2 == 0) {
+                spy = posY + spy;
+                cp1y = posY + cp1y;
+                cp2y = posY + cp2y;
+            }else{ 
+                spy = posY - spy;
+                cp1y = posY - cp1y;
+                cp2y = posY - cp2y;
+            }; 
+        
+        
+        
+        cntxt.beginPath();
+        cntxt.moveTo(xPos, posY);
+        cntxt.bezierCurveTo((cp1x), (cp1y), cp2x, cp2y, spx, spy)
+        cntxt.stroke();
+        }
+    
+    function makeManyCurves() {
+        cntxt.clearRect(0, 0, 1000, 1000);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+    }
+    
+    function makeManyCurves() {
+        cntxt.clearRect(0, 0, 1000, 1000);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+        new makeACurve(event);
+    }
+    
+    
+    
+    
+    
+    
+    </script>
+    
+    
+</body>
+</html>
