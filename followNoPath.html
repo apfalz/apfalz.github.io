@@ -33,25 +33,25 @@
                    newMenuColor(homeDiv)";
       
       onmousemove="drawThemLines(event);
-                   movingLine(event)";
+                   movingLine(event);
+                   getScrollOffset(xOffset, yOffset)";
       
-      onclick="    stamp(event, stmpCntxt)";>
+      onclick=    "stamp(event, stmpCntxt);
+                   getScrollOffset()"
+                    >
     
-<!-- canvases -->
-<canvas id="followNoPathCanvas" class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3 "></canvas>  
-<canvas id="stampCanvas" class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
-<canvas id="movingLineCanvas" class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
+
     
 <!-- menu divs -->
 <div  id="worksDiv"; class="menuDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
 <div id="contactDiv"; class="menuDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink" class="menuDiv";  href="contact.html">contact</a></div><br><br>
 <div id="bioDiv" class="menuDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
 <div syle="width:100em"; id="homeDiv"; class="menuDiv" onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
-    
-
-    
-                                                                                    
-    <script>
+     <!-- canvases -->
+<canvas id="followNoPathCanvas"; class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3 "></canvas>  
+<canvas id="stampCanvas"; class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
+<canvas id="movingLineCanvas"; class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>                                                                           
+<script>
     c = document.getElementById("followNoPathCanvas");
     cntxt = c.getContext("2d");
     d = document.getElementById("stampCanvas");
@@ -63,22 +63,21 @@
     oldX = 0;
     oldY = 0;
     var color = "white";
+    var xOffset = 0;
+    var yOffset = 0;
         
     function makeALine (event, whichCanvas) {       
     
         var lineX = Math.floor(Math.random() * 50);
         var lineY = Math.floor(Math.random() * 50);
-         posX = event.clientX;
-         posY = (event.clientY);
+         posX = (event.clientX) + xOffset;
+         posY = (event.clientY) + yOffset;
         var flipX = Math.floor(Math.random() * 10);
         var flipY = Math.floor(Math.random() * 10);
         var newR = Math.floor(((Math.random() * 1000) % 255) - 50);
         var newG = Math.floor(((Math.random() * 1000) % 255) + 50);
         var newB = Math.floor(((Math.random() * 1000) % 255) - 75);
         var color = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
-
-        
-
 
             if (flipX % 2 == 0) {
                 flipX = -1;
@@ -127,7 +126,7 @@
         stmpCntxt.moveTo(oldX, oldY);
         stmpCntxt.strokeStyle= color;
         stmpCntxt.lineWidth="1";
-        stmpCntxt.lineTo(posX, posY);
+        stmpCntxt.lineTo((posX + xOffset), (posY + yOffset));
         stmpCntxt.stroke();
         
         new makeALine(event, stmpCntxt);
@@ -157,9 +156,15 @@
         mvngLn.lineTo(posX, posY);
         mvngLn.stroke();
     }
-        
-        <div class="worksParahgraphDiv"><p class="worksParagraph">Follow no path<br> for indeterminate group of winds<br>2013</p></div>
+    
+    function getScrollOffset(xOffset, yOffset) {
+        xOffset=Math.max(document.documentElement.scrollLeft,document.body.scrollLeft);
+        yOffset=Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+        //console.log("posX =" + posX, "xOffset =" + xOffset, "posY =" + posY, "yOffset =" + yOffset);
+    }
     
     </script>
+
+    <div class="worksParagraphDiv"><p class="worksParagraph"><b>Follow no path</b><br>for indeterminate group of winds<br>2013</p></div>
     </body>
     </html>                             

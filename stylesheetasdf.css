@@ -1,7 +1,33 @@
+.bisector {
+    position: absolute;
+}
+
 .followNoPathCanvas {
     display:run-in;
     position: absolute;
     z-index: 1;
+}
+
+.menuDiv {
+    z-index:2;
+    position:absolute;
+    display:run-in;
+    text-align: center;
+}
+
+.menuLink {
+    font-family: helvetica,verdana,arial,sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 2em;
+    display:run-in;
+    text-align: center;
+}
+
+.piece {
+    position:absolute;
+    display:inline-block;
+    margin-left:30em;
 }
 
 .soundCloud {
@@ -9,7 +35,6 @@
     width: 50%;
     height: 100;
     z-index:3;
-   // display: run-in;
     position:relative;
 }
 
@@ -26,44 +51,12 @@
     display: run-in;
 }
 
-#hardParagraphDiv {
-    margin-left:11em;
-    width:50%;
-    z-index:2;
-    position:inline-block;
-}
-.menuLink {
-    font-family: helvetica,verdana,arial,sans-serif;
-    color: white;
-    text-decoration: none;
-    font-size: 2em;
-    display:run-in;
-    text-align: center;
-}
-
-.menuDiv {
-    z-index:2;
-    position:absolute;
-    display:run-in;
-    text-align: center;
-}
-
 .vertDiv {
     position:absolute;
     display:run-in;
-    margin-left: 40em;
+    margin-left: 20em;
     height:15em;
     width: 1em;
-}
-
-.bisector {
-    position: absolute;
-}
-
-.piece {
-    position:absolute;
-    display:inline-block;
-    margin-left:30em;
 }
 
 .youtubeLink {
@@ -92,9 +85,6 @@
     background-color: #81F7D8; 
     display:run-in;
 }
-
-
-
 
 #three {
     width: 6em;
@@ -138,6 +128,12 @@
     color: white;
     text-decoration: none;
     
+}
+#hardParagraphDiv {
+    margin-left:11em;
+    width:50%;
+    z-index:2;
+    position:inline-block;
 }
 
 #contactLink {
@@ -185,7 +181,3 @@
     position: absolute;
 }
 
-#movingLineCanvas {
-    display: run-in;
-    position:absolute;
-}
