@@ -1,3 +1,9 @@
+.followNoPathCanvas {
+    display:run-in;
+    position: absolute;
+    z-index: 1;
+}
+
 .soundCloud {
     margin-left: 11em;
     width: 50%;
@@ -168,15 +174,11 @@
 }
 
 #forestCanvas {
-     position:absolute;
+    position:absolute;
     display:run-in;
     z-index: 1;
 }
 
-#followNoPathCanvas {
-    display:run-in;
-    position: absolute;
-}
 
 #stampCanvas {
     display:run-in;
