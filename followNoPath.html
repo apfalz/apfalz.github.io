@@ -34,10 +34,9 @@
       
       onmousemove="drawThemLines(event);
                    movingLine(event);
-                   getScrollOffset(xOffset, yOffset)";
+                   ";
       
-      onclick=    "stamp(event, stmpCntxt);
-                   getScrollOffset()"
+      onclick=    "stamp(event, stmpCntxt)"
                     >
     
 
@@ -63,15 +62,15 @@
     oldX = 0;
     oldY = 0;
     var color = "white";
-    var xOffset = 0;
-    var yOffset = 0;
+    var xAdjust = window.pageXOffset;
+    var yAdjust = window.pageYOffset;
         
     function makeALine (event, whichCanvas) {       
     
         var lineX = Math.floor(Math.random() * 50);
         var lineY = Math.floor(Math.random() * 50);
-         posX = (event.clientX) + xOffset;
-         posY = (event.clientY) + yOffset;
+         posX = ((event.clientX) + xAdjust);
+         posY = ((event.clientY) + yAdjust);
         var flipX = Math.floor(Math.random() * 10);
         var flipY = Math.floor(Math.random() * 10);
         var newR = Math.floor(((Math.random() * 1000) % 255) - 50);
@@ -126,7 +125,7 @@
         stmpCntxt.moveTo(oldX, oldY);
         stmpCntxt.strokeStyle= color;
         stmpCntxt.lineWidth="1";
-        stmpCntxt.lineTo((posX + xOffset), (posY + yOffset));
+        stmpCntxt.lineTo((posX), (posY));
         stmpCntxt.stroke();
         
         new makeALine(event, stmpCntxt);
@@ -156,12 +155,7 @@
         mvngLn.lineTo(posX, posY);
         mvngLn.stroke();
     }
-    
-    function getScrollOffset(xOffset, yOffset) {
-        xOffset=Math.max(document.documentElement.scrollLeft,document.body.scrollLeft);
-        yOffset=Math.max(document.documentElement.scrollTop,document.body.scrollTop);
-        //console.log("posX =" + posX, "xOffset =" + xOffset, "posY =" + posY, "yOffset =" + yOffset);
-    }
+
     
     </script>
 

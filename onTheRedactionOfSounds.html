@@ -1,0 +1,90 @@
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+        
+    
+</head>
+<body onmousemove="getMousePosition(event)";
+      onmousedown="firstPoint(x, y)"
+      onmouseup="endPoint(x, y)">
+     <!-- menu divs -->
+
+    <!-- canvases -->
+<canvas id="redCanvas"; class="onTheRedactionCanvas"; width="900"; height="900";></canvas>  
+<canvas id="greenCanvas"; class="onTheRedactionCanvas"; width="900"; height="900";></canvas>  
+
+    
+<script>
+    var red = document.getElementById("redCanvas");
+    var redCntxt = red.getContext("2d");
+    redCntxt.rect(0, 0, red.width, red.height);
+    redCntxt.fillStyle="red";
+    redCntxt.fill();
+    
+    var green = document.getElementById("greenCanvas");
+    var greenCntxt = green.getContext("2d");
+    greenCntxt.rect(0, 0, green.width, green.height);
+    greenCntxt.fillStyle="green";
+    greenCntxt.fill();
+    
+    function getMousePosition(event) {
+        var area = red.getBoundingClientRect();
+         x = event.clientX - area.left;
+         y = event.clientY - area.top;
+      }
+ 
+    function firstPoint(x, y) {
+        upperLeftX = x;
+        upperLeftY = y;
+    }
+    
+    function endPoint(x, y) {
+        finalX = x;
+        finalY = y;
+        //first get image data object for the area that will be cleared, 
+        var imgDataRed = redCntxt.getImageData(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        var imgDataGreen = greenCntxt.getImageData(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        //check to see if red canvas has been removed already
+        for (var i = 3; i < (imgDataRed.data.length); i = i + 4) {
+           if (imgDataRed.data[i] == 0) {
+               greenCntxt.globalCompositeOperation='source-in';
+               greenCntxt.clearRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+               
+           } else {
+             
+               redCntxt.clearRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+               console.log('else is being used');
+          }
+               
+       }
+       
+      /*  var r = imgDataRed.data[0];
+        var g = imgDataRed.data[1];
+        var b = imgDataRed.data[2];
+        var alpha = imgDataRed.data[3];
+        
+        var rg = imgDataGreen.data[0];
+        var bg = imgDataGreen.data[1];
+        var gg = imgDataGreen.data[2];
+        var alphag = imgDataGreen.data[3];
+      
+        
+        
+        console.log(r, g, b, alpha, 'green=', rg, bg, gg, alphag);
+        */
+    }
+    
+   
+    
+    
+</script>
+
+      
+  
+
+    
+
+     
+</body>
+</html>

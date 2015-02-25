@@ -180,4 +180,24 @@
     display:run-in;
     position: absolute;
 }
+.onTheRedactionCanvas {
 
+    position: absolute;
+}
+
+#redCanvas {
+    z-index: 2;
+}
+#greenCanvas {
+    z-index: 1;
+
+}
+#redactionCanvas3 {
+    z-index: 3;
+}
+#redactionCanvas4 {
+    z-index: 4;
+}
+#redactionCanvas5 {
+    z-index: 5;
+}
