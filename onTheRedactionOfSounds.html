@@ -3,15 +3,18 @@
 <title></title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
 </head>
-<body onload="addBuffer()"
-      onmousemove="getMousePosition(event)"
+<body  onmousemove="getMousePosition(event)"
       onmousedown="firstPoint(x, y)"
-      onmouseup="drawOnBuffer1(x,y), applyBuffer1ToCanvas2( )">
+      onmouseup="drawOnBuffer1(x,y)">
      <!-- menu divs -->
 
     <!-- canvases -->
-<canvas id="redCanvas"; class="onTheRedactionCanvas"; width="900"; height="900";></canvas>  
-<canvas id="greenCanvas"; class="onTheRedactionCanvas"; width="900"; height="900";></canvas>  
+<canvas id="redCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>  
+<canvas id="greenCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>
+<canvas id="blueCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>
+    
+<canvas id="dblBffr"; width="900"; height="900"; ></canvas>
+<canvas id="intersections1"; width="900"; height="900";></canvas>
 
 <script>
     var red = document.getElementById("redCanvas");
@@ -23,7 +26,16 @@
     var greenCntxt = green.getContext("2d");
     greenCntxt.fillStyle='green';
     greenCntxt.fillRect(0, 0, green.width, green.height);
+    
+    var dblBffr = document.getElementById("dblBffr");
+    var bffrCntxt = dblBffr.getContext("2d");
 
+    var blue = document.getElementById("blueCanvas");
+    var blueCntxt = blue.getContext("2d");
+    blueCntxt.fillStyle="blue";
+    blueCntxt.fillRect(0, 0, blue.width, blue.height);
+    
+/*
     function addBuffer() {
         buffer1 = document.createElement("canvas");
         buffer1.width = 900;
@@ -31,7 +43,7 @@
         buffer1cntxt = buffer1.getContext('2d');
         console.log("buffer was added");
     }
-    
+  */  
     function getMousePosition(event) {
         var area = red.getBoundingClientRect();
          x = event.clientX - area.left;
@@ -52,21 +64,35 @@
     
     
     */
-   
+      var intersections1 = document.getElementById("intersections1");
+
+       var interCntxt1 = intersections1.getContext('2d');
+    
     function drawOnBuffer1(x, y) {
         finalX = x;
         finalY = y;
-        buffer1cntxt.fillStyle='blue';
-        buffer1cntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
-        console.log("cutAHole worked");
-        redCntxt.clearRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
-    }
-    
-    function applyBuffer1ToCanvas2( ) {
-        var imageInBuffer1 = buffer1cntxt.getImageData(0, 0, buffer1.width, buffer1.height);
-    
-        greenCntxt.globalCompositeOperation='destination-over';
-        greenCntxt.putImageData(imageInBuffer1, 0, 0);
+        
+        //draw a new image into dblBffr
+        bffrCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        
+        //use source-in on previously cut image inside of intersections1 to get intersections
+        interCntxt1.globalCompositeOperation = "source-in";
+        interCntxt1.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        
+        //apply new shape to red
+        redCntxt.globalCompositeOperation = "destination-out";
+        redCntxt.drawImage(dblBffr, 0, 0);
+
+        //apply intersections to green
+        greenCntxt.globalCompositeOperation= "destination-out";
+        greenCntxt.drawImage(intersections1, 0, 0);
+                             
+        //put new copy of dblBffr int intersection
+        interCntxt1.globalCompositeOperation="source-over";
+        var updatedBuffer = bffrCntxt.getImageData(0, 0, dblBffr.width, dblBffr.height);
+        interCntxt1.putImageData(updatedBuffer, 0, 0);
+        
+        
     }
     
 
