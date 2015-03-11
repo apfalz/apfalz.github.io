@@ -186,12 +186,21 @@
 }
 
 #redCanvas {
-    z-index: 3;
+    z-index: 6;
 }
 #greenCanvas {
-    z-index: 2;
+    z-index: 5;
 }
 #blueCanvas {
+    z-index: 4;
+}
+#purpleCanvas {
+    z-index:3;
+}
+#yellowCanvas {
+    z-index: 2;
+}
+#blackCanvas {
     z-index: 1;
 }
 #redactionCanvas3 {

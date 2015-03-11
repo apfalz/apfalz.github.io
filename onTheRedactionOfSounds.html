@@ -12,9 +12,24 @@
 <canvas id="redCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>  
 <canvas id="greenCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>
 <canvas id="blueCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>
+<canvas id="yellowCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>  
+<canvas id="purpleCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>
+<canvas id="blackCanvas"; class="onTheRedactionCanvas"; width="900"; height="900"></canvas>
     
-<canvas id="dblBffr"; width="900"; height="900"; ></canvas>
-<canvas id="intersections1"; width="900"; height="900";></canvas>
+<canvas id="dBRed"; width="900"; height="900" ></canvas>
+<canvas id="dBGreen"; width="900"; height="900" ></canvas>
+<canvas id="dBBlue"; width="900"; height="900"></canvas>
+<canvas id="dBPurple"; width="900"; height="900"></canvas>
+<canvas id="dBYellow"; width="900"; height="900"></canvas>
+<canvas id="dBBlack"; width="900"; height="900"></canvas>
+
+<canvas id="redInter"; width="900"; height="900"></canvas>
+<canvas id="greenInter"; width="900"; height="900"></canvas>
+<canvas id="blueInter"; width="900"; height="900"></canvas>
+<canvas id="purpleInter"; width="900"; height="900"></canvas>
+<canvas id="yellowInter"; width="900"; height="900"></canvas>
+<canvas id="blackInter"; width="900"; height="900"></canvas>
+    
 
 <script>
     var red = document.getElementById("redCanvas");
@@ -26,14 +41,59 @@
     var greenCntxt = green.getContext("2d");
     greenCntxt.fillStyle='green';
     greenCntxt.fillRect(0, 0, green.width, green.height);
-    
-    var dblBffr = document.getElementById("dblBffr");
-    var bffrCntxt = dblBffr.getContext("2d");
 
     var blue = document.getElementById("blueCanvas");
     var blueCntxt = blue.getContext("2d");
     blueCntxt.fillStyle="blue";
     blueCntxt.fillRect(0, 0, blue.width, blue.height);
+    
+    var purple = document.getElementById("purpleCanvas");
+    var purpleCntxt = purple.getContext("2d");
+    purpleCntxt.fillStyle="purple";
+    purpleCntxt.fillRect(0, 0, purple.width, purple.height);
+    
+    var yellow = document.getElementById("yellowCanvas");
+    var yellowCntxt = yellow.getContext("2d");
+    yellowCntxt.fillStyle="yellow";
+    yellowCntxt.fillRect(0, 0, yellow.width, yellow.height);
+    
+    var black = document.getElementById("blackCanvas");
+    var blackCntxt = black.getContext("2d");
+    blackCntxt.fillStyle="black";
+    blackCntxt.fillRect(0, 0, black.width, black.height);
+    
+    
+    var dBRed = document.getElementById("dBRed");
+    var dBRedCntxt = dBRed.getContext("2d");
+    var redInter = document.getElementById("redInter");
+    var redInterCntxt = redInter.getContext('2d');
+    
+    var dBGreen = document.getElementById("dBGreen");
+    var dBGreenCntxt = dBGreen.getContext("2d");
+    var greenInter = document.getElementById("greenInter");
+    var greenInterCntxt = greenInter.getContext("2d");
+    
+    var dBBlue = document.getElementById("dBBlue");
+    var dBBlueCntxt = dBBlue.getContext("2d");
+    var blueInter = document.getElementById("blueInter");
+    var blueInterCntxt = blueInter.getContext("2d");
+    
+    var dBPurple = document.getElementById("dBPurple");
+    var dBPurpleCntxt = dBPurple.getContext("2d");
+    var purpleInter = document.getElementById("purpleInter");
+    var purpleInterCntxt = purpleInter.getContext("2d");
+    
+    var dBYellow = document.getElementById("dBYellow");
+    var dBYellowCntxt = dBYellow.getContext("2d");
+    var yellowInter = document.getElementById("yellowInter");
+    var yellowInterCntxt = yellowInter.getContext("2d");
+    
+    var dBBlack = document.getElementById("dBBlack");
+    var dBBlackCntxt = dBBlack.getContext("2d");
+    var blackInter = document.getElementById("blackInter");
+    var blackInterCntxt = blackInter.getContext("2d");
+    
+    
     
 /*
     function addBuffer() {
@@ -54,43 +114,117 @@
         upperLeftX = x;
         upperLeftY = y;
     }
-   
-    /* combine masks (which would be image buffers) pass only differences on to lower masks, apply masks to differnt image layers.
-    create a buffer which is a canvas in the DOM
-    "double buffering"
-    set properties of canvas
-    get the 2d context of the buffer
-    store the context in an array
+   /*
+   draw shape into dblBffr
+   get intersections in red
+        source-in draw most recent shape into previous shapes to get intersections 
+    apply intersections to green
+    put greenInter into dbBlue
+    draw most recent shape into dbBlue
+        use source-in to get intersections there
+    apply intersections to blue
+    put 
     
     
-    */
-      var intersections1 = document.getElementById("intersections1");
+    
+        
 
-       var interCntxt1 = intersections1.getContext('2d');
+ */
     
     function drawOnBuffer1(x, y) {
         finalX = x;
         finalY = y;
         
-        //draw a new image into dblBffr
-        bffrCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
-        
-        //use source-in on previously cut image inside of intersections1 to get intersections
-        interCntxt1.globalCompositeOperation = "source-in";
-        interCntxt1.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        //draw a new image into dBRed
+        dBRedCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
         
         //apply new shape to red
         redCntxt.globalCompositeOperation = "destination-out";
-        redCntxt.drawImage(dblBffr, 0, 0);
+        redCntxt.drawImage(dBRed, 0, 0);
+        
+        //get redInter
+        redInterCntxt.globalCompositeOperation = "source-in";
+        redInterCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
 
-        //apply intersections to green
+        //put redInter into dBGreen
+        var redI = redInterCntxt.getImageData(0, 0, redInter.width, redInter.height);
+        dBGreenCntxt.putImageData(redI, 0, 0);
+        
+        //apply dBGreen to green
         greenCntxt.globalCompositeOperation= "destination-out";
-        greenCntxt.drawImage(intersections1, 0, 0);
+        greenCntxt.drawImage(dBGreen, 0, 0);
+        
+        //----------------------
                              
-        //put new copy of dblBffr int intersection
-        interCntxt1.globalCompositeOperation="source-over";
-        var updatedBuffer = bffrCntxt.getImageData(0, 0, dblBffr.width, dblBffr.height);
-        interCntxt1.putImageData(updatedBuffer, 0, 0);
+        //get greenInter ( by using source-in on previous version of dBGreen to get greenInter)
+        greenInterCntxt.globalCompositeOperation="source-in";
+        greenInterCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        
+        //put greenInter into dBBlue
+        var greenI = greenInterCntxt.getImageData(0, 0, greenInter.width, greenInter.height);
+        dBBlueCntxt.putImageData(greenI, 0, 0);
+        
+        //apply dbBlue to blue
+        blueCntxt.globalCompositeOperation = "destination-out";
+        blueCntxt.drawImage(dBBlue, 0, 0);
+        
+        //----------------------
+        
+        //get blueInter
+        blueInterCntxt.globalCompositeOperation="source-in";
+        blueInterCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        
+        //put blueInter into dBPurple
+        var blueI = blueInterCntxt.getImageData(0, 0, blueInter.width, blueInter.height);
+        dBPurpleCntxt.putImageData(blueI, 0, 0);
+        
+        //apply dBPurple to purple
+        purpleCntxt.globalCompositeOperation = "destination-out";
+        purpleCntxt.drawImage(dBPurple, 0, 0);
+        
+        //----------------------
+        
+        //get purpleInter
+        purpleInterCntxt.globalCompositeOperation="source-in";
+        purpleInterCntxt.fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+        
+        //put purpleInter into dBYellow
+        var purpleI = purpleInterCntxt.getImageData(0, 0, purpleInter.width, purpleInter.height);
+        dBYellowCntxt.putImageData(purpleI, 0, 0);
+        
+        //apply dBYellow to yellow
+        yellowCntxt.globalCompositeOperation = "destination-out";
+        yellowCntxt.drawImage(dBYellow, 0, 0);
+        
+        //----------------------
+        
+        
+        //put new copy of dBRed into redInter
+            //note that putImageData() overwrites eveyrthing in the canvas, hence gco doesn't work.  GCO does work with drawImage()
+        redInterCntxt.globalCompositeOperation="source-over";
+        var updatedBuffer = dBRedCntxt.getImageData(0, 0, dBRed.width, dBRed.height);
+        redInterCntxt.putImageData(updatedBuffer, 0, 0);
+           
+        greenInterCntxt.globalCompositeOperation="source-over";
+        var upGreenInter = dBGreenCntxt.getImageData(0, 0, dBGreen.width, dBGreen.height);
+        greenInterCntxt.putImageData(upGreenInter, 0, 0);
+        
+        blueInterCntxt.globalCompositeOperation="source-over";
+        var upBlueInter = dBBlueCntxt.getImageData(0, 0, dBBlue.width, dBBlue.height);
+        blueInterCntxt.putImageData(upBlueInter, 0, 0);
+        
+        purpleInterCntxt.globalCompositeOperation="source-over";
+        var upPurpleInter = dBPurpleCntxt.getImageData(0, 0, dBPurple.width, dBPurple.height);
+        purpleInterCntxt.putImageData(upPurpleInter, 0, 0);
+        
+        yellowInterCntxt.globalCompositeOperation="source-over";
+        var upYellowInter = dBYellowCntxt.getImageData(0, 0, dBYellow.width, dBYellow.height);
+        yellowInterCntxt.putImageData(upYellowInter, 0, 0);
+        
+        blackInterCntxt.globalCompositeOperation="source-over";
+        var upBlackInter = dBBlackCntxt.getImageData(0, 0, dBBlack.width, dBBlack.height);
+        blackInterCntxt.putImageData(upBlackInter, 0, 0);
+        
         
         
     }
