@@ -6,7 +6,13 @@
         <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
      
     </head>
-<body onload="makeRandomPosition(eleven), makeRandomColor(eleven),
+<body onload="makeRandomPosition(seventeen), makeRandomColor(seventeen),
+              makeRandomPosition(sixteen), makeRandomColor(sixteen),
+              makeRandomPosition(fifteen), makeRandomColor(fifteen),
+              makeRandomPosition(fourteen), makeRandomColor(fourteen),
+              makeRandomPosition(thirteen), makeRandomColor(thirteen),
+              makeRandomPosition(twelve), makeRandomColor(twelve),
+              makeRandomPosition(eleven), makeRandomColor(eleven),
               makeRandomPosition(ten), makeRandomColor(ten),
               makeRandomPosition(nine), makeRandomColor(nine),
               makeRandomPosition(eight), makeRandomColor(eight),
@@ -17,8 +23,23 @@
               makeRandomPosition(three), makeRandomColor(three),
               makeRandomPosition(two), makeRandomColor(two),
               makeRandomPosition(one), makeRandomColor(one),
-              newSize(one), newSize(two), newSize(three), newSize(four), newSize(five), newSize(six), newSize(seven), newSize(eight), newSize(nine), newSize(ten), makeTwelve()"
-      onclick="makeTwelve()">
+              newSize(one), 
+              newSize(two), 
+              newSize(three), 
+              newSize(four), 
+              newSize(five), 
+              newSize(six), 
+              newSize(seven), 
+              newSize(eight), 
+              newSize(nine), 
+              newSize(ten)
+              newSize(eleven)
+              newSize(twelve)
+              newSize(thirteen)
+              newSize(fourteen)
+              newSize(fifteen)
+              newSize(sixteen)
+              newSize(seventeen)">
     
     <div class="homeDiv" id="one" onmouseover="shiftPositionLeft(one); lightenColor(one)"></div>
     <div class="homeDiv" id="two" onmouseover="shiftPositionRight(two); lightenColor(two)"></div>
@@ -31,12 +52,17 @@
     <div class="homeDiv" id="nine" onmouseover="shiftPositionLeft(nine); lightenColor(nine)"></div>
     <div class="homeDiv" id="ten" onmouseover="shiftPositionRight(ten); lightenColor(ten)"></div>
     <div class="homeDiv" id="eleven" onmouseover="shiftPositionUp(eleven); lightenColor(eleven)"></div>
-    <a href="home.html">enter</a>
-
-    
+    <div class="homeDiv" id="twelve" onmouseover="shiftPositionDown(twelve); lightenColor(twelve)"></div>
+    <div class="homeDiv" id="thirteen" onmouseover="shiftPositionLeft(thirteen); lightenColor(thirteen)"></div>
+    <div class="homeDiv" id="fourteen" onmouseover="shiftPositionRight(fourteen); lightenColor(fourteen)"></div>
+    <div class="homeDiv" id="fifteen" onmouseover="shiftPositionUp(fifteen); lightenColor(fifteen)"></div>
+    <div class="homeDiv" id="sixteen" onmouseover="shiftPositionLeft(sixteen); lightenColor(sixteen)"></div>
+    <div class="homeDiv" id="seventeen" onmouseover="shiftPositionRight(seventeen); lightenColor(seventeen)"></div>
+  
+    <a href="home.html"><p id="indexText">Andrew Pfalz</p></a>
        <script type="text/javascript"> 
-          // var randomLeftMargin = 0;
-           function makeTwelve() {
+          
+        /*  function makeTwelve() {
            var twelve = document.createElement("div");
             twelve.id = "twelve";
             twelve.style.position = "absolute";
@@ -50,6 +76,22 @@
             twelve.onmouseover="makeRandomColor(twelve), newSize(twelve)";
             document.getElementsByTagName("body")[0].appendChild(twelve);
            }
+           
+           for (var i = 0; i < 25; i++) {
+               var name = "div" + i;
+               divAdded = document.createElement("div");
+               divAdded.id = name;
+               divAdded.style.position = "absolute";
+               divAdded.style.display = "run-in";
+               divAdded.class = "homeDiv";
+               
+               var indexBody = document.getElementsByTagName("body")[0];
+               //indexBody.appendChild(divAdded);
+               indexBody.onload=function() {makeRandomPosition(name), makeRandomColor(name), newSize(name)};
+               console.log(name);
+               
+           }
+           */
            
             function makeRandomPosition(whichDiv) {
                 var randomLeftMargin = Math.floor((Math.random() * 250) + 250); 
