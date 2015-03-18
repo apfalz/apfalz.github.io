@@ -142,23 +142,29 @@
     position: absolute;
 }
 
-#redCanvas {
+#canv0 {
     z-index: 6;
+    position: absolute;
 }
-#greenCanvas {
+#canv1 {
     z-index: 5;
+    position: absolute;
 }
-#blueCanvas {
+#canv2 {
     z-index: 4;
+    position: absolute;
 }
-#purpleCanvas {
+#canv3 {
     z-index:3;
+    position: absolute;
 }
-#yellowCanvas {
+#canv4 {
     z-index: 2;
+    position: absolute;
 }
-#blackCanvas {
+#canv5 {
     z-index: 1;
+    position: absolute;
 }
 #redactionCanvas3 {
     z-index: 3;
@@ -177,5 +183,11 @@
     position:absolute;
     text-decoration: none;
     font-family:monospace;
-    
+}
+
+.intersectionCanvas {
+    visibility: collapse;
+}
+.clippingPlane {
+    visibility: collapse;
 }

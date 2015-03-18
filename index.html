@@ -60,38 +60,29 @@
     <div class="homeDiv" id="seventeen" onmouseover="shiftPositionRight(seventeen); lightenColor(seventeen)"></div>
   
     <a href="home.html"><p id="indexText">Andrew Pfalz</p></a>
-       <script type="text/javascript"> 
+    
+    <canvas id="weatherCanvas"; height="900"; width="900"></canvas>
+       
+    
+    <script type="text/javascript"> 
           
-        /*  function makeTwelve() {
-           var twelve = document.createElement("div");
-            twelve.id = "twelve";
-            twelve.style.position = "absolute";
-            twelve.style.display = "run-in";
-            twelve.class = "homeDiv";
-            twelve.style.height = "1em";
-            twelve.style.width = "1em";
-            twelve.style.marginLeft = "1em";
-            twelve.style.marginTop="1em";
-            twelve.style.backgroundColor = "black";
-            twelve.onmouseover="makeRandomColor(twelve), newSize(twelve)";
-            document.getElementsByTagName("body")[0].appendChild(twelve);
-           }
+           var weatherCanvas = document.getElementById("weatherCanvas");
+           var weatherCntxt = weatherCanvas.getContext("2d");         
+            var weatherPic = new Image();
+          //  weatherPic.crossOrigin = "anonymous";
+            weatherPic.src = "http://itsstreamingbr.dotd.la.gov:1935/snapshots?application=br-rtp-live&snap=br-cam-014.stream&ext=.jpg";  
+            weatherPic.addEventListener("load", function() {weatherCntxt.drawImage(weatherPic, 0, 0);
+                                                            weatherImageData = weatherCntxt.getImageData(100, 100, 110, 110)});
+        
            
-           for (var i = 0; i < 25; i++) {
-               var name = "div" + i;
-               divAdded = document.createElement("div");
-               divAdded.id = name;
-               divAdded.style.position = "absolute";
-               divAdded.style.display = "run-in";
-               divAdded.class = "homeDiv";
-               
-               var indexBody = document.getElementsByTagName("body")[0];
-               //indexBody.appendChild(divAdded);
-               indexBody.onload=function() {makeRandomPosition(name), makeRandomColor(name), newSize(name)};
-               console.log(name);
-               
-           }
-           */
+            
+        function drawIt() {
+            weatherCntxt.drawImage(weatherPic, 0, 0);
+            var weatherPicImageData = weatherCntxt.getImageData(10, 10, 11, 11);
+            console.log(weatherPicImageData);
+        }
+     
+           
            
             function makeRandomPosition(whichDiv) {
                 var randomLeftMargin = Math.floor((Math.random() * 250) + 250); 
@@ -157,4 +148,13 @@
 
         </script> 
 </body>
+    
+    <!-- <IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+        <FilesMatch "\.(cur|gif|ico|jpe?g|png|svgz?|webp)$">
+            SetEnvIf Origin ":" IS_CORS
+            Header set Access-Control-Allow-Origin "*" env=IS_CORS
+        </FilesMatch>
+    </IfModule>
+</IfModule> -->
 </html>
