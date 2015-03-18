@@ -41,23 +41,23 @@
               newSize(sixteen)
               newSize(seventeen)">
     
-    <div class="homeDiv" id="one" onmouseover="shiftPositionLeft(one); lightenColor(one)"></div>
-    <div class="homeDiv" id="two" onmouseover="shiftPositionRight(two); lightenColor(two)"></div>
-    <div class="homeDiv" id="three" onmouseover="shiftPositionUp(three); lightenColor(three)"></div>
-    <div class="homeDiv" id="four" onmouseover="shiftPositionDown(four); lightenColor(four)"></div>
-    <div class="homeDiv" id="five" onmouseover="shiftPositionLeft(five); lightenColor(five)"></div>
-    <div class="homeDiv" id="six" onmouseover="shiftPositionRight(six); lightenColor(six)"></div>
-    <div class="homeDiv" id="seven" onmouseover="shiftPositionUp(seven); lightenColor(seven)"></div>
-    <div class="homeDiv" id="eight" onmouseover="shiftPositionDown(eight); lightenColor(eight)"></div>
-    <div class="homeDiv" id="nine" onmouseover="shiftPositionLeft(nine); lightenColor(nine)"></div>
-    <div class="homeDiv" id="ten" onmouseover="shiftPositionRight(ten); lightenColor(ten)"></div>
-    <div class="homeDiv" id="eleven" onmouseover="shiftPositionUp(eleven); lightenColor(eleven)"></div>
-    <div class="homeDiv" id="twelve" onmouseover="shiftPositionDown(twelve); lightenColor(twelve)"></div>
-    <div class="homeDiv" id="thirteen" onmouseover="shiftPositionLeft(thirteen); lightenColor(thirteen)"></div>
-    <div class="homeDiv" id="fourteen" onmouseover="shiftPositionRight(fourteen); lightenColor(fourteen)"></div>
-    <div class="homeDiv" id="fifteen" onmouseover="shiftPositionUp(fifteen); lightenColor(fifteen)"></div>
-    <div class="homeDiv" id="sixteen" onmouseover="shiftPositionLeft(sixteen); lightenColor(sixteen)"></div>
-    <div class="homeDiv" id="seventeen" onmouseover="shiftPositionRight(seventeen); lightenColor(seventeen)"></div>
+    <div class="homeDiv" id="one" onmouseover="shiftPositionLeft(one); lightenColor(one)" onmouseout="shiftPositionLeft(one)"></div>
+    <div class="homeDiv" id="two" onmouseover="shiftPositionRight(two); lightenColor(two)" onmouseout="shiftPositionRight(two)"></div>
+    <div class="homeDiv" id="three" onmouseover="shiftPositionUp(three); lightenColor(three)" onmouseout="shiftPositionUp(three)"></div>
+    <div class="homeDiv" id="four" onmouseover="shiftPositionDown(four); lightenColor(four)" onmouseout="shiftPositionDown(four)"></div>
+    <div class="homeDiv" id="five" onmouseover="shiftPositionLeft(five); lightenColor(five)" onmouseout="shiftPositionLeft(five)"></div>
+    <div class="homeDiv" id="six" onmouseover="shiftPositionRight(six); lightenColor(six)" onmouseout="shiftPositionRight(six)"></div>
+    <div class="homeDiv" id="seven" onmouseover="shiftPositionUp(seven); lightenColor(seven)" onmouseout="shiftPositionUp(seven)"></div>
+    <div class="homeDiv" id="eight" onmouseover="shiftPositionDown(eight); lightenColor(eight)" onmouseout="shiftPositionDown(eight)"></div>
+    <div class="homeDiv" id="nine" onmouseover="shiftPositionLeft(nine); lightenColor(nine)" onmouseout="shiftPositionLeft(nine)"></div>
+    <div class="homeDiv" id="ten" onmouseover="shiftPositionRight(ten); lightenColor(ten)" onmouseout="shiftPositionRight(ten)"></div>
+    <div class="homeDiv" id="eleven" onmouseover="shiftPositionUp(eleven); lightenColor(eleven)" onmouseout="shiftPositionUp(eleven)"></div>
+    <div class="homeDiv" id="twelve" onmouseover="shiftPositionDown(twelve); lightenColor(twelve)" onmouseout="shiftPositionDown(twelve)"></div>
+    <div class="homeDiv" id="thirteen" onmouseover="shiftPositionLeft(thirteen); lightenColor(thirteen)" onmouseout="shiftPositionLeft(thirteen)"></div>
+    <div class="homeDiv" id="fourteen" onmouseover="shiftPositionRight(fourteen); lightenColor(fourteen)" onmouseout="shiftPositionRight(fourteen)"></div>
+    <div class="homeDiv" id="fifteen" onmouseover="shiftPositionUp(fifteen); lightenColor(fifteen)" onmouseout="shiftPositionUp(fifteen)"></div>
+    <div class="homeDiv" id="sixteen" onmouseover="shiftPositionLeft(sixteen); lightenColor(sixteen)" onmouseout="shiftPositionLeft(sixteen)"></div>
+    <div class="homeDiv" id="seventeen" onmouseover="shiftPositionRight(seventeen); lightenColor(seventeen)" onmouseout="shiftPositionRight(seventeen)"></div>
   
     <a href="home.html"><p id="indexText">Andrew Pfalz</p></a>
     
@@ -71,17 +71,10 @@
             var weatherPic = new Image();
           //  weatherPic.crossOrigin = "anonymous";
             weatherPic.src = "http://itsstreamingbr.dotd.la.gov:1935/snapshots?application=br-rtp-live&snap=br-cam-014.stream&ext=.jpg";  
-            weatherPic.addEventListener("load", function() {weatherCntxt.drawImage(weatherPic, 0, 0);
-                                                            weatherImageData = weatherCntxt.getImageData(100, 100, 110, 110)});
+            weatherPic.addEventListener("load", function() {var weatherImageData = weatherCntxt.getImageData(3, 3, 4, 4);
+                                                           console.log(weatherImageData)});
         
-           
-            
-        function drawIt() {
-            weatherCntxt.drawImage(weatherPic, 0, 0);
-            var weatherPicImageData = weatherCntxt.getImageData(10, 10, 11, 11);
-            console.log(weatherPicImageData);
-        }
-     
+
            
            
             function makeRandomPosition(whichDiv) {
@@ -149,12 +142,5 @@
         </script> 
 </body>
     
-    <!-- <IfModule mod_setenvif.c>
-    <IfModule mod_headers.c>
-        <FilesMatch "\.(cur|gif|ico|jpe?g|png|svgz?|webp)$">
-            SetEnvIf Origin ":" IS_CORS
-            Header set Access-Control-Allow-Origin "*" env=IS_CORS
-        </FilesMatch>
-    </IfModule>
-</IfModule> -->
+
 </html>

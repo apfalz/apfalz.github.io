@@ -47,8 +47,8 @@
     margin-left:11em;
     width: 50%;
     z-index: 2;
-    position: absolute;
     display: run-in;
+    position:inline-block;
 }
 
 .vertDiv {

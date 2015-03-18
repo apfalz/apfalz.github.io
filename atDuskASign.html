@@ -51,10 +51,12 @@
     var stmpcntxt = d.getContext("2d");
     
     function makeACurve(event) {
-        var xPos = event.clientX;
-        var posY = event.clientY;
+
+        var area = document.getElementById("atDuskASignCanvas").getBoundingClientRect();
+        var xPos = event.clientX - area.left;
+        var posY = event.clientY - area.top;
         
-        var flip 
+       // var flip 
         var cp1x = Math.floor(Math.random() * 50);
         var cp1y = Math.floor(Math.random() * 50);
         var cp2x = Math.floor(Math.random() * 50);
@@ -112,10 +114,6 @@
         new makeACurve(event);
         new makeACurve(event);
     }
-    
-    
-    
-    
     
     
     </script>

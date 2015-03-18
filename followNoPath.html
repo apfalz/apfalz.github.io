@@ -47,9 +47,16 @@
 <div id="bioDiv" class="menuDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
 <div syle="width:100em"; id="homeDiv"; class="menuDiv" onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
      <!-- canvases -->
-<canvas id="followNoPathCanvas"; class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3 "></canvas>  
-<canvas id="stampCanvas"; class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>
-<canvas id="movingLineCanvas"; class="followNoPathCanvas" height="900" width="900" style="border:1px solid #d3d3d3"></canvas>                                                                           
+<canvas id="followNoPathCanvas"; class="followNoPathCanvas" height="900" width="900" ></canvas>  
+<canvas id="stampCanvas"; class="followNoPathCanvas" height="900" width="900" ></canvas>
+<canvas id="movingLineCanvas"; class="followNoPathCanvas" height="900" width="900" ></canvas>    
+    
+    <div class="worksParagraphDiv"><p class="worksParagraph"><b>Follow no path</b><br>for indeterminate group of winds<br>2013
+        <br><br><br>
+        A group of players perform the same music, executing each phrase of the music in a single breath. 
+        The players do not wait for each other to finish a phrase before beginning a new one. 
+        What results is a canon where the serparation of the parts is determined by the physical demands of the instrument and by the lung capacities of the individual performers.</p></div>
+    <iframe class="soundCloud" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/86058515&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 <script>
     c = document.getElementById("followNoPathCanvas");
     cntxt = c.getContext("2d");
@@ -69,8 +76,15 @@
     
         var lineX = Math.floor(Math.random() * 50);
         var lineY = Math.floor(Math.random() * 50);
-         posX = ((event.clientX) + xAdjust);
-         posY = ((event.clientY) + yAdjust);
+        var canvForPosition = document.getElementById("followNoPathCanvas");
+        var area = canvForPosition.getBoundingClientRect();
+         posX = event.clientX - area.left;
+         posY = event.clientY - area.top;
+      
+        
+        
+       //  posX = ((event.clientX) + xAdjust);
+        // posY = ((event.clientY) + yAdjust);
         var flipX = Math.floor(Math.random() * 10);
         var flipY = Math.floor(Math.random() * 10);
         var newR = Math.floor(((Math.random() * 1000) % 255) - 50);
@@ -159,6 +173,6 @@
     
     </script>
 
-    <div class="worksParagraphDiv"><p class="worksParagraph"><b>Follow no path</b><br>for indeterminate group of winds<br>2013</p></div>
+    
     </body>
     </html>                             
