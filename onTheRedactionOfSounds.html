@@ -67,12 +67,7 @@
         inter.height = sizeOfCanvases;
         inter.width = sizeOfCanvases;
         body.appendChild(inter);
-    }
-        
-        */
-        
-    
-    
+    }*/
     for (var i = 0; i < 6; i++) {
         canvArray[i] = document.getElementById("canv" + i);
         cntxtArray[i] = canvArray[i].getContext("2d");
@@ -84,22 +79,19 @@
         
         interArray[i] = document.getElementById("inter" + i);
         interCntxtArray[i] = interArray[i].getContext("2d");
-        
     }
-    
     
     function getMousePosition(event) {
         var area = canvArray[0].getBoundingClientRect();
          x = event.clientX - area.left;
          y = event.clientY - area.top;
       }
- //on mouse down 
+    
     function firstPoint(x, y) {
         upperLeftX = x;
         upperLeftY = y;
     }
 
-    //on mouse up
     function drawOnBuffer1(x, y) {
         finalX = x;
         finalY = y;
@@ -108,12 +100,9 @@
             //console.log("it happened");
             finalX += 1;
             finalY +=1;
-        }
-            
-       
-        clipCntxtArray[0].fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));
+            }
         
-        
+        clipCntxtArray[0].fillRect(upperLeftX, upperLeftY, (finalX - upperLeftX), (finalY - upperLeftY));        
         cntxtArray[0].globalCompositeOperation = "destination-out";
         cntxtArray[0].drawImage(clipArray[0], 0, 0);
         
@@ -124,30 +113,15 @@
             clipCntxtArray[i+1].putImageData(currentIntersection, 0, 0);
             cntxtArray[i + 1].globalCompositeOperation = "destination-out";
             cntxtArray[i + 1].drawImage(clipArray[i + 1], 0, 0);
-        }
+            }
         
-
         for(var i = 0; i < 6; i ++) {
             interCntxtArray[i].globalCompositeOperation="source-over";
             var updatedBuffer = clipCntxtArray[i].getImageData(0, 0, interArray[i].width, interArray[i].height);
             interCntxtArray[i].putImageData(updatedBuffer, 0, 0);
-        }
-        
-        
-        
-        
-    }
-    
-
-        
+            }        
+    } 
     
 </script>
-
-      
-  
-
-    
-
-     
 </body>
 </html>
