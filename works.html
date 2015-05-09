@@ -50,17 +50,19 @@
              var newB = Math.floor((Math.random() * 1000) % 255);
              whichDiv.style.backgroundColor = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
         }
-         
+
          function shiftPositionLeft(whichDiv) {
             var num = Number(whichDiv.style.marginLeft.replace(/px/, ""));
-            num -= 5;
+            num -= 10;
             whichDiv.style.marginLeft = num + "px";        
+            console.log("left");
         }
          
          function shiftPositionRight(whichDiv) {
             var num = Number(whichDiv.style.marginLeft.replace(/px/, ""));
-            num += 5;
-            whichDiv.style.marginLeft = num + "px";        
+            num += 10;
+            whichDiv.style.marginLeft = num + "px";
+             console.log("right");
         }
          
         function loadLinkPosition(whichDiv) {
@@ -79,9 +81,9 @@
             var r = Number(rgb[0]);
             var g = Number(rgb[1]);
             var b = Number(rgb[2]);
-            r += 5;
-            g += 5; 
-            b += 5;
+            r += 10;
+            g += 10; 
+            b += 10;
             whichDiv.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
            }
          
@@ -208,9 +210,9 @@
 <div class="piece"; id="weAreRestlessThings"; onmouseover="lightenColor(weAreRestlessThings); shiftPositionRight(weAreRestlessThings); widenDiv(weAreRestlessThings) "; onmouseout="shiftPositionRight(weAreRestlessThings); widenDiv(weAreRestlessThings)" style="margin-left:40em"></div><a id="weAreRestlessThingsLink"; class="workPageLink"; href="weAreRestlessThings.html">We are restless things</a>
     <br>
     
-<div class="piece"; id="soliloquy"; onmouseover="lightenColor(soliloquy); shiftPositionLeft(soliloquy); widenDiv(soliloquy)";onmouseout="shiftPositionLeft(soliloquy); widenDiv(soliloquy)"  style="margin-left:40em"></div><a id="soliloquyLink"; class="workPageLink"; href="soliloquy.html">Soliloquy</a><br>
+<div class="piece"; id="soliloquy"; onmouseover="lightenColor(soliloquy); shiftPositionLeft(soliloquy); widenDiv(soliloquy)"; onmouseout="shiftPositionLeft(soliloquy); widenDiv(soliloquy)"  style="margin-left:40em"></div><a id="soliloquyLink"; class="workPageLink"; href="soliloquy.html">Soliloquy</a><br>
 
-    <div class="piece"; id="buoyancies"; onmouseover="lightenColor(buoyancies); shiftPositionRight(buoyancies); widenDiv(buoyancies)";onmouseout="shiftPositionRight(buoyancies); widenDiv(buoyancies)"  style="margin-left:40em"></div><a id="buoyanciesLink"; class="workPageLink"; href="buoyanciesAndDensities.html">Buoyancies and Densities</a><br>
+    <div class="piece"; id="buoyancies"; onmouseover="lightenColor(buoyancies); shiftPositionRight(buoyancies); widenDiv(buoyancies)"; onmouseout="shiftPositionRight(buoyancies); widenDiv(buoyancies)"  style="margin-left:40em"></div><a id="buoyanciesLink"; class="workPageLink"; href="buoyanciesAndDensities.html">Buoyancies and Densities</a><br>
     
     
 </head>

@@ -1,0 +1,69 @@
+<html>   
+<head>
+<title>Andrew Pfalz</title>
+<link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+     <script type="text/javascript">
+        
+         
+         function makeVerticalDivs() {
+            var h = Math.floor(Math.random() * 10) + 100 + "px";
+            var w = 10 + "px";
+             for(var i = 0; i<25; i ++) {
+                
+                var h = Math.floor(Math.random() * 10) + 100 + "px";
+                var offset = Math.floor(Math.random() * 50) + "px";
+                 
+                var rR = Math.floor(Math.random() * 200) % 255;
+                var rG = Math.floor(Math.random() * 200) % 255;
+                var rB = Math.floor(Math.random() * 200) % 255;
+                var rColor = rR + rG + rB;
+                 
+                var vertDiv = document.createElement("div");
+                vertDiv.id = "vertical" + i;
+                vertDiv.style.height = h;
+                vertDiv.style.width  = w;
+                vertDiv.style.backgroundColor = rColor;
+                vertDiv.style.marginLeft = i * 10 +"px";
+                vertDiv.style.marginTop = offset;
+                vertDiv.style.position = "absolute";
+                 
+                if(i % 2 == 0) {
+                    vertDiv.style.zIndex = 3; 
+                    }else{
+                    vertDiv.style.zIndex =1;
+                    };
+                
+                vertDiv.onmouseover = function() {
+                  
+                    var num = Number(this.style.marginTop.replace(/px/, ""));
+                    num +=10;
+                    this.style.marginTop = num + "px";
+                    var h = Number(this.style.height.replace(/px/, ""));
+                    h +=10;
+                    this.style.height = h + "px";
+                    };
+                 
+                vertDiv.onmouseout = function () {
+                    var num = Number(this.style.marginTop.replace(/px/, ""));
+                    num +=10;
+                    this.style.marginTop = num + "px";
+                    var h = Number(this.style.height.replace(/px/, ""));
+                    h +=10;
+                    this.style.height = h + "px";
+                    };
+                 
+                var body = document.getElementsByTagName("body")[0];
+                body.appendChild(vertDiv);
+                 
+         }  
+         }
+     
+             
+    </script>
+
+<body onload="makeVerticalDivs()">
+
+
+    
+    </body>
+</html>
