@@ -4,242 +4,138 @@
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
      <script type="text/javascript">
         
-        function newMenu(whichWorksDiv) {      
-            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
-            whichWorksDiv.style.width = newDivWidth;
-            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
-            whichWorksDiv.style.marginLeft = newLeftMarg;
-        }
-        
-        function newMenuColor(whichWorksDiv)   {
-            var firstDigit = Math.floor(Math.random() * 10).toString();
-            var secondDigit = Math.floor(Math.random() * 10).toString();
-            var thirdDigit = Math.floor(Math.random() * 10).toString();
-            var fourthDigit = Math.floor(Math.random() * 10).toString();
-            var fifthDigit = Math.floor(Math.random() * 10).toString();
-            var sixthDigit = Math.floor(Math.random() * 10).toString();
-            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-            whichWorksDiv.style.backgroundColor = divColor;
-        }
          
-         
-        function newVertDivPosition(whichVertDiv) {    
-            
-            var height = Number(whichVertDiv.style.height.replace(/px/, ""));
-            var newHeight = height + 10 + "px";
-            var position = Number(whichVertDiv.style.marginTop.replace(/px/, ""));
-            var newPosition = position + 10 + "px";
-            whichVertDiv.style.height = newHeight;
-            whichVertDiv.style.marginTop = newPosition;
-            
-            }
-         
-           function widenDiv(whichDiv) {
-            var num = Number(whichDiv.style.width.replace(/px/, ""));
-            var newNum = (num + 5) + "px";
-            whichDiv.style.width = newNum;
-        }
-         
-         
-         
-         function newVertColor(whichVertDiv) {
-            var firstDigit = Math.floor(Math.random() * 10).toString();
-            var secondDigit = Math.floor(Math.random() * 10).toString();
-            var thirdDigit = Math.floor(Math.random() * 10).toString();
-            var fourthDigit = Math.floor(Math.random() * 10).toString();
-            var fifthDigit = Math.floor(Math.random() * 10).toString();
-            var sixthDigit = Math.floor(Math.random() * 10).toString();
-            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-            whichVertDiv.style.backgroundColor = divColor;
-        }
-         
-         function getNewRGB(whichDiv) {
-             var newR = Math.floor((Math.random() * 1000) % 255);
-             var newG = Math.floor((Math.random() * 1000) % 255);
-             var newB = Math.floor((Math.random() * 1000) % 255);
-             whichDiv.style.backgroundColor = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
+         function makeVerticalDivs() {
+            //var h = Math.floor(Math.random() * 100) + 10 + "px";
+            var w = 10 + "px";
+             for(var i = 0; i<25; i ++) {
+                
+                var h = Math.floor(Math.random() * 50) + 50 + "px";
+                var offset = Math.floor(Math.random() * 50)  + "px";
+                 
+                var rR = Math.floor(Math.random() * 200) % 255;
+                var rG = Math.floor(Math.random() * 200) % 255;
+                var rB = Math.floor(Math.random() * 200) % 255;
+                var rColor = rR + rG + rB;
+                 
+                var vertDiv = document.createElement("div");
+                vertDiv.id = "vertical" + i;
+                vertDiv.style.height = h;
+                vertDiv.style.width  = w;
+                vertDiv.style.backgroundColor = rColor;
+                vertDiv.style.marginLeft = i * 10 + 150 +"px";
+                vertDiv.style.marginTop = offset;
+                vertDiv.style.position = "absolute";
+                 
+                if(i % 2 == 0) {
+                    vertDiv.style.zIndex = 3; 
+                    }else{
+                    vertDiv.style.zIndex =1;
+                    };
+                
+                vertDiv.onmouseover = function() {
+                  
+                    var num = Number(this.style.marginTop.replace(/px/, ""));
+                    num +=10;
+                    this.style.marginTop = num + "px";
+                    var h = Number(this.style.height.replace(/px/, ""));
+                    h +=10;
+                    this.style.height = h + "px";
+                    };
+                 
+                vertDiv.onmouseout = function () {
+                    var num = Number(this.style.marginTop.replace(/px/, ""));
+                    num +=10;
+                    this.style.marginTop = num + "px";
+                    var h = Number(this.style.height.replace(/px/, ""));
+                    h +=10;
+                    this.style.height = h + "px";
+                    };
+                 
+                 vertDiv.onclick = function () {
+                    var num = Number(this.style.marginTop.replace(/px/, ""));
+                    num -=10;
+                    this.style.marginTop = num + "px";
+                    var h = Number(this.style.height.replace(/px/, ""));
+                    h -=7;
+                    this.style.height = h + "px";
+                
+                    };
+                 
+                var body = document.getElementsByTagName("body")[0];
+                body.appendChild(vertDiv);
+                 
+         }  
+         }
+     //------------------------------------------------------------------------------------------
+        function makeHorizontalDivs() {
           
-         }
-         
-         function newBisectorPosition(whichDiv) {
-             var newMargin = Math.floor((Math.random() * 5) + 15); 
-             whichDiv.style.marginLeft = newMargin + "em";
-             var newWidth = Math.floor((Math.random() * 10)  + 15);
-             whichDiv.style.width = newWidth + "em";
-         }
-         
-         function twonewBisectorPosition(whichDiv) {
-             var newMargin = Math.floor((Math.random() * 5) + 45); 
-             whichDiv.style.marginLeft = newMargin + "em";
-             var newWidth = Math.floor((Math.random() * 10)  + 15);
-             whichDiv.style.width = newWidth + "em";
-         }
-         
-        function threenewBisectorPosition(whichDiv) {
-             var newMargin = Math.floor((Math.random() * 5) + 35); 
-             whichDiv.style.marginLeft = newMargin + "em";
-            var newWidth = Math.floor((Math.random() * 10)  + 15);
-             whichDiv.style.width = newWidth + "em";
-         }
+            var h = 10 + "px";
+             for(var i = 0; i<25; i ++) {
+                
+                var w = Math.floor(Math.random() * 50)+50 + "px";
+                var offset = Math.floor(Math.random() * 50)+ 400 + "px";
+                 
+                var rR = Math.floor(Math.random() * 200) % 255;
+                var rG = Math.floor(Math.random() * 200) % 255;
+                var rB = Math.floor(Math.random() * 200) % 255;
+                var rColor = rR + rG + rB;
+                 
+                var horiDiv = document.createElement("div");
+                horiDiv.id = "horizontal" + i;
+                horiDiv.style.height = h;
+                horiDiv.style.width  = w;
+                horiDiv.style.backgroundColor = rColor;
+                horiDiv.style.marginLeft = offset;
+                horiDiv.style.marginTop = i * 10 + "px";
+                horiDiv.style.position = "absolute";
+              //  horiDiv.style.display = "block";
+                if(i % 2 == 0) {
+                    horiDiv.style.zIndex = 2; 
+                    }else{
+                    horiDiv.style.zIndex =4;
+                    };
+                
+                horiDiv.onmouseover = function() {
+                  
+                    var num = Number(this.style.marginLeft.replace(/px/, ""));
+                    num -=10;
+                    this.style.marginLeft = num + "px";
+                    var h = Number(this.style.width.replace(/px/, ""));
+                    h += 10;
+                    this.style.width = h + "px";
+                    };
+                 
+                horiDiv.onmouseout = function () {
+                    var num = Number(this.style.marginLeft.replace(/px/, ""));
+                    num -=10;
+                    this.style.marginLeft = num + "px";
+                    var h = Number(this.style.width.replace(/px/, ""));
+                    this.style.width = h + "px";
+                    };
+                 
+                horiDiv.onclick = function () {
+                    var num = Number(this.style.marginLeft.replace(/px/, ""));
+                    num +=10;
+                    this.style.marginLeft = num + "px";
+                    var w = Number(this.style.width.replace(/px/, ""));
+                    w -=7;
+                    this.style.width = w + "px";
+                
+                    };
+                 
+                var body = document.getElementsByTagName("body")[0];
+                body.appendChild(horiDiv);
+             }
+        }
     </script>
 
-<body onload="newMenu(bioDiv); 
-              newMenu(contactDiv); 
-              newMenu(worksDiv); 
-              newMenu(homeDiv);
-              newMenuColor(bioDiv); 
-              newMenuColor(contactDiv); 
-              newMenuColor(worksDiv); 
-              newMenuColor(homeDiv);
-              
-              newVertDivPosition(vertDivOne); 
-              newVertDivPosition(vertDivTwo); 
-              newVertDivPosition(vertDivThree); 
-              newVertDivPosition(vertDivFour); 
-              newVertDivPosition(vertDivFive); 
-              newVertDivPosition(vertDivSix); 
-              newVertDivPosition(vertDivSeven); 
-              newVertDivPosition(vertDivEight); 
-              newVertDivPosition(vertDivNine); 
-              newVertDivPosition(vertDivTen); 
-              
-              getNewRGB(bisectorOne); 
-              getNewRGB(bisectorTwo); 
-              getNewRGB(bisectorThree); 
-              getNewRGB(bisectorFour); 
-              
-              newVertDivPosition(twovertDivOne); 
-              newVertDivPosition(twovertDivTwo); 
-              newVertDivPosition(twovertDivThree); 
-              newVertDivPosition(twovertDivFour); 
-              newVertDivPosition(twovertDivFive); 
-              newVertDivPosition(twovertDivSix); 
-              newVertDivPosition(twovertDivSeven); 
-              newVertDivPosition(twovertDivEight); 
-              newVertDivPosition(twovertDivNine); 
-              newVertDivPosition(twovertDivTen); 
-              
-              getNewRGB(twobisectorOne); 
-              getNewRGB(twobisectorTwo); 
-              getNewRGB(twobisectorThree); 
-              getNewRGB(twobisectorFour);
-              getNewRGB(twobisectorFive); 
-              getNewRGB(twobisectorSix); 
-              getNewRGB(twobisectorSeven);
-              
-              newVertColor(vertDivOne);
-              newVertColor(vertDivTwo);
-              newVertColor(vertDivThree);
-              newVertColor(vertDivFour);
-              newVertColor(vertDivFive);
-              newVertColor(vertDivSix);
-              newVertColor(vertDivSeven);
-              newVertColor(vertDivEight);
-              newVertColor(vertDivNine);
-              newVertColor(vertDivTen);
-              
-              getNewRGB(twovertDivOne);
-              getNewRGB(twovertDivTwo);
-              getNewRGB(twovertDivThree);
-              getNewRGB(twovertDivFour);
-              getNewRGB(twovertDivFive);
-              getNewRGB(twovertDivSix);
-              getNewRGB(twovertDivSeven);
-              getNewRGB(twovertDivEight);
-              getNewRGB(twovertDivNine);
-              getNewRGB(twovertDivTen);
-              
-              getNewRGB(threevertDivOne);
-              getNewRGB(threevertDivTwo);
-              getNewRGB(threevertDivThree);
-              getNewRGB(threevertDivFour);
-              getNewRGB(threevertDivFive);
-              getNewRGB(threevertDivSix);
-              getNewRGB(threevertDivSeven);
-              getNewRGB(threevertDivEight);
-              getNewRGB(threevertDivNine);
-              getNewRGB(threevertDivTen);
-              
-              newVertDivPosition(threevertDivOne); 
-              newVertDivPosition(threevertDivTwo); 
-              newVertDivPosition(threevertDivThree); 
-              newVertDivPosition(threevertDivFour); 
-              newVertDivPosition(threevertDivFive); 
-              newVertDivPosition(threevertDivSix); 
-              newVertDivPosition(threevertDivSeven); 
-              newVertDivPosition(threevertDivEight); 
-              newVertDivPosition(threevertDivNine); 
-              newVertDivPosition(threevertDivTen); 
-              
-              newVertColor(threebisectorOne);
-              newVertColor(threebisectorTwo);
-              newVertColor(threebisectorThree);
-              newVertColor(threebisectorFour);
-              newVertColor(threebisectorFive);
-              newVertColor(threebisectorSix);
-              newVertColor(threebisectorSeven);">
-
+<body onload="makeVerticalDivs(); makeHorizontalDivs()">
     <!-- menu divs -->
-<div class="menuDiv" id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div class="menuDiv" id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div class="menuDiv" id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div class="menuDiv"; id="homeDiv"; onmouseover="newMenu(homeDiv); newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>    
-    
-    <!-- decorative divs group one -->
-<div class="vertDiv"; id="vertDivOne"; style="margin-left:20em; z-index:0"; onmouseover="newVertDivPosition(vertDivOne); newVertColor(vertDivOne)"></div>
-<div class="vertDiv"; id="vertDivTwo"; style="margin-left:21em; z-index:3"; onmouseover="newVertDivPosition(vertDivTwo); newVertColor(vertDivTwo)"></div>
-<div class="vertDiv"; id="vertDivThree"; style="margin-left:22em; z-index:0"; onmouseover="newVertDivPosition(vertDivThree); newVertColor(vertDivThree)"></div>
-<div class="vertDiv"; id="vertDivFour"; style="margin-left:23em; z-index:3"; onmouseover="newVertDivPosition(vertDivFour); newVertColor(vertDivFour)"></div>
-<div class="vertDiv"; id="vertDivFive"; style="margin-left:24em; z-index:0"; onmouseover="newVertDivPosition(vertDivFive); newVertColor(vertDivFive)"></div>
-<div class="vertDiv"; id="vertDivSix"; style="margin-left:25em; z-index:3"; onmouseover="newVertDivPosition(vertDivSix); newVertColor(vertDivSix)"></div>
-<div class="vertDiv"; id="vertDivSeven"; style="margin-left:26em; z-index:0"; onmouseover="newVertDivPosition(vertDivSeven); newVertColor(vertDivSeven)"></div>
-<div class="vertDiv"; id="vertDivEight"; style="margin-left:27em; z-index:3"; onmouseover="newVertDivPosition(vertDivEight); newVertColor(vertDivEight)"></div>
-<div class="vertDiv"; id="vertDivNine"; style="margin-left:28em; z-index:0"; onmouseover="newVertDivPosition(vertDivNine); newVertColor(vertDivNine)"></div>
-<div class="vertDiv"; id="vertDivTen"; style="margin-left:29em; z-index:3"; onmouseover="newVertDivPosition(vertDivTen); newVertColor(vertDivTen)"></div>  
-    
-<div class="vertDiv"; id="vertDiv11"; style="margin-left:30em; z-index:0"; onmouseover="newVertDivPosition(vertDiv11); newVertColor(vertDiv11)"></div>
-<div class="vertDiv"; id="vertDiv12"; style="margin-left:31em; z-index:3"; onmouseover="newVertDivPosition(vertDiv12); newVertColor(vertDiv12)"></div>
-<div class="vertDiv"; id="vertDiv13"; style="margin-left:32em; z-index:0"; onmouseover="newVertDivPosition(vertDiv13); newVertColor(vertDiv13)"></div>
-<div class="vertDiv"; id="vertDiv14"; style="margin-left:33em; z-index:3"; onmouseover="newVertDivPosition(vertDiv14); newVertColor(vertDiv14)"></div>
-<div class="vertDiv"; id="vertDiv15"; style="margin-left:34em; z-index:0"; onmouseover="newVertDivPosition(vertDiv15); newVertColor(vertDiv15)"></div>
-<div class="vertDiv"; id="vertDiv16"; style="margin-left:35em; z-index:3"; onmouseover="newVertDivPosition(vertDiv16); newVertColor(vertDiv16)"></div>
-<div class="vertDiv"; id="vertDiv17"; style="margin-left:36em; z-index:0"; onmouseover="newVertDivPosition(vertDiv17); newVertColor(vertDiv17)"></div>
-<div class="vertDiv"; id="vertDiv18"; style="margin-left:37em; z-index:3"; onmouseover="newVertDivPosition(vertDiv18); newVertColor(vertDiv18)"></div>
-<div class="vertDiv"; id="vertDiv19"; style="margin-left:38em; z-index:0"; onmouseover="newVertDivPosition(vertDiv19); newVertColor(vertDiv19)"></div>
-<div class="vertDiv"; id="vertDiv20"; style="margin-left:39em; z-index:3"; onmouseover="newVertDivPosition(vertDiv20); newVertColor(vertDiv20)"></div> 
- 
-    <!-- bisectors group two-->
-    <br><br>
-<div class ="bisector"; id="twobisectorOne"; style="margin-left:48em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(twobisectorOne); twonewBisectorPosition(twobisectorOne)"></div><br>
-    
-<div class ="bisector"; id="twobisectorTwo"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(twobisectorTwo); twonewBisectorPosition(twobisectorTwo)"></div><br>
-    
-<div class ="bisector"; id="twobisectorThree"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(twobisectorThree); twonewBisectorPosition(twobisectorThree)"></div><br>
-    
-<div class ="bisector"; id="twobisectorFour"; style="margin-left:49em; height:1em; width:15em; background-color:black; z-index:3"; onmouseover="getNewRGB(twobisectorFour); twonewBisectorPosition(twobisectorFour)"></div><br>
-    
-<div class ="bisector"; id="twobisectorFive"; style="margin-left:48em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(twobisectorFive); twonewBisectorPosition(twobisectorFive)"></div><br>
-    
-<div class ="bisector"; id="twobisectorSix"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(twobisectorSix); twonewBisectorPosition(twobisectorSix)"></div><br>
-    
-<div class ="bisector"; id="twobisectorSeven"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(twobisectorSeven); twonewBisectorPosition(twobisectorSeven)"></div><br>
-
-    
-    
-<div class ="bisector"; id="twobisector8"; style="margin-left:48em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(twobisector8); twonewBisectorPosition(twobisector8)"></div><br>
-    
-<div class ="bisector"; id="twobisector9"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(twobisector9); twonewBisectorPosition(twobisector9)"></div><br>
-    
-<div class ="bisector"; id="twobisector10"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(twobisector10); twonewBisectorPosition(twobisector10)"></div><br>
-    
-<div class ="bisector"; id="twobisector11"; style="margin-left:49em; height:1em; width:15em; background-color:black; z-index:3"; onmouseover="getNewRGB(twobisector11); twonewBisectorPosition(twobisector11)"></div><br>
-    
-<div class ="bisector"; id="twobisector12"; style="margin-left:48em;  height:1em; width:15em; background-color:black; z-index:1"; onmouseover="getNewRGB(twobisector12); twonewBisectorPosition(twobisector12)"></div><br>
-    
-<div class ="bisector"; id="twobisector13"; style="margin-left:44em; height:1em; width:15em; background-color: black; z-index:3"; onmouseover="getNewRGB(twobisector13); twonewBisectorPosition(twobisector13)"></div><br>
-    
-<div class ="bisector"; id="twobisector14"; style="margin-left:51em; height:1em; width:15em; background-color:black; z-index=1"; onmouseover="getNewRGB(twobisector14); twonewBisectorPosition(twobisector14)"></div><br>
-    
+<div class="menuDiv"  id="worksDiv"; ><a class="menuLink"; href="works.html">works</a></div><br>
+<div class="menuDiv" id="contactDiv"; ><a class="menuLink";  href="contact.html">contact</a></div><br>
+<div class="menuDiv" id="bioDiv"; ><a class="menuLink"; href="bio.html">bio</a></div><br>
+<div class="menuDiv" id="homeDiv"; ><a class="menuLink"; href="home.html">home</a></div><br> 
 
     
     </body>

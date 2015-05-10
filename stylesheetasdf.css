@@ -44,8 +44,7 @@
     position:absolute;
     text-decoration: none;
     color: black;
-    z-index: 3;
-   
+    z-index: 3;   
     text-align:center;
 }
 
@@ -55,7 +54,7 @@
 }
 
 .worksParagraphDiv {
-    margin-left:11em;
+    margin-left:11em;a
     width: 50%;
     z-index: 2;
     display: run-in;
