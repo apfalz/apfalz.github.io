@@ -2,15 +2,17 @@
 <head>
 <title>Andrew Pfalz</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+     
+    <script type="text/javascript" src="http://cdn.tonejs.org/latest/Tone.min.js"></script>
      <script type="text/javascript">
         
          
          function makeVerticalDivs() {
             //var h = Math.floor(Math.random() * 100) + 10 + "px";
             var w = 10 + "px";
-             for(var i = 0; i<25; i ++) {
+             for(var i = 0; i<50; i ++) {
                 
-                var h = Math.floor(Math.random() * 50) + 50 + "px";
+                var h = Math.floor(Math.random() * 50) + 75 + "px";
                 var offset = Math.floor(Math.random() * 50)  + "px";
                  
                 var rR = Math.floor(Math.random() * 200) % 255;
@@ -23,7 +25,7 @@
                 vertDiv.style.height = h;
                 vertDiv.style.width  = w;
                 vertDiv.style.backgroundColor = rColor;
-                vertDiv.style.marginLeft = i * 10 + 150 +"px";
+                vertDiv.style.marginLeft = i * 10 + 200 +"px";
                 vertDiv.style.marginTop = offset;
                 vertDiv.style.position = "absolute";
                  
@@ -69,12 +71,15 @@
          }
      //------------------------------------------------------------------------------------------
         function makeHorizontalDivs() {
-          
+            var synth = new Tone.PolySynth(16, Tone.Monosynth);
+            synth.setVolume(-24);
+            synth.toMaster();
+            
             var h = 10 + "px";
-             for(var i = 0; i<25; i ++) {
+             for(var i = 0; i<60; i ++) {
                 
-                var w = Math.floor(Math.random() * 50)+50 + "px";
-                var offset = Math.floor(Math.random() * 50)+ 400 + "px";
+                var w = Math.floor(Math.random() * 50)+75 + "px";
+                var offset = Math.floor(Math.random() * 50)+ 500 + "px";
                  
                 var rR = Math.floor(Math.random() * 200) % 255;
                 var rG = Math.floor(Math.random() * 200) % 255;
@@ -104,6 +109,9 @@
                     var h = Number(this.style.width.replace(/px/, ""));
                     h += 10;
                     this.style.width = h + "px";
+                    synth.triggerAttackRelease(["a4"],"4n");
+                    
+                    
                     };
                  
                 horiDiv.onmouseout = function () {

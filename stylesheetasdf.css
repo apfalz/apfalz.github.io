@@ -37,6 +37,7 @@
     height: 100;
     z-index:3;
     position:relative;
+    display: run-in;
 }
 .workPageLink {
     font-family : monospace;
@@ -49,16 +50,18 @@
 }
 
 .worksParagraph {
-    font-family: helvetica,verdana,arial,sans-serif;
+    font-family: monospace;
+    position:absolute;
+    display: block;
     z-index: 2;
 }
 
 .worksParagraphDiv {
-    margin-left:11em;a
+    margin-left:11em;
     width: 50%;
     z-index: 2;
-    display: run-in;
-    position:relative;
+    position:absolute;
+    display:block;
 }
 
 .vertDiv {
@@ -73,6 +76,7 @@
     position:absolute;
     display:block;
     margin-left:11em;
+    z-index: 2;
 }
 
 .homeDiv { 
@@ -93,11 +97,12 @@
     text-decoration: none;
 }
 
-#hardParagraphDiv {
+.hardParagraphDiv {
     margin-left:11em;
     width:50%;
     z-index:2;
-    position:inline-block;
+    position:relative;
+    display: run-in;
 }
 
 #contactLink {
