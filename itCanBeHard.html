@@ -3,96 +3,19 @@
     <title>It can be hard to fall asleep when you're on fire</title>
     <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
 
-     <script type="text/javascript">
-        
-  function makeGrowingDivs() {
-                for(var i = 0; i < 25; i ++) {
-                    var rR = Math.floor(Math.random() * 200) % 255;
-                    var rG = Math.floor(Math.random() * 200) % 255;
-                    var rB = Math.floor(Math.random() * 200) % 255;
-                    var rColor = rR + rG + rB;
-                    
-                    var thisDiv = document.createElement("div");
-                    thisDiv.id = "growingDiv" + i;
-                    thisDiv.style.height = Math.floor(Math.random() * 50) + "px";
-                    thisDiv.style.width = Math.floor(Math.random() * 50 ) + "px";
-                    thisDiv.style.backgroundColor = "black";
-                 //   thisDiv.style.marginTop = Math.floor(Math.random() * 10 ) + "px";
-                    thisDiv.style.marginLeft = Math.floor(Math.random() * 500 ) + "px";
-                    thisDiv.style.position = "absolute";
-                    thisDiv.style.backgroundColor = rColor;
-                    thisDiv.style.zIndex = 0;
-                   // thisDiv.style.display = "run-in";
-                    
-                    thisDiv.onmouseover = function() {
-                        var w = Number(this.style.width.replace(/px/, ""));
-                        var h = Number(this.style.height.replace(/px/, ""));
-                        var mL = Number(this.style.marginLeft.replace(/px/, ""));
-                        var mT = Number(this.style.marginTop.replace(/px/, ""));
-                        w += 5;
-                        h += 5;
-                        mL -= 2;
-                        mT -= 2;
-                        this.style.width = w + "px";
-                        this.style.height = h + "px";
-                        this.style.marginLeft = mL + "px";
-                        this.style.marginTop = mT + "px";
-                                        
-                        var rgb = this.style.backgroundColor;
-                        rgb = rgb.replace(/[^\d,]/g, '').split(',');
-                        var r = Number(rgb[0]);
-                        var g = Number(rgb[1]);
-                        var b = Number(rgb[2]);
-                        r += 10;
-                        g += 10; 
-                        b += 10;
-                        this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
-                    }
-                    
-                    thisDiv.onmouseout = function() { 
-                        var w = Number(this.style.width.replace(/px/, ""));
-                        var h = Number(this.style.height.replace(/px/, ""));
-                        var mL = Number(this.style.marginLeft.replace(/px/, ""));
-                        var mT = Number(this.style.marginTop.replace(/px/, ""));
-                        w += 5;
-                        h += 5;
-                        mL -= 2;
-                        mT -= 2;
-                        this.style.width = w + "px";
-                        this.style.height = h + "px";
-                        this.style.marginLeft = mL + "px";
-                        this.style.marginTop = mT + "px";
-                                        
-                        var rgb = this.style.backgroundColor;
-                        rgb = rgb.replace(/[^\d,]/g, '').split(',');
-                        var r = Number(rgb[0]);
-                        var g = Number(rgb[1]);
-                        var b = Number(rgb[2]);
-                        r += 10;
-                        g += 10; 
-                        b += 10;
-                        this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
-                    }
-                    
-                    var body = document.getElementsByTagName("body")[0];
-                    body.appendChild(thisDiv);
-                }
-            }
-    </script>
-    
 </head>
     
-<body onload="makeGrowingDivs()">
+<body>
     
     
     <!-- menu divs -->
-<div class="menuDiv"; style="width:50%"; id="worksDiv"; onmouseover="newMenuColor(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br>
+<div class="menuDiv";  id="worksDiv"; ><a class="menuLink"; href="works.html">works</a></div><br>
     
-<div class="menuDiv"; id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br>
+<div class="menuDiv"; id="contactDiv"; ><a class="menuLink";  href="contact.html">contact</a></div><br>
     
-<div class="menuDiv";  id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br>
+<div class="menuDiv";  id="bioDiv"; ><a class="menuLink"; href="bio.html">bio</a></div><br>
 
-<div class="menuDiv"; id="homeDiv"; onmouseover="newMenuColor(homeDiv); newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br>
+<div class="menuDiv"; id="homeDiv"; ><a class="menuLink"; href="home.html">home</a></div><br>
 
     
     

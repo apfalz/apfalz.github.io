@@ -2,52 +2,27 @@
 <head>
 <title>Vane</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
-        <script type="text/javascript">
-        
-        function newMenu(whichWorksDiv) {      
-            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
-            whichWorksDiv.style.width = newDivWidth;
-            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
-            whichWorksDiv.style.marginLeft = newLeftMarg;
-        }
-        
-        function newMenuColor(whichWorksDiv) {
-            var firstDigit = Math.floor(Math.random() * 10).toString();
-            var secondDigit = Math.floor(Math.random() * 10).toString();
-            var thirdDigit = Math.floor(Math.random() * 10).toString();
-            var fourthDigit = Math.floor(Math.random() * 10).toString();
-            var fifthDigit = Math.floor(Math.random() * 10).toString();
-            var sixthDigit = Math.floor(Math.random() * 10).toString();
-            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-            whichWorksDiv.style.backgroundColor = divColor;
-        }
-        </script>
+
 </head>
-<body onload="newMenu(worksDiv);
-              newMenu(contactDiv);
-              newMenu(bioDiv);
-              newMenu(homeDiv);
-              newMenuColor(worksDiv);
-              newMenuColor(contactDiv);
-              newMenuColor(bioDiv);
-              newMenuColor(homeDiv)">
+<body>
     
      <!-- menu divs -->
-<div  class="menuDiv" id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div class="menuDiv" id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div class="menuDiv" id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div class="menuDiv" id="homeDiv"; onmouseover="newMenuColor(homeDiv); newMenu(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+<div  class="menuDiv" id="worksDiv"; ><a class="menuLink"; href="works.html">works</a></div><br>
+<div class="menuDiv" id="contactDiv"; ><a class="menuLink";  href="contact.html">contact</a></div><br>
+<div class="menuDiv" id="bioDiv"; ><a class="menuLink"; href="bio.html">bio</a></div><br>
+<div class="menuDiv" id="homeDiv";><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
 
     
-    <div class="worksParagraphDiv">
-        <p class="worksParagraph"><b>Vane</b><br>installation<br>2014</p>
+<div class="worksParagraphDiv">
+    <p class="worksParagraph"><b>Vane</b><br>installation<br>2014<br><br>
      
         
-        <p class="worksParagraph">Vane is an installation that generates sounds and images that change depending on the current weather conditions. It uses the date, time, humidity, wind speed to generate its content. It compares all of the current data with recent conditions as well as the last 100 years of climate data. It then adjusts its output to reflect how unseasonable the current weather is. 
-<p class="worksParagraph">The visual display is created by choosing colors from a live weather camera. As the color of the sky changes outside, so too do the colors of Vane&#39;s display. The various aspects of weather data are mapped musically to various musical parameters such as harmonic vocabulary, register, timbre, rhythm and envelope. So Vane will sound completely different on an April morning, a sunset in July, or a midnight in January. For more information go to apfalz.github.io/vane
-</p></div><br><br><br><br>
-    <img src="vanePic.png" style="margin-left:8em; position:relative; display:block"><br><br>
-    <iframe class="youtubeLink"; width="560" height="315" src="//www.youtube.com/embed/NuFBF9dQl60" frameborder="0" allowfullscreen></iframe>
+        &nbsp;&nbsp;&nbsp;Vane is an installation that generates sounds and images that change depending on the current weather conditions. It uses the date, time, humidity, wind speed to generate its content. It compares all of the current data with recent conditions as well as the last 100 years of climate data. It then adjusts its output to reflect how unseasonable the current weather is. <br><br>
+        &nbsp;&nbsp;&nbsp;The visual display is created by choosing colors from a live weather camera. As the color of the sky changes outside, so too do the colors of Vane&#39;s display. The various aspects of weather data are mapped musically to various musical parameters such as harmonic vocabulary, register, timbre, rhythm and envelope. So Vane will sound completely different on an April morning, a sunset in July, or a midnight in January. For more information go to apfalz.github.io/vane
+</p></div>
+
+    <img src="vanePic.png" style="margin-left:8em; position:relative; display:inline-block">
+    <iframe class="youtubeLink"; width="560" height="315" src="//www.youtube.com/embed/NuFBF9dQl60" style="display:block; position:relative" frameborder="0" allowfullscreen></iframe>
 
     
 </body>

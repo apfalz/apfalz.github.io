@@ -42,16 +42,17 @@
 .workPageLink {
     font-family : monospace;
     font-size: 1em;
-    position:absolute;
+    position:relative;
     text-decoration: none;
     color: black;
     z-index: 3;   
     text-align:center;
+    margin-left: 11em;
 }
 
 .worksParagraph {
     font-family: monospace;
-    position:absolute;
+    position:relative;
     display: block;
     z-index: 2;
 }
@@ -60,8 +61,8 @@
     margin-left:11em;
     width: 50%;
     z-index: 2;
-    position:absolute;
-    display:block;
+    position:relative;
+    display:inline-block;
 }
 
 .vertDiv {

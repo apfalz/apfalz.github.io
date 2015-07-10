@@ -3,17 +3,22 @@
 <title>Andrew Pfalz</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
      
-    <script type="text/javascript" src="http://cdn.tonejs.org/latest/Tone.min.js"></script>
-     <script type="text/javascript">
+    <script type="text/javascript" src="Tone.js"></script>
+    <script type="text/javascript">
         
          
          function makeVerticalDivs() {
-            //var h = Math.floor(Math.random() * 100) + 10 + "px";
+            
+            var vertPitches = ["c3", "eb3", "f3", "g3", "a3", "bb3", "c3", "db3", "f3", "ab4"];
+            var vertInstrument = new Tone.PolySynth(16, Tone.FMSynth);
+            vertInstrument.toMaster();
+            vertInstrument.set({"volume" : -12});
             var w = 10 + "px";
+             
              for(var i = 0; i<50; i ++) {
                 
-                var h = Math.floor(Math.random() * 50) + 75 + "px";
-                var offset = Math.floor(Math.random() * 50)  + "px";
+                var h = Math.floor(Math.random() * 250) + 75 + "px";
+                var offset = Math.floor(Math.random() * 100)  + "px";
                  
                 var rR = Math.floor(Math.random() * 200) % 255;
                 var rG = Math.floor(Math.random() * 200) % 255;
@@ -61,6 +66,9 @@
                     var h = Number(this.style.height.replace(/px/, ""));
                     h -=7;
                     this.style.height = h + "px";
+                                        
+                    var vertChosenPitch = vertPitches[Math.floor(Math.random()*10)];
+                    vertInstrument.triggerAttackRelease([vertChosenPitch], "16n");
                 
                     };
                  
@@ -71,15 +79,15 @@
          }
      //------------------------------------------------------------------------------------------
         function makeHorizontalDivs() {
-            var synth = new Tone.PolySynth(16, Tone.Monosynth);
-            synth.setVolume(-24);
+            var synth = new Tone.PolySynth(16, Tone.SimpleAM);
             synth.toMaster();
-            
+            synth.set({"volume" : -24}); 
+            var pitches = ["c3", "eb3", "f3", "g3", "a4", "bb4", "c4", "db4", "f4", "ab5"]
             var h = 10 + "px";
-             for(var i = 0; i<60; i ++) {
-                
-                var w = Math.floor(Math.random() * 50)+75 + "px";
-                var offset = Math.floor(Math.random() * 50)+ 500 + "px";
+            
+             for(var i = 0; i<40; i ++) {
+                var w = Math.floor(Math.random() * 250)+75 + "px";
+                var offset = Math.floor(Math.random() * 100)+ 250 + "px";
                  
                 var rR = Math.floor(Math.random() * 200) % 255;
                 var rG = Math.floor(Math.random() * 200) % 255;
@@ -94,13 +102,13 @@
                 horiDiv.style.marginLeft = offset;
                 horiDiv.style.marginTop = i * 10 + "px";
                 horiDiv.style.position = "absolute";
-              //  horiDiv.style.display = "block";
+           
                 if(i % 2 == 0) {
                     horiDiv.style.zIndex = 2; 
                     }else{
                     horiDiv.style.zIndex =4;
                     };
-                
+
                 horiDiv.onmouseover = function() {
                   
                     var num = Number(this.style.marginLeft.replace(/px/, ""));
@@ -109,12 +117,10 @@
                     var h = Number(this.style.width.replace(/px/, ""));
                     h += 10;
                     this.style.width = h + "px";
-                    synth.triggerAttackRelease(["a4"],"4n");
-                    
-                    
                     };
                  
                 horiDiv.onmouseout = function () {
+                    
                     var num = Number(this.style.marginLeft.replace(/px/, ""));
                     num -=10;
                     this.style.marginLeft = num + "px";
@@ -123,13 +129,15 @@
                     };
                  
                 horiDiv.onclick = function () {
+                    
                     var num = Number(this.style.marginLeft.replace(/px/, ""));
                     num +=10;
                     this.style.marginLeft = num + "px";
                     var w = Number(this.style.width.replace(/px/, ""));
                     w -=7;
                     this.style.width = w + "px";
-                
+                    var chosenPitch = pitches[Math.floor(Math.random()*10)];
+                    synth.triggerAttackRelease([chosenPitch],"16n");
                     };
                  
                 var body = document.getElementsByTagName("body")[0];
