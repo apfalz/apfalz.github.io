@@ -4,34 +4,10 @@
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
         <script type="text/javascript">
         
-        function newMenu(whichWorksDiv) {      
-            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
-            whichWorksDiv.style.width = newDivWidth;
-            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
-            whichWorksDiv.style.marginLeft = newLeftMarg;
-        }
-        
-        function newMenuColor(whichWorksDiv) {
-            var firstDigit = Math.floor(Math.random() * 10).toString();
-            var secondDigit = Math.floor(Math.random() * 10).toString();
-            var thirdDigit = Math.floor(Math.random() * 10).toString();
-            var fourthDigit = Math.floor(Math.random() * 10).toString();
-            var fifthDigit = Math.floor(Math.random() * 10).toString();
-            var sixthDigit = Math.floor(Math.random() * 10).toString();
-            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-            whichWorksDiv.style.backgroundColor = divColor;
-        }
         </script>
 </head>
     
-<body onload="newMenu(worksDiv);
-              newMenu(contactDiv);
-              newMenu(bioDiv);
-              newMenu(homeDiv);
-              newMenuColor(worksDiv);
-              newMenuColor(contactDiv);
-              newMenuColor(bioDiv);
-              newMenuColor(homeDiv)">
+<body>
     
 <canvas id="forestCanvas" height="1000" width="1000" onmousemove="makeNewRect(event)"></canvas>
     <script>
@@ -48,7 +24,7 @@
         var newB = Math.floor(((Math.random() * 1000) % 255) - 75);
         var color = 'rgb(' + newR + ',' + newG + ',' + newB + ')';
         cntxt.beginPath();
-        cntxt.rect(x, y, rectW, rectH);
+        cntxt.rect(x-rectW/2, y-rectH/2, rectW, rectH);
         cntxt.fillStyle = color;
         cntxt.fill();
          
@@ -56,18 +32,16 @@
     </script>    
     
      <!-- menu divs -->
-<div  class="menuDiv" id="worksDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div class="menuDiv" id="contactDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div class="menuDiv" id="bioDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div class="menuDiv" syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+<div  class="menuDiv" id="worksDiv";><a class="menuLink"; href="works.html">works</a></div><br>
+<div class="menuDiv" id="contactDiv";><a class="menuLink";  href="contact.html">contact</a></div><br>
+<div class="menuDiv" id="bioDiv";><a class="menuLink"; href="bio.html">bio</a></div><br>
+<div class="menuDiv"; id="homeDiv"; ><a class="menuLink"; href="home.html">home</a></div><br><br><br>
 
 <div class="worksParagraphDiv">
 <p class="worksParagraph"><b>The forest for the trees</b><br>for string quartet<br>2012</p>
-<p class="worksParagraph">In the 1960&#39;s composers like Gyorgy Ligeti and Krzysztof Penderecki began experimenting with writing music using sound masses.  Rather than       using notes and rhythms to construct melodies and accompaniments, large numbers of notes and rhythms are piled up to create complex textures. These textures can then be            manipulated in the way that notes and rhythms are in more traditional pieces. 
 
-<p class="worksParagraph">This technique is not entirely new, but does represent a shifting of emphasis away from interlaced melodies like those found in Renaissance consort music towards the individual parts functioning collectively as a single entity. This piece explores these ideas by taking the same recognizable motive (a long note followed by a short note) and overlapping instances of it to create a dense texture. 
 
-    <p class="worksParagraph">This piece uses another idea drawn from consort music. In renaissance pieces that feature imitation, the parts often enter one at a time. It is possible to trick the listener into thinking there are more instruments playing than there really are by having one part drop out after the others have already begun only to come back in, pretending to be a new instrument. </p><br><br></div>
+    <p class="worksParagraph">Rather than using musical textures, this piece explores superimposition of a single simple motive: a long note followed by a short one. In place of motivic development or melodic construction, the interest in the piece comes from exploration of range and density. Thus, the listener is meant to appreciate the general trajectory of the counterpoint instead of the surface level details of the music. In other words to enjoy this piece, the listener must not miss the forest for the trees</p><br><br></div>
 
         
         
