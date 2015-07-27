@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+<title>gibber</title>
+</head>
+<body>
+
+Gibber.scale.mode = 'Ionian'
+Gibber.scale.root = 'd4'
+
+bassLine = [0, 4, 5, 2, 3, 0, 3, 4]
+melodyOne = [7, 6, 5, 4, 3, 2, 3, 4]
+melodyTwo = [9, 8, 7, 6, 5, 4, 5, 6]
+melodyThree = [7, 9, 11, 10, 9, 7, 9, 8, 7, 5, 7, 12, 11, 13, 12, 11, 10, 7, 8, 14, 15, 17, 19, 15 ]
+
+a = Synth()
+b = Synth()
+c = Synth()
+d = Synth()
+
+e = Drums('x-xox-xo')
+e._
+
+b.scale.root = 'd4'
+b.octave = -1
+//----------------------
+
+a.chord.seq([[0,2,4], [4,6,8], [5,7,9], [2,4,6], [3,5,7], [0,2,4], [3,5,7], [4,6,8,10]], 1/2);
+
+b.play(bassLine, 0.5)
+
+c.play(melodyOne, 0.5)
+
+d.play(melodyTwo, 0.5)
+
+a.play(melodyThree, 0.25)
+</body>
+</html>
