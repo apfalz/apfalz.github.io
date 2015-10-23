@@ -2,43 +2,13 @@
 <head>
 <title>We are restless things</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
-        <script type="text/javascript">
-        
-        function newMenu(whichWorksDiv) {      
-            var newDivWidth = Math.floor((Math.random() * 5) + 7) + "em";       
-            whichWorksDiv.style.width = newDivWidth;
-            var newLeftMarg = Math.floor((Math.random() * 25) + 7);   
-            whichWorksDiv.style.marginLeft = newLeftMarg;
-        }
-        
-        function newMenuColor(whichWorksDiv) {
-            var firstDigit = Math.floor(Math.random() * 10).toString();
-            var secondDigit = Math.floor(Math.random() * 10).toString();
-            var thirdDigit = Math.floor(Math.random() * 10).toString();
-            var fourthDigit = Math.floor(Math.random() * 10).toString();
-            var fifthDigit = Math.floor(Math.random() * 10).toString();
-            var sixthDigit = Math.floor(Math.random() * 10).toString();
-            var divColor = "#" + thirdDigit + fourthDigit + firstDigit + secondDigit + sixthDigit + fifthDigit;
-            whichWorksDiv.style.backgroundColor = divColor;
-        }
-        </script>
+   
 </head>
-<body onload="newMenu(worksDiv);
-              newMenu(contactDiv);
-              newMenu(bioDiv);
-              newMenu(homeDiv);
-              newMenuColor(worksDiv);
-              newMenuColor(contactDiv);
-              newMenuColor(bioDiv);
-              newMenuColor(homeDiv)";
-      
-      onmousemove="countToEight(); addDiv(event)";
-     >
-     <!-- menu divs -->
-<div  id="worksDiv"; class="menuDiv"; onmouseover="newMenuColor(worksDiv); newMenu(worksDiv)"; onclick="newMenu(worksDiv)"><a class="menuLink"; href="works.html">works</a></div><br><br>
-<div id="contactDiv"; class="menuDiv"; onmouseover="newMenu(contactDiv); newMenuColor(contactDiv)"; onclick="newMenu(contactDiv)"><a class="menuLink";  href="contact.html">contact</a></div><br><br>
-<div id="bioDiv"; class="menuDiv"; onmouseover="newMenu(bioDiv); newMenuColor(bioDiv)"; onclick="newMenu(bioDiv)"><a class="menuLink"; href="bio.html">bio</a></div><br><br>
-<div class="menuDiv"; syle="width:100em"; id="homeDiv"; onmouseover="newMenuColor(homeDiv)"; onclick="newMenu(homeDiv)"><a class="menuLink"; href="home.html">home</a></div><br><br><br><br>
+<body onmousemove="countToEight(); addDiv(event)";>
+<a class="menuLink"; href="works.html">works</a><br>
+<a class="menuLink";  href="contact.html">contact</a><br>
+<a class="menuLink"; href="bio.html">bio</a><br>
+<a class="menuLink"; href="home.html">home</a><br><br><br><br><br>
 
 <div class="worksParagraphDiv">
     <p class="worksParagraph"><b>We are restless things</b><br>for four marimbas<br>2013</p>
