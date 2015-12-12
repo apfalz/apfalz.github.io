@@ -3,18 +3,18 @@
     <title>Works</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
      <script type="text/javascript">
-     
+
 /*function makeDivs() {
-         var pieceNames = ["On the redaction of sounds", "Vane", "Follow no path", "It can be hard to fall asleep when you're on fire", "At dusk, a sign", "No man is an                island", "The feeling of choking on air", "The forest for the trees", "The truth about limits", "On gentle indifference", "You might beg for relief and not get               any", "We are restless things", "Soliloquy", "Buoyancies and Densities"]; 
+         var pieceNames = ["On the redaction of sounds", "Vane", "Follow no path", "It can be hard to fall asleep when you're on fire", "At dusk, a sign", "No man is an                island", "The feeling of choking on air", "The forest for the trees", "The truth about limits", "On gentle indifference", "You might beg for relief and not get               any", "We are restless things", "Soliloquy", "Buoyancies and Densities"];
          var linkNames = ["onTheRedactionOfSounds.html", "vane.html", "followNoPath.html", "itCanBeHard.html", "atDuskASign.html", "noManIsAnIsland.html",                               "theFeelingOfChokingOnAir.html", "theForestForTheTrees.html", "theTruthAboutLimits.html", "onGentleIndifference.html", "youMightBegForReliefAndNotGetAny.html",                "weAreRestlessThings.html", "soliloquy.html", "buoyanciesAndDensities.html"];
-         
+
          for(i = 0; i < 13 ; i ++) {
-             
+
              var rR = Math.floor(Math.random() * 200) % 255;
              var rG = Math.floor(Math.random() * 200) % 255;
              var rB = Math.floor(Math.random() * 200) % 255;
              var rColor = rR + rG + rB;
-             
+
              var workPageDiv = document.createElement("div");
              workPageDiv.id = "workPageDiv" + i;
              workPageDiv.style.height = 1 + "em";
@@ -24,11 +24,11 @@
              workPageDiv.style.backgroundColor = rColor;
              workPageDiv.style.position = "absolute";
              workPageDiv.style.zIndex = 1;
-             workPageDiv.style.display = "run-in"; 
-             
+             workPageDiv.style.display = "run-in";
+
              var link = "<a class='workPageLink' href=" + linkNames[i] + ">" + pieceNames[i] + "</a>";
              workPageDiv.innerHTML = link;
-    
+
              workPageDiv.onmouseover = function() {
                  var rgb = this.style.backgroundColor;
                  rgb = rgb.replace(/[^\d,]/g, '').split(',');
@@ -36,10 +36,10 @@
                  var g = Number(rgb[1]);
                  var b = Number(rgb[2]);
                  r += 10;
-                 g += 10; 
+                 g += 10;
                  b += 10;
-                 this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
-                 
+                 this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
                  var w = Number(this.style.width.replace(/px/, ""));
                  w += 10;
                  this.style.width = w + "px";
@@ -51,32 +51,32 @@
                  var g = Number(rgb[1]);
                  var b = Number(rgb[2]);
                  r += 10;
-                 g += 10; 
+                 g += 10;
                  b += 10;
-                 this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
-                 
+                 this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
                  var w = Number(this.style.width.replace(/px/, ""));
                  w += 10;
                  this.style.width = w + "px";
                  }
-               
+
              var body = document.getElementsByTagName("body")[0];
              body.appendChild(workPageDiv);
 
          }
      }
-      */  
-                                       
-         
-         
-         
+      */
+
+
+
+
             function makeGrowingDivs() {
                 for(var i = 0; i < 25; i ++) {
                     var rR = Math.floor(Math.random() * 200) % 255;
                     var rG = Math.floor(Math.random() * 200) % 255;
                     var rB = Math.floor(Math.random() * 200) % 255;
                     var rColor = rR + rG + rB;
-                    
+
                     var thisDiv = document.createElement("div");
                     thisDiv.id = "growingDiv" + i;
                     thisDiv.style.height = Math.floor(Math.random() * 50) + "px";
@@ -88,8 +88,8 @@
                     thisDiv.style.display = "run-in";
                     thisDiv.style.backgroundColor = rColor;
                     thisDiv.style.zIndex = 1;
-                    
-                    
+
+
                     thisDiv.onmouseover = function() {
                         var w = Number(this.style.width.replace(/px/, ""));
                         var h = Number(this.style.height.replace(/px/, ""));
@@ -103,19 +103,19 @@
                         this.style.height = h + "px";
                         this.style.marginLeft = mL + "px";
                         this.style.marginTop = mT + "px";
-                                        
+
                         var rgb = this.style.backgroundColor;
                         rgb = rgb.replace(/[^\d,]/g, '').split(',');
                         var r = Number(rgb[0]);
                         var g = Number(rgb[1]);
                         var b = Number(rgb[2]);
                         r += 10;
-                        g += 10; 
+                        g += 10;
                         b += 10;
-                        this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
+                        this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
                     }
-                    
-                    thisDiv.onmouseout = function() { 
+
+                    thisDiv.onmouseout = function() {
                         var w = Number(this.style.width.replace(/px/, ""));
                         var h = Number(this.style.height.replace(/px/, ""));
                         var mL = Number(this.style.marginLeft.replace(/px/, ""));
@@ -128,18 +128,18 @@
                         this.style.height = h + "px";
                         this.style.marginLeft = mL + "px";
                         this.style.marginTop = mT + "px";
-                                        
+
                         var rgb = this.style.backgroundColor;
                         rgb = rgb.replace(/[^\d,]/g, '').split(',');
                         var r = Number(rgb[0]);
                         var g = Number(rgb[1]);
                         var b = Number(rgb[2]);
                         r += 10;
-                        g += 10; 
+                        g += 10;
                         b += 10;
-                        this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
+                        this.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
                     }
-                    
+
                     var body = document.getElementsByTagName("body")[0];
                     body.appendChild(thisDiv);
                 }
@@ -152,9 +152,11 @@
 <div class="menuDiv"  id="worksDiv"; ><a class="menuLink"; href="works.html">works</a></div><br>
 <div class="menuDiv" id="contactDiv";><a class="menuLink";  href="contact.html">contact</a></div><br>
 <div class="menuDiv" id="bioDiv"; ><a class="menuLink"; href="bio.html">bio</a></div><br>
-<div class="menuDiv" id="homeDiv";><a class="menuLink"; href="home.html">home</a></div><br> 
-    
+<div class="menuDiv" id="homeDiv";><a class="menuLink"; href="home.html">home</a></div><br>
+
 <!-- var linkNames = ["onTheRedactionOfSounds.html", "vane.html", "followNoPath.html", "itCanBeHard.html", "atDuskASign.html", "noManIsAnIsland.html",                               "theFeelingOfChokingOnAir.html", "theForestForTheTrees.html", "theTruthAboutLimits.html", "onGentleIndifference.html", "youMightBegForReliefAndNotGetAny.html",                "weAreRestlessThings.html", "soliloquy.html", "buoyanciesAndDensities.html"]; -->
+    <a href="furrowsAndFolds.html" class="workPageLink">Furrows and folds</a><br>
+    <a href="impermanence.html" class="workPageLink">Impermanence</a><br>
     <a href="insouciance.html" class="workPageLink">Insouciance</a><br>
     <a href="onTheRedactionOfSounds.html" class="workPageLink">On the redaction of sounds</a><br>
     <a href="vane.html"class="workPageLink">Vane</a><br>
@@ -170,9 +172,9 @@
     <a href="weAreRestlessThings.html" class="workPageLink">We are restless things</a><br>
     <a href="soliloquy.html" class="workPageLink">Soliloquy</a><br>
     <a href="buoyanciesAndDensities.html" class="workPageLink">Buoyancies and densities</a><br>
-    
-    
-    
+
+
+
 </head>
 <body>
 

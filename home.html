@@ -1,30 +1,26 @@
-<html>   
+<html>
 <head>
 <title>Andrew Pfalz</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
-     
-    <script type="text/javascript" src="Tone.js"></script>
+
+
     <script type="text/javascript">
-        
-         
+
+
          function makeVerticalDivs() {
-            
-            var vertPitches = ["c3", "eb3", "f3", "g3", "a3", "bb3", "c3", "db3", "f3", "ab4"];
-            var vertInstrument = new Tone.PolySynth(16, Tone.FMSynth);
-            vertInstrument.toMaster();
-            vertInstrument.set({"volume" : -12});
+
             var w = 10 + "px";
-             
+
              for(var i = 0; i<50; i ++) {
-                
+
                 var h = Math.floor(Math.random() * 250) + 75 + "px";
                 var offset = Math.floor(Math.random() * 100)  + "px";
-                 
+
                 var rR = Math.floor(Math.random() * 200) % 255;
                 var rG = Math.floor(Math.random() * 200) % 255;
                 var rB = Math.floor(Math.random() * 200) % 255;
                 var rColor = rR + rG + rB;
-                 
+
                 var vertDiv = document.createElement("div");
                 vertDiv.id = "vertical" + i;
                 vertDiv.style.height = h;
@@ -33,15 +29,15 @@
                 vertDiv.style.marginLeft = i * 10 + 200 +"px";
                 vertDiv.style.marginTop = offset;
                 vertDiv.style.position = "absolute";
-                 
+
                 if(i % 2 == 0) {
-                    vertDiv.style.zIndex = 3; 
+                    vertDiv.style.zIndex = 3;
                     }else{
                     vertDiv.style.zIndex =1;
                     };
-                
+
                 vertDiv.onmouseover = function() {
-                  
+
                     var num = Number(this.style.marginTop.replace(/px/, ""));
                     num +=10;
                     this.style.marginTop = num + "px";
@@ -49,7 +45,7 @@
                     h +=10;
                     this.style.height = h + "px";
                     };
-                 
+
                 vertDiv.onmouseout = function () {
                     var num = Number(this.style.marginTop.replace(/px/, ""));
                     num +=10;
@@ -58,7 +54,7 @@
                     h +=10;
                     this.style.height = h + "px";
                     };
-                 
+
                  vertDiv.onclick = function () {
                     var num = Number(this.style.marginTop.replace(/px/, ""));
                     num -=10;
@@ -66,34 +62,29 @@
                     var h = Number(this.style.height.replace(/px/, ""));
                     h -=7;
                     this.style.height = h + "px";
-                                        
-                    var vertChosenPitch = vertPitches[Math.floor(Math.random()*10)];
-                    vertInstrument.triggerAttackRelease([vertChosenPitch], "16n");
-                
+
+
                     };
-                 
+
                 var body = document.getElementsByTagName("body")[0];
                 body.appendChild(vertDiv);
-                console.log("this worked");
-         }  
+                
+         }
          }
      //------------------------------------------------------------------------------------------
         function makeHorizontalDivs() {
-            var synth = new Tone.PolySynth(16, Tone.SimpleAM);
-            synth.toMaster();
-            synth.set({"volume" : -24}); 
-            var pitches = ["c3", "eb3", "f3", "g3", "a4", "bb4", "c4", "db4", "f4", "ab5"]
+
             var h = 10 + "px";
-            
+
              for(var i = 0; i<40; i ++) {
                 var w = Math.floor(Math.random() * 250)+75 + "px";
                 var offset = Math.floor(Math.random() * 100)+ 250 + "px";
-                 
+
                 var rR = Math.floor(Math.random() * 200) % 255;
                 var rG = Math.floor(Math.random() * 200) % 255;
                 var rB = Math.floor(Math.random() * 200) % 255;
                 var rColor = rR + rG + rB;
-                 
+
                 var horiDiv = document.createElement("div");
                 horiDiv.id = "horizontal" + i;
                 horiDiv.style.height = h;
@@ -102,15 +93,15 @@
                 horiDiv.style.marginLeft = offset;
                 horiDiv.style.marginTop = i * 10 + "px";
                 horiDiv.style.position = "absolute";
-           
+
                 if(i % 2 == 0) {
-                    horiDiv.style.zIndex = 2; 
+                    horiDiv.style.zIndex = 2;
                     }else{
                     horiDiv.style.zIndex =4;
                     };
 
                 horiDiv.onmouseover = function() {
-                  
+
                     var num = Number(this.style.marginLeft.replace(/px/, ""));
                     num -=10;
                     this.style.marginLeft = num + "px";
@@ -118,28 +109,26 @@
                     h += 10;
                     this.style.width = h + "px";
                     };
-                 
+
                 horiDiv.onmouseout = function () {
-                    
+
                     var num = Number(this.style.marginLeft.replace(/px/, ""));
                     num -=10;
                     this.style.marginLeft = num + "px";
                     var h = Number(this.style.width.replace(/px/, ""));
                     this.style.width = h + "px";
                     };
-                 
+
                 horiDiv.onclick = function () {
-                    
+
                     var num = Number(this.style.marginLeft.replace(/px/, ""));
                     num +=10;
                     this.style.marginLeft = num + "px";
                     var w = Number(this.style.width.replace(/px/, ""));
                     w -=7;
                     this.style.width = w + "px";
-                    var chosenPitch = pitches[Math.floor(Math.random()*10)];
-                    synth.triggerAttackRelease([chosenPitch],"16n");
-                    };
-                 
+
+                  }
                 var body = document.getElementsByTagName("body")[0];
                 body.appendChild(horiDiv);
              }
@@ -161,8 +150,8 @@
 <div class="menuDiv"  id="worksDiv"; ><a class="menuLink"; href="works.html">works</a></div><br>
 <div class="menuDiv" id="contactDiv"; ><a class="menuLink";  href="contact.html">contact</a></div><br>
 <div class="menuDiv" id="bioDiv"; ><a class="menuLink"; href="bio.html">bio</a></div><br>
-<div class="menuDiv" id="homeDiv"; ><a class="menuLink"; href="home.html">home</a></div><br> 
+<div class="menuDiv" id="homeDiv"; ><a class="menuLink"; href="home.html">home</a></div><br>
 
-    
+
     </body>
 </html>
