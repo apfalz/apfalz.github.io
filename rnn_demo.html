@@ -1,0 +1,387 @@
+<html>
+<head>
+<title>Generating Audio Using RNNS</title>
+
+<link rel="stylesheet" type="text/css" href="rnn_demo.css">
+
+
+
+</head>
+
+
+<body>
+<!--=========================Title=========================-->
+<div class="containing_div">
+    <h1 class="centered_text">Generating Audio Using Recurrent Neural Networks</h1>
+    <h2 class="centered_text">a PhD Dissertation by Andrew Pfalz</h2>
+    <p>This page is a brief overview of my dissertation work. I will explain:</p>
+    <ul>
+        <li>how to train recurrent neural networks to predict</li>
+        <li>how these models can be sampled from to create new sequences of audio</li>
+        <li>four concrete approaches to sampling from an LSTM with audio examples</li>
+    </ul>
+</div>
+
+
+<!--=========================Audio files and picture=========================-->
+<div class="containing_div">
+    <div class="highest_level" align="center">
+        <div class="left_floating_div" id="input_audio_div">
+            <br>
+            <br>
+            <p>Input Audio x</p>
+            <audio controls>
+              <source src="horse.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div id="rnn_image_div">
+            <img id=rnn_image src=rnn.png>
+        </div>
+        <div class="right_floating_div" id="output_audio_div">
+            <br>
+            <br>
+            <p>Sampled Output &#x0177;</p>
+            <audio controls>
+              <source src="horse.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>
+
+<!--=========================overview=========================-->
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div" id="lstm_image_div">
+        <img id="lstm_image" src=lstm.png>
+    </div>
+    <div class="half_size right_floating_div" id="overview_text_div">
+        <p class="centered_text">OVERVIEW</p>
+        <p>Long Short Term Memory networks (LSTMs) are a type of Recurrent Neural Network (RNN).
+           They were designed for modeling sequence data.
+           An LSTM computes a prediction and a new cell state at each timestep.
+           The process can be broken down into four conceptual steps. Mouse over the steps in the figure to learn more about each.
+
+    </div>
+</div>
+
+
+<!--=========================Training=========================-->
+<hr>
+<div class="containing_div" id="training_div">
+    <div class="left_floating_div half_size" id="training_text_div">
+    <p class="centered_text">TRAINING</p>
+    <p>LSTMs learn by making predictions based on inputs. The figure at right shows the process of training a model. At each time step the model sees an array of inputs and predicts an output for each array element.  The accuracy of the prediction is evaluated by comparing it to a label via the loss function. The error in the prediction, the loss, is passed to the optimizer. The optimizer updates the internal weights in the model via backpropagation. The result of this process is that the next time the model sees the same input, its prediction will be more accurate.
+    <pre>
+for each time step:
+    input, label          = get_new_input_and_label()
+    prediction, new_state = model.predict(input, prev_state)
+    current_loss          = loss(label, prediction)
+    optimzer.update_weights(current_loss)
+
+    </pre>
+    </div>
+    <div class="right_floating_div half_size" id="training_image_div"><br><img  src="training_futura.png"></div>
+</div>
+
+<!--=========================Sampling =========================-->
+<hr>
+<div class="containing_div" id="sampling_div">
+    <div class="left_floating_div" id="sampling_image_div">
+        <img id="sampling_image" src="generation_futura.png">
+    </div>
+
+    <div id="sampling_text_div"><br><br>
+    <p class="centered_text">SAMPLING</p>
+    <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following:
+    <pre>
+seed   = get_new_seed()
+output = []
+for each sampling time step:
+    prediction, new_state = model.predict(seed, prev_state)
+    output.append(prediction[-1])
+    seed.append(prediction[-1]
+    seed = seed[1:]
+
+    </pre>
+    </div>
+</div>
+
+<!--=========================sampling methods and psuedocode=========================-->
+<hr>
+<div class="containing_div">
+    <div class="row">
+        <div class="code_div" id="sequential_pseudocode_div">
+        <p class="centered_text">SEQUENTIAL</p>
+        <pre>
+for each epoch:
+    for each timestep:
+        input        = get_input()
+        label        = get_label()
+
+        y_hat, state = model.guess(input, state)
+        loss         = loss(y_hat, label)
+        model.update_weights(loss)
+        if timestep % wait == 0:
+            seed   = get_seed()
+            output = []
+            for each dream_timestep:
+                pred = model.guess(seed)
+                output.append(pred[-1])
+                seed.append(pred[-1])
+                seed = seed[1:]
+
+
+
+
+        </pre>
+        </div>
+        <div id="sampling_methods_text_div">
+            <p>When sampling from a model the simplest approach would be to periodically pause training to sample an output.
+              This algorithm is shown in psuedocode to the left. In practice this method works some of the time but can get stuck predicting the same output over and over.
+              The pseudocode at right shows a slighlty different algorithm that performs better in practice. This method has the model train and sample concurrently.
+        </div>
+        <div class="code_div" id="concurrent_pseudocode_div">
+        <p class="centered_text">CONCURRENT</p>
+        <pre>
+seed   = get_seed()
+output = []
+for each epoch:
+    for each timestep:
+        #train normally
+        input = get_input()
+        label = get_label()
+        y_hat, state = model.guess(input, state)
+        loss  = loss(y_hat, label)
+        model.update_weights(loss)
+
+        #make a prediction
+        pred = model.guess(seed)
+        output.append(pred[-1])
+        seed.append(pred[-1])
+        seed = seed[1:]
+        if len(output) == output_length:
+            save_output()
+            output = []
+            seed   = get_seed()
+        </pre>
+        </div>
+    </div>
+</div>
+
+<!--=========================Vector Approach=========================-->
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div" id="vector_text_div">
+    <p class="centered_text">VECTOR APPROACH</p>
+    <p>The first approach to sampling from an LSTM has the model predict a vector of audio samples for each input vector.
+       These vectors are the same size and can contain overlapping or non overlapping samples.
+       This approach is the fastest of the four presented here.
+       The predicted vectors can sometimes have discontinuities at their extremities which are problematic.
+    </div>
+    <div class="half_size right_floating_div" id="vector_image_div">
+        <img src="vector_image.png" width="80%" id="vector_image">
+    </div>
+</div>
+
+
+<!--=========================Vector Approach=========================-->
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">VECTOR APPROACH AUDIO</p>
+        <div class="audio_div">
+            <p>Vector length 1024</p>
+            <audio controls>
+              <source src="audio/vector_1024.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="audio_div">
+            <p>Vector length 512</p>
+            <audio controls>
+              <source src="audio/vector_512.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="audio_div">
+            <p>Vector length 256</p>
+            <audio controls>
+              <source src="audio/vector_256.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="audio_div">
+            <p>Vector length 128</p>
+            <audio controls>
+              <source src="audio/vector_128.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <div class="half_size right_floating_div">
+        <br><br><br>
+        <p class="centered_text">VECTOR APPROACH ANALYSIS</p>
+        <p>By changing the length of the predicted vectors the quality of the sampled outputs can be changed greatly.
+           When the vectors are long, the model produces samples that evolve slowly.
+           When the vectors are short, the model produces samples that change more rapidly but resemble in the input data less.
+    </div>
+</div>
+<!--=========================Magnitude Spectrum Approach=========================-->
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">MAGNITUDE SPECTRUM APPROACH</p>
+        <p>This approach formats the data in the same manner as the vector approach except that each vector is magnitude spectrum window.
+           The raw audio is broken into vectors as before, then each vector is transformed via the <a href="https://ccrma.stanford.edu/~jos/parshl/Outline_Program.html">FFT</a>.
+           The phase information is omitted and the magnitudes are normalized to the range 0 to 1.
+           The sampled outputs are resynthesized via a channel vocoder.
+           It works by linearly interpolating between the transpose of the predicted windows.
+           This produces a sampling rate envelope for each bin of the FFT.
+           Each envelope is applied to an oscillator with its frequency set to the center frequency of the corresponding FFT bin.
+    </div>
+
+    <div class="half_size right_floating_div" id="magnitude_spectrum_image_div">
+        <br><br>
+        <img src="vector_image.png" id="magnitude_spectrum_image">
+    </div>
+</div>
+<hr>
+<div class="containing_div">
+    <br>
+    <p class="centered_text">VOCODER DESIGN</p>
+    <div id="vocoder_image_div">
+        <img id="vocoder_image" src="vocoder.png">
+    </div>
+</div>
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">MAGNITUDE SPECTRUM APPROACH AUDIO</p>
+        <div class="audio_div">
+            <p>Hop Size 1024</p>
+            <audio controls>
+              <source src="audio/fft_1024.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="audio_div">
+            <p>Hop Size 512</p>
+            <audio controls>
+              <source src="audio/fft_512.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="audio_div">
+            <p>Hop Size 256</p>
+            <audio controls>
+              <source src="audio/fft_256.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="audio_div">
+            <p>Hop Size 128</p>
+            <audio controls>
+              <source src="audio/fft_128.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="audio_div">
+            <p>Hop Size 56</p>
+            <audio controls>
+              <source src="audio/fft_56.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <div class="half_size right_floating_div ">
+        <br><br><br>
+        <p class="centered_text">MAGNITUDE SPECTRUM ANALYSIS</p>
+        <p>As with the vector approach vector length, changing the <a href="https://ccrma.stanford.edu/~jos/parshl/Choice_Hop_Size.html">hop size</a> of the fft used to produce the data drastically changes the quality of the sampled outputs.
+           When the hop size is large the frequencies are overlapped and blurred to create a subtle evolving texture.
+           As the hop size is decreased transitions between different pitches become increasingly clear.
+           When the hop size is very small sequences of notes from the input data can be observered, however the model also tends to become somewhat unstable.
+    </div>
+</div>
+
+<!--=========================Transpose Approach=========================-->
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">TRANSPOSE APPROACH</p>
+        <p>This approach features the most exotic handling of the model outputs.
+           The output of the LSTM is the same shape as the input [m,n].
+           It is passed through a fully connected layer to change the shape to [m, 1].
+           The transpose of this column vector is passed through another fully connected layer to change the shape to [1, 1].
+        </p>
+    </div>
+    <div class="half_size right_floating_div">
+        <img src="transpose.png" id="transpose_image">
+    </div>
+</div>
+
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">TRANSPOSE APPROACH AUDIO</p>
+        <div class="audio_div">
+            <p>Transpose</p>
+            <audio controls>
+              <source src="audio/transpose.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <div class="half_size right_floating_div">
+        <p class="centered_text">TRANSPOSE ANALYSIS</p>
+        <p>This method hardly ever produces noisy outputs. This method is the most successful in that aspect.
+           The outputs themselves tend to blend all the frequences in the seed.
+           The biggest drawback of this approach is that it takes significantly more time to produce an output compared to the previous two approaches.
+           This is due to the fact the the model is predicting one audio sample at a time as opposed to a vector of samples at a time.
+    </div>
+</div>
+
+<!--=========================Column Vector Approach=========================-->
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">COLUMN VECTOR APPROACH</p>
+        <p>This the most successful approach. The model predicts one sample for each input vector.
+           This is accomplished by passing the output of the LSTM through a fully connected layer.
+           The sampled outputs from this model tend to feature notes from the input data, but rarely in the same order.
+           Often these notes are predicted in a different order than they appear in the input data.
+           Occasionally the notes are surreally distorted.
+           For instance piano notes are sustained or growing in volume rather than decaying after their initial attack.
+           Because of the way the input data is offset from the label data only the final element in the predicted vector is not present elsewhere in the seed.
+           This final audio sample is the only piece that is kept during sampling. As such this approach is very slow to produce outputs like the tranpose approach.
+        </p>
+    </div>
+        <div class="half_size right_floating_div">
+            <img src="column_vector.png" id="column_vector_image">
+        </div>
+</div>
+
+<hr>
+<div class="containing_div">
+    <div class="half_size left_floating_div">
+        <p class="centered_text">COLUMN VECTOR APPROACH AUDIO</p>
+        <div class="audio_div">
+            <p>Column Vector</p>
+            <audio controls>
+              <source src="audio/column.wav" type="audio/wav">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <div class="half_size right_floating_div">
+        <p class="centered_text">COLUMN VECTOR ANALYSIS</p>
+        <p>The sampled outputs produced with this approach resemble most closely what a human might guess if presented with the same task as the LSTM.
+           Notes from the input are repeated, but in a different order. Some minor changes might be made to the data, but generally the data remains recognizable.
+           This is in stark contrast to the other methods that produce outputs where sometimes the data is only barely discernible.
+    </div>
+</div>
+</body>
+</html>

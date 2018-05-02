@@ -1,0 +1,116 @@
+table, th, td {
+    border : 1px solid black;
+}
+
+table {
+    width : 100%;
+}
+
+div{
+    /*background : yellow;*/
+}
+
+hr {
+    width: 80%;
+}
+
+/*==========================classes==========================*/
+.containing_div{
+    overflow     : auto;
+    font-family  : Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+    padding-left : 8%;
+    padding-right: 8%;
+
+}
+
+.code_div{
+    font-family: "Courier", Courier, monospace;
+}
+
+.left_floating_div{
+    float   : left;
+    display : inline;
+}
+
+
+.right_floating_div{
+    float   : right;
+    display : inline;
+}
+
+.half_size{
+    width : 50%;
+}
+
+.centered_text{
+    text-align : center;
+}
+
+.vertical_align_div{
+    display        : table-cell;
+    vertical-align : middle;
+}
+
+/*==========================IDs==========================*/
+
+
+#rnn_image_div{
+    display: inline;
+}
+
+
+#lstm_image{
+    width  : 80%;
+}
+
+
+#sampling_image{
+    width         : 80%;
+}
+
+#vocoder_image{
+    width         : 90%;
+    margin-left   : auto;
+    margin-right  : auto;
+    display       : block;
+}
+
+#magnitude_spectrum_image{
+    padding-left : 10%;
+    width        : 80%;
+}
+#vector_image{
+    padding-left : 10%;
+    width        : 80%;
+}
+
+#transpose_image{
+    width        : 80%;
+}
+#column_vector_image{
+    width        : 80%;
+}
+
+#sequential_pseudocode_div{
+    display       : inline-block;
+    float         : left;
+    padding-right : 1%;
+    border-right  : 1px solid black;
+}
+#sampling_methods_text_div{
+    float         : left;
+    width         : 20%;
+    padding-left  : 3%;
+    padding-right : 3%;
+}
+#concurrent_pseudocode_div{
+    float         : left;
+    padding-left  : 1%;
+    border-left   : 1px solid black;
+
+}
+.row:after{
+    content       : "";
+    display       :table;
+    clear         : both;
+}
