@@ -88,14 +88,14 @@ for each time step:
 <!--=========================Sampling =========================-->
 <hr>
 <div class="containing_div" id="sampling_div">
-    <div class="left_floating_div" id="sampling_image_div">
+    <div class="half_size left_floating_div" id="sampling_image_div">
         <img id="sampling_image" src="generation_futura.png">
     </div>
 
-    <div id="sampling_text_div"><br><br>
-    <p class="centered_text">SAMPLING</p>
-    <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following:
-    <pre>
+    <div class="half_size right_floating_div" id="sampling_text_div"><br><br>
+        <p class="centered_text">SAMPLING</p>
+        <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following:
+        <pre>
 seed   = get_new_seed()
 output = []
 for each sampling time step:
@@ -104,7 +104,7 @@ for each sampling time step:
     seed.append(prediction[-1]
     seed = seed[1:]
 
-    </pre>
+        </pre>
     </div>
 </div>
 
