@@ -403,7 +403,7 @@ for each epoch:
     //     var svg_doc = drawing.contentDocument;
     //     console.log("loaded svg");
     // }, false);
-    var svg_doc = drawing.document;
+    var svg_doc = drawing.contentDocument;
     var forget_gate = svg_doc.getElementById("forget_gate");
     console.log(forget_gate);
     forget_gate.onmouseover = function(){forget_gate.setAttribute("style", "fill-opacity:0.25")};
