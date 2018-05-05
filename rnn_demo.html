@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="rnn_demo.css">
 
 
-
 </head>
 
 
@@ -16,7 +15,7 @@
     <h2 class="centered_text">a PhD Dissertation by Andrew Pfalz</h2>
     <p>This page is a brief overview of my dissertation work. I will explain:</p>
     <ul>
-        <li>how to train recurrent neural networks to predict</li>
+        <li>how to train recurrent neural networks to predict audio</li>
         <li>how these models can be sampled from to create new sequences of audio</li>
         <li>four concrete approaches to sampling from an LSTM with audio examples</li>
     </ul>
@@ -54,14 +53,16 @@
 <hr>
 <div class="containing_div">
     <div class="half_size left_floating_div" id="lstm_image_div">
-        <img id="lstm_image" src=lstm.png>
+        <svg id="svg" shape-rendering="geometricPrecision">
+        </svg>
+        <!-- <img id="lstm_image" src=lstm.png> -->
     </div>
     <div class="half_size right_floating_div" id="overview_text_div">
         <p class="centered_text">OVERVIEW</p>
         <p>Long Short Term Memory networks (LSTMs) are a type of Recurrent Neural Network (RNN).
            They were designed for modeling sequence data.
            An LSTM computes a prediction and a new cell state at each timestep.
-           The process can be broken down into four conceptual steps. Mouse over the steps in the figure to learn more about each.
+           The process can be broken down into four conceptual steps.
 
     </div>
 </div>
@@ -92,9 +93,14 @@ for each time step:
         <img id="sampling_image" src="generation_futura.png">
     </div>
 
-    <div class="half_size right_floating_div" id="sampling_text_div"><br><br>
+    <div class="half_size right_floating_div" id="sampling_text_div"><br>
         <p class="centered_text">SAMPLING</p>
-        <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following:
+        <!-- <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following: -->
+        <p>To generate an output sequence the model is shown an arbitrary seed.
+           It is asked what it thinks comes next in the sequence after the seed.
+           Then the model is asked what it thinks comes after its first prediction assuming it was correct.
+           This process is repeated until the desired length is reached. </p>
+        <p>To keep the seed the same length at each iteration the prediction is appended to the end of the seed and the first portion of the seed is dequeued. </p>
         <pre>
 seed   = get_new_seed()
 output = []
@@ -176,7 +182,7 @@ for each epoch:
     <div class="half_size left_floating_div" id="vector_text_div">
     <p class="centered_text">VECTOR APPROACH</p>
     <p>The first approach to sampling from an LSTM has the model predict a vector of audio samples for each input vector.
-       These vectors are the same size and can contain overlapping or non overlapping samples.
+       These vectors are the same size and can contain overlapping or non-overlapping samples.
        This approach is the fastest of the four presented here.
        The predicted vectors can sometimes have discontinuities at their extremities which are problematic.
     </div>
@@ -383,5 +389,8 @@ for each epoch:
            This is in stark contrast to the other methods that produce outputs where sometimes the data is only barely discernible.
     </div>
 </div>
+
+<script src='lstm_drawing.js'></script>
+
 </body>
 </html>
