@@ -13,11 +13,17 @@ div{
 hr {
     width: 80%;
 }
+@font-face {
+  font-family: Futura;
+  src: url('./futura_light.woff') format("WOFF");
+  font-weight: light;
+}
 
 /*==========================classes==========================*/
 .containing_div{
     overflow     : auto;
     font-family  : Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+    font-size    : 18;
     padding-left : 8%;
     padding-right: 8%;
 

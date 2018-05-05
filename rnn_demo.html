@@ -30,7 +30,7 @@
             <br>
             <p>Input Audio x</p>
             <audio controls>
-              <source src="horse.wav" type="audio/wav">
+              <source src="audio/column.wav" type="audio/wav">
             Your browser does not support the audio element.
             </audio>
         </div>
@@ -42,7 +42,7 @@
             <br>
             <p>Sampled Output &#x0177;</p>
             <audio controls>
-              <source src="horse.wav" type="audio/wav">
+              <source src="audio/column.wav" type="audio/wav">
             Your browser does not support the audio element.
             </audio>
         </div>
@@ -53,8 +53,9 @@
 <hr>
 <div class="containing_div">
     <div class="half_size left_floating_div" id="lstm_image_div">
-        <svg id="svg" shape-rendering="geometricPrecision">
-        </svg>
+        <!-- <svg id="svg" shape-rendering="geometricPrecision">
+        </svg> -->
+        <object id="lstm_drawing" data="lstm_drawing.svg" type="image/svg+xml"></object>
         <!-- <img id="lstm_image" src=lstm.png> -->
     </div>
     <div class="half_size right_floating_div" id="overview_text_div">
@@ -390,7 +391,23 @@ for each epoch:
     </div>
 </div>
 
-<script src='lstm_drawing.js'></script>
 
+<script>
+    var drawing     = document.getElementById("lstm_drawing");
+    // console.log(drawing);
+    // var load_func   = function(){
+    //     var svg_doc = drawing.contentDocument;
+    //     console.log("loaded svg");
+    // }
+    // drawing.addEventListener("load", function(){
+    //     var svg_doc = drawing.contentDocument;
+    //     console.log("loaded svg");
+    // }, false);
+    var svg_doc = drawing.document;
+    var forget_gate = svg_doc.getElementById("forget_gate");
+    console.log(forget_gate);
+    forget_gate.onmouseover = function(){forget_gate.setAttribute("style", "fill-opacity:0.25")};
+
+</script>
 </body>
 </html>
