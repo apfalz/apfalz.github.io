@@ -13,17 +13,18 @@ div{
 hr {
     width: 80%;
 }
-@font-face {
+/* @font-face {
   font-family: Futura;
   src: url('./futura_light.woff') format("WOFF");
   font-weight: light;
-}
+} */
 
 /*==========================classes==========================*/
 .containing_div{
     overflow     : auto;
-    font-family  : Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
-    font-size    : 18;
+    /* font-family  : Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif; */
+    font-family  :  "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+    font-size    : 20;
     padding-left : 8%;
     padding-right: 8%;
 
@@ -56,6 +57,13 @@ hr {
     display        : table-cell;
     vertical-align : middle;
 }
+
+@keyframes fade{
+    from {fill-opacity : 0.25;}
+    to   {fill-opacity : 0.00;}
+}
+
+
 
 /*==========================IDs==========================*/
 #svg{
