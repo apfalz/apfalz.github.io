@@ -63,6 +63,11 @@ hr {
     to   {fill-opacity : 0.00;}
 }
 
+@keyframes text_fade{
+    from {background : red;}
+    to   {background : white;}
+}
+
 
 
 /*==========================IDs==========================*/

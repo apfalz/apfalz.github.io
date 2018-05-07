@@ -1,16 +1,20 @@
 <html>
 <head>
 <title>Generating Audio Using RNNS</title>
-
+<meta charset="utf-8"/>
 <link rel="stylesheet" type="text/css" href="rnn_demo.css">
-<style>
+<!-- <style>
 
-      @keyframes fade{
+      /* @keyframes fade{
           from {background : red;}
           to   {background : white;}
+      } */
+      @keyframes fade{
+          from {fill-opacity : 0.25;}
+          to   {fill-opacity : 0.00;}
       }
 
-</style>
+</style> -->
 
 
 </head>
@@ -30,16 +34,6 @@
 </div>
 
 
-<script>
-
-var train_word = document.getElementById('train_word');
-    console.log(train_word);
-    train_word.addEventListener("animationend", function(){train_word.style['animation'] = ''; train_word.style['fill-opacity'] = 0;});
-    train_word.onmouseout      = function(){train_word.style['animation'] = 'fade 3s'};
-    train_word.onmouseover     = function(){train_word.style['fill-opacity'] = '0.75'};
-
-
-</script>
 <!--=========================Audio files and picture=========================-->
 <div class="containing_div">
     <div class="highest_level" align="center">
@@ -73,7 +67,7 @@ var train_word = document.getElementById('train_word');
     <div class="half_size left_floating_div" id="lstm_image_div">
         <!-- <svg id="svg" shape-rendering="geometricPrecision">
         </svg> -->
-        <object id="lstm_drawing" width='100%' data="lstm_drawing.svg" type="image/svg+xml"></object>
+        <object id="lstm_drawing" width='100%' data="lstm_drawing.svg" type="image/svg+xml" onload="add_animations()"></object>
         <!-- <img id="lstm_image" src=lstm.png> -->
     </div>
     <div class="half_size right_floating_div" id="overview_text_div">
@@ -423,6 +417,52 @@ for each epoch:
 </div>
 
 
+
+<script>
+
+function add_animations(){
+    console.log('animation');
+    var drawing        = document.getElementById("lstm_drawing");
+    var content        = drawing.contentDocument;
+
+    var train_word   = document.getElementById('train_word');
+
+
+    var forget_gate    = content.getElementById("forget_gate");
+    var input_gate     = content.getElementById("input_gate");
+    var update_gate    = content.getElementById("update_gate");
+    var output_gate    = content.getElementById("output_gate");
+    var forget_sigmoid = content.getElementById("forget_sigmoid");
+    var input_sigmoid  = content.getElementById("input_sigmoid");
+    var input_tanh     = content.getElementById("input_tanh");
+    var input_mult     = content.getElementById("input_mult");
+    var update_mult    = content.getElementById("update_mult");
+    var update_add     = content.getElementById("update_add");
+    var output_sigmoid = content.getElementById("output_sigmoid");
+    var output_tanh    = content.getElementById("output_tanh");
+    var output_mult    = content.getElementById("output_mult");
+
+    var opacity = '0.75';
+
+    var items   = [forget_gate, input_gate , update_gate, output_gate,forget_sigmoid, input_sigmoid, input_tanh, input_mult, update_mult, update_add, output_sigmoid, output_tanh, output_mult];
+
+    train_word.addEventListener("animationend", function(){train_word.style['animation'] = ''; train_word.style['fill-opacity'] = 0;});
+    train_word.onmouseout      = function(){train_word.style['animation'] = 'text_fade 3s'};
+    train_word.onmouseover     = function(){train_word.style['fill-opacity'] = opacity};
+    // for (var i=0; i < items.length; i++){
+    //     let item = items[i];
+    //     let ani  = 'fade 3s';
+    //     items[i].addEventListener("animationend", function(){item.style['animation'] = ''; item.style['fill-opacity'] = 0;});
+    //     items[i].onmouseout      = function(){item.style['animation'] = ani};
+    //     items[i].onmouseover     = function(){item.style['fill-opacity'] = opass};
+    // }
+
+
+}
+
+
+
+</script>
 
 </body>
 </html>
