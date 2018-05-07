@@ -715,7 +715,7 @@
        ry="0.79033613"
        inkscape:label="#path4842-08-4-9-7" />
   </g>
-  <style>
+<style>
 
 
 
@@ -725,8 +725,8 @@
             to   {fill-opacity : 0.00;}
         }
   </style>
-
+<!--
   <script
      href="svg_interactions.js"
-     id="script241" />
+     id="script241" /> -->
 </svg>
