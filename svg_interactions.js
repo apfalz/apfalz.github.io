@@ -4,15 +4,15 @@ var input_gate     = document.getElementById("input_gate");
 var update_gate    = document.getElementById("update_gate");
 var output_gate    = document.getElementById("output_gate");
 //
-var forget_sigmoid = document.getElementById("forget_sigmoid"); var forget_sigmoid_text = document.getElementById("forget_sigmoid_text");
-var input_sigmoid  = document.getElementById("input_sigmoid");  var input_sigmoid_text  = document.getElementById("input_sigmoid_text");
-var input_tanh     = document.getElementById("input_tanh");     var input_tanh_text     = document.getElementById("input_tanh_text");
-var input_mult     = document.getElementById("input_mult");     var input_mult_text     = document.getElementById("input_mult_text");
-var update_mult    = document.getElementById("update_mult");    var update_mult_text    = document.getElementById("update_mult_text");
-var update_add     = document.getElementById("update_add");     var update_add_text     = document.getElementById("update_add_text");
-var output_sigmoid = document.getElementById("output_sigmoid"); var output_sigmoid_text = document.getElementById("output_sigmoid_text");
-var output_tanh    = document.getElementById("output_tanh");    var output_tanh_text    = document.getElementById("output_tanh_text");
-var output_mult    = document.getElementById("output_mult");    var output_mult_text    = document.getElementById("output_mult_text");
+var forget_sigmoid = document.getElementById("forget_sigmoid");
+var input_sigmoid  = document.getElementById("input_sigmoid");
+var input_tanh     = document.getElementById("input_tanh");
+var input_mult     = document.getElementById("input_mult");
+var update_mult    = document.getElementById("update_mult");
+var update_add     = document.getElementById("update_add");
+var output_sigmoid = document.getElementById("output_sigmoid");
+var output_tanh    = document.getElementById("output_tanh");
+var output_mult    = document.getElementById("output_mult");
 
 
 

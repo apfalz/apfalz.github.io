@@ -1,11 +1,11 @@
 <html>
 <head>
 <title>Generating Audio Using RNNS</title>
-
+ <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="rnn_demo.css">
 <style>
 
-      @keyframes fade{
+      @keyframes text_fade{
           from {background : red;}
           to   {background : white;}
       }
@@ -23,7 +23,7 @@
     <h2 class="centered_text">a PhD Dissertation by Andrew Pfalz</h2>
     <p>This page is a brief overview of my dissertation work. I will explain:</p>
     <ul>
-        <li>how to <span id='train_word'>train</span> recurrent neural networks to predict audio</li>
+        <li>how to <span class='train_word'>train</span> recurrent neural networks to predict audio</li>
         <li>how these models can be sampled from to create new sequences of audio</li>
         <li>four concrete approaches to sampling from an LSTM with audio examples</li>
     </ul>
@@ -82,8 +82,8 @@
 <hr>
 <div class="containing_div" id="training_div">
     <div class="left_floating_div half_size" id="training_text_div">
-    <p class="centered_text">TRAINING</p>
-    <p>LSTMs learn by making predictions based on inputs. The figure at right shows the process of training a model. At each time step the model sees an array of inputs and predicts an output for each array element.  The accuracy of the prediction is evaluated by comparing it to a label via the loss function. The error in the prediction, the loss, is passed to the optimizer. The optimizer updates the internal weights in the model via backpropagation. The result of this process is that the next time the model sees the same input, its prediction will be more accurate.
+    <p class="centered_text"><span class="train_word">TRAINING</span></p>
+    <p>LSTMs learn by making predictions based on inputs. The figure at right shows the process of <span class="train_word">training</span> a model. At each time step the model sees an array of inputs and predicts an output for each array element.  The accuracy of the prediction is evaluated by comparing it to a label via the loss function. The error in the prediction, the loss, is passed to the optimizer. The optimizer updates the internal weights in the model via backpropagation. The result of this process is that the next time the model sees the same input, its prediction will be more accurate.
     <pre>
 for each time step:
     input, label          = get_new_input_and_label()
@@ -432,11 +432,14 @@ function add_animations(){
     var output_mult    = content.getElementById("output_mult");
 
 
+    // var train_words    = document.getElementsByClassName("train_word");
+    //
+    // for (var i = 0; i < train_words.length; i++){
+    //     console.log(train_words[i]);
+    //     train_words[i].addEventListener("animationend", function(){train_words[i].style.animation = ''; train_words[i].style.background = 'white';})
+    // }
 
-
-    var opass = '0.75';
-
-    var items   = [forget_gate, input_gate , update_gate, output_gate,forget_sigmoid, input_sigmoid, input_tanh, input_mult, update_mult, update_add, output_sigmoid, output_tanh, output_mult];
+    var items   = [forget_gate, input_gate , update_gate, output_gate, forget_sigmoid, input_sigmoid, input_tanh, input_mult, update_mult, update_add, output_sigmoid, output_tanh, output_mult];
 
 
 
@@ -444,10 +447,24 @@ function add_animations(){
         let item = items[i];
 
         item.addEventListener("animationend", function(){item.style.animation = ''; item.style['fill-opacity'] = 0;});
-        item.onmouseout      = function(){item.style.animation    = 'fade 3s'; console.log('onmouseout')};
-        item.onmouseover     = function(){item.style['fill-opacity'] = opass};
+        item.onmouseout      = function(){item.style.animation    = 'fade 3s'; train_words_animation();};
+        item.onmouseover     = function(){item.style['fill-opacity'] = '0.75'};
     }
 }
+
+
+
+function train_words_animation(){
+  let train_words = document.getElementsByClassName("train_word");
+  console.log('train_words');
+  for (var i = 0; i < train_words.length; i++){
+      console.log(train_words[i]);
+      train_words[i].addEventListener("animationend", function(){train_words[i].style.animation = ''; train_words[i].style.background = 'white';})
+      train_words[i].style['animation'] = 'text_fade 3s';
+  }
+}
+
+
 
 
 </script>
