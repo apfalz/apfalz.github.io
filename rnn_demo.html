@@ -5,8 +5,28 @@
 <link rel="stylesheet" type="text/css" href="rnn_demo.css">
 <style>
 
-      @keyframes text_fade{
+      @keyframes text_fade_red{
           from {background : red;}
+          to   {background : white;}
+      }
+      @keyframes text_fade_green{
+          from {background : green;}
+          to   {background : white;}
+      }
+      @keyframes text_fade_blue{
+          from {background : blue;}
+          to   {background : white;}
+      }
+      @keyframes text_fade_purple{
+          from {background : purple;}
+          to   {background : white;}
+      }
+      @keyframes text_fade_orange{
+          from {background : orange;}
+          to   {background : white;}
+      }
+      @keyframes text_fade_yellow{
+          from {background : yellow;}
           to   {background : white;}
       }
 
@@ -72,8 +92,18 @@
         <p>Long Short Term Memory networks (LSTMs) are a type of Recurrent Neural Network (RNN).
            They were designed for modeling sequence data.
            An LSTM computes a prediction and a new cell state at each timestep.
-           The process can be broken down into four conceptual steps.
+           The process can be broken down into four conceptual steps.</p>
 
+           <math>
+              <span class="equation" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br>
+              <span class="equation" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br>
+              <span class="equation" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br>
+              <span class="equation" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br>
+              <span class="equation" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br>
+              <span class="equation" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br>
+
+
+           </math>
     </div>
 </div>
 
@@ -116,13 +146,13 @@ for each time step:
            This process is repeated until the desired length is reached. </p>
         <p>To keep the seed the same length at each iteration the prediction is appended to the end of the seed and the first portion of the seed is dequeued. </p>
         <pre>
-seed   = get_new_seed()
+<span class="seed">seed</span>   = get_new_seed()
 output = []
 for each sampling time step:
-    prediction, new_state = model.predict(seed, prev_state)
+    prediction, new_state = model.predict(<span class="seed">seed</span>, prev_state)
     output.append(prediction[-1])
-    seed.append(prediction[-1]
-    seed = seed[1:]
+    <span class="seed">seed</span>.append(prediction[-1]
+    <span class="seed">seed</span> = <span class="seed">seed</span>[1:]
 
         </pre>
     </div>
@@ -170,7 +200,7 @@ output = []
 for each epoch:
     for each timestep:
         #train normally
-        input = get_input()
+        input= get_input()
         label = get_label()
         y_hat, state = model.guess(input, state)
         loss  = loss(y_hat, label)
@@ -430,7 +460,18 @@ function add_animations(){
     var output_sigmoid = content.getElementById("output_sigmoid");
     var output_tanh    = content.getElementById("output_tanh");
     var output_mult    = content.getElementById("output_mult");
+    //equations
+    var f              = document.getElementById('f');
+    var i              = document.getElementById('i');
+    var c_hat          = document.getElementById('c_hat');
+    var c              = document.getElementById('c');
+    var o              = document.getElementById('o');
+    var y_hat          = document.getElementById('y_hat');
 
+
+    // var items   = [forget_gate, input_gate , update_gate, output_gate, forget_sigmoid, input_sigmoid, input_tanh, input_mult, update_mult, update_add, output_sigmoid, output_tanh, output_mult];
+
+    // var equations = [f, i, c_hat, c, o, y_hat];
 
     // var train_words    = document.getElementsByClassName("train_word");
     //
@@ -438,27 +479,66 @@ function add_animations(){
     //     console.log(train_words[i]);
     //     train_words[i].addEventListener("animationend", function(){train_words[i].style.animation = ''; train_words[i].style.background = 'white';})
     // }
+    //
+    // for (var i=0; i < items.length; i++){
+    //     let item = items[i];
+    //
+    //     item.addEventListener("animationend", function(){item.style.animation = ''; item.style['fill-opacity'] = 0;});
+    //     item.onmouseout      = function(){item.style.animation    = 'fade 3s'; };
+    //     item.onmouseover     = function(){item.style['fill-opacity'] = '0.75'};
+    // }
 
-    var items   = [forget_gate, input_gate , update_gate, output_gate, forget_sigmoid, input_sigmoid, input_tanh, input_mult, update_mult, update_add, output_sigmoid, output_tanh, output_mult];
 
 
+    over(f,     forget_gate, 'red', 'text_fade_red 3s');
+    over(i,     input_gate, 'green', 'text_fade_green 3s');
+    over(c_hat, input_gate, 'blue', 'text_fade_blue 3s');
+    over(c,     update_gate, 'purple', 'text_fade_purple 3s');
+    over(o,     output_gate, 'orange', 'text_fade_orange 3s');
+    over(y_hat, output_gate, 'yellow', 'text_fade_yellow 3s');
 
-    for (var i=0; i < items.length; i++){
-        let item = items[i];
 
-        item.addEventListener("animationend", function(){item.style.animation = ''; item.style['fill-opacity'] = 0;});
-        item.onmouseout      = function(){item.style.animation    = 'fade 3s'; train_words_animation();};
-        item.onmouseover     = function(){item.style['fill-opacity'] = '0.75'};
-    }
+}
+
+function over(parent, child, color, text_animation){
+    //parent is always an equation child is always a gate
+    parent.onmouseover = function(){
+                              console.log('parent over');
+                              parent.style.background     = color;
+                              child.style['fill-opacity'] = '1';
+                              child.style.fill            = color;
+                         };
+
+    parent.onmouseout  = function(){
+                              console.log('parent out');
+                              parent.style.animation = text_animation;
+                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background = 'white';});
+                              child.style.animation = 'fade 3s';
+                              child.addEventListener('animationend',  function(){child.style.animation=''; child.style['fill-opacity'] = '0';});
+                         };
+
+    child.onmouseover  = function(){
+                              console.log('child over');
+                              child.style.fill            = color;
+                              child.style['fill-opacity'] = '0.75';
+                              parent.style.background     = color;
+
+                         }
+    child.onmouseout   = function(){
+                              console.log('child out');
+                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background = 'white';});
+                              child.addEventListener('animationend',  function(){child.style.animation=''; child.style['fill-opacity'] = '0.0';});
+                              child.style.animation = 'fade 3s';
+                              parent.style.animation = text_animation;
+                         }
+
 }
 
 
 
 function train_words_animation(){
   let train_words = document.getElementsByClassName("train_word");
-  console.log('train_words');
   for (var i = 0; i < train_words.length; i++){
-      console.log(train_words[i]);
       train_words[i].addEventListener("animationend", function(){train_words[i].style.animation = ''; train_words[i].style.background = 'white';})
       train_words[i].style['animation'] = 'text_fade 3s';
   }

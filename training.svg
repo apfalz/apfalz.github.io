@@ -834,4 +834,12 @@ wUxnLD8AAAAASUVORK5CYII=
          y="27.261902"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">y</tspan></text>
   </g>
+
+  <style>
+    @keyframes fade{
+        from {fill-opacity : 0.75;}
+        to   {fill-opacity : 0.00;}
+    }
+
+  </style>
 </svg>
