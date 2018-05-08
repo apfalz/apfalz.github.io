@@ -610,14 +610,14 @@ wUxnLD8AAAAASUVORK5CYII=
        inkscape:label="#rect1619" />
     <rect
        style="display:inline;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0.21808082;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1619-0"
+       id="training_label_box"
        width="23.241989"
        height="9.802577"
        x="74.521881"
        y="6.7272124" />
     <rect
        style="display:inline;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0.21808082;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1619-0-5"
+       id="training_output_box"
        width="23.241991"
        height="9.802577"
        x="74.479286"
