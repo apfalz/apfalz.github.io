@@ -140,19 +140,21 @@ for each time step:
     <div class="half_size right_floating_div" id="sampling_text_div"><br>
         <p class="centered_text">SAMPLING</p>
         <!-- <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following: -->
-        <p>To generate an output sequence the model is shown an arbitrary seed.
-           It is asked what it thinks comes next in the sequence after the seed.
-           Then the model is asked what it thinks comes after its first prediction assuming it was correct.
+        <p>To generate an <span class="sampled_output_word">sampled output</span> the <span class="model_word">model</span> is shown an arbitrary <span class="seed_word">seed</span>.
+           It is asked what it thinks comes next in the sequence after the <span class="seed_word">seed</span>.
+           Then the <span class='model_word'>model</span> is asked what it thinks comes after its first <span class="output_word">prediction</span> assuming it was correct.
            This process is repeated until the desired length is reached. </p>
-        <p>To keep the seed the same length at each iteration the prediction is appended to the end of the seed and the first portion of the seed is dequeued. </p>
+        <p>To keep the seed the same length at each iteration the final <span class='keep_portion'>portion</span> of the
+           <span class='output_word'>prediction</span> is appended to the end of the <span class="seed_word">seed</span>
+           and the first portion of the <span class="seed_word">seed</span> is dequeued. </p>
         <pre>
-<span class="seed">seed</span>   = get_new_seed()
-output = []
+<span class="seed_word">seed</span>   = get_new_seed()
+<span class="sampled_output">output</span> = []
 for each sampling time step:
-    prediction, new_state = model.predict(<span class="seed">seed</span>, prev_state)
-    output.append(prediction[-1])
-    <span class="seed">seed</span>.append(prediction[-1]
-    <span class="seed">seed</span> = <span class="seed">seed</span>[1:]
+    prediction, new_state = <span class='model_word'>model</span>.predict(<span class="seed_word">seed</span>, prev_state)
+    <span class="sampled_output_word">output</span>.append(<span class="keep_portion">prediction[-1]</span>)
+    <span class="seed_word">seed</span>.append(<span class="keep_portion">prediction[-1]</span>
+    <span class="seed_word">seed</span> = <span class="seed_word">seed</span>[1:]
 
         </pre>
     </div>
@@ -443,7 +445,9 @@ for each epoch:
     </div>
 </div>
 <script>
+
 function add_animations(){
+
     var drawing        = document.getElementById('lstm_drawing');
     var content        = drawing.contentDocument;
 
@@ -490,14 +494,57 @@ function add_animations(){
 
 
 
-    over(f,     forget_gate, 'red', 'text_fade_red 3s');
-    over(i,     input_gate, 'green', 'text_fade_green 3s');
-    over(c_hat, input_gate, 'blue', 'text_fade_blue 3s');
+    over(f,     forget_gate, 'red',    'text_fade_red    3s');
+    over(i,     input_gate,  'green',  'text_fade_green  3s');
+    over(c_hat, input_gate,  'blue',   'text_fade_blue   3s');
     over(c,     update_gate, 'purple', 'text_fade_purple 3s');
     over(o,     output_gate, 'orange', 'text_fade_orange 3s');
     over(y_hat, output_gate, 'yellow', 'text_fade_yellow 3s');
 
+    var seed_words      = document.getElementsByClassName('seed_word');
+    var output_words    = document.getElementsByClassName('output_word');
+    var keep_only       = document.getElementsByClassName('keep_portion');
+    var model_words     = document.getElementsByClassName('model_word');
+    var sampled_output  = document.getElementsByClassName('sampled_output_word');
 
+    var sampling_svg    = document.getElementById('sampling').contentDocument;
+    var sampling_seed   = sampling_svg.getElementById('sampling_seed_box');
+    var sampling_output = sampling_svg.getElementById('sampling_output_box');
+    var keep_0          = sampling_svg.getElementById('sampling_keep_text_0');
+    var keep_1          = sampling_svg.getElementById('sampling_keep_portion_1');
+    var sampling_lstm   = sampling_svg.getElementById('sampling_lstm_box');
+
+    function highlight_group(group, child, color, animation){
+        let par   = group[0];
+        let chi   = child;
+        for (var p=0; p<group.length; p++){
+            let cur_item = group[p];
+            cur_item.onmouseover = function(){
+                                      for(var i=0;i<group.length; i++){
+                                          let cur_item = group[i];
+                                          cur_item.style.background = color;
+                                      }
+                                      chi.style['fill'] = color;
+                                      chi.style['fill-opacity'] = '0.75';
+                                  };
+            cur_item.onmouseout  = function(){
+                                      for(var i=0;i<group.length; i++){
+                                          let cur_item = group[i];
+                                          cur_item.style.animation = animation;
+                                          cur_item.addEventListener('animationend', function(){cur_item.style.animation=''; cur_item.style.background = 'white';});
+                                      }
+                                      chi.style.animation = 'fade 3s';
+                                      chi.addEventListener('animationend', function(){chi.style.animation=''; chi.style['fill-opacity'] = '0.0';});
+                                  } ;
+        }
+
+    }
+
+
+    highlight_group(seed_words,   sampling_seed,   'red',   'text_fade_red 3s');
+    highlight_group(output_words, sampling_output, 'green', 'text_fade_green 3s');
+    highlight_group(keep_only,    keep_1,          'blue',  'text_fade_blue 3s');
+    highlight_group(model_words,  sampling_lstm,   'orange',  'text_fade_orange 3s');
 }
 
 function over(parent, child, color, text_animation){
@@ -512,9 +559,9 @@ function over(parent, child, color, text_animation){
     parent.onmouseout  = function(){
                               console.log('parent out');
                               parent.style.animation = text_animation;
-                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background = 'white';});
+                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background     = 'white';});
                               child.style.animation = 'fade 3s';
-                              child.addEventListener('animationend',  function(){child.style.animation=''; child.style['fill-opacity'] = '0';});
+                              child.addEventListener('animationend',  function(){child.style.animation='';  child.style['fill-opacity'] = '0';});
                          };
 
     child.onmouseover  = function(){
@@ -526,15 +573,20 @@ function over(parent, child, color, text_animation){
                          }
     child.onmouseout   = function(){
                               console.log('child out');
-                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background = 'white';});
-                              child.addEventListener('animationend',  function(){child.style.animation=''; child.style['fill-opacity'] = '0.0';});
+                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background     = 'white';});
+                              child.addEventListener('animationend',  function(){child.style.animation='';  child.style['fill-opacity'] = '0.0';});
                               child.style.animation = 'fade 3s';
                               parent.style.animation = text_animation;
                          }
 
 }
 
-
+// function highlight_group(group, color, text_animation){
+//     for (var i=0; i<group.length; i++){
+//         for(var j=0; j<)
+//     }
+//
+// }
 
 function train_words_animation(){
   let train_words = document.getElementsByClassName("train_word");
