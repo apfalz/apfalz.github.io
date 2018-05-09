@@ -32,6 +32,31 @@
           from {background : yellow;}
           to   {background : white;}
       }
+      /*====safari support=======*/
+      @-webkit-keyframes text_fade_red{
+          from {background : red;}
+          to   {background : white;}
+      }
+      @-webkit-keyframes text_fade_green{
+          from {background : green;}
+          to   {background : white;}
+      }
+      @-webkit-keyframes text_fade_blue{
+          from {background : blue;}
+          to   {background : white;}
+      }
+      @-webkit-keyframes text_fade_purple{
+          from {background : purple;}
+          to   {background : white;}
+      }
+      @-webkit-keyframes text_fade_orange{
+          from {background : orange;}
+          to   {background : white;}
+      }
+      @-webkit-keyframes text_fade_yellow{
+          from {background : yellow;}
+          to   {background : white;}
+      }
 
 </style>
 
@@ -561,10 +586,9 @@ function add_animations(){
 
 
     function highlight_group(group, children, color, animation){
-      let kids     = children;
 
         for (var p=0; p<group.length; p++){
-            let cur_item = group[p];
+            var cur_item = group[p];
             cur_item.onmouseover = function(){
                                       for(var i=0;i<group.length; i++){
                                           // let current               = group[i];
@@ -579,18 +603,19 @@ function add_animations(){
                                   };
             cur_item.onmouseout  = function(){
                                       for(var i=0;i<group.length; i++){
-                                          let current_1             = group[i];
+                                          var current_1             = group[i];
                                           current_1.style.animation = animation;
+                                          current_1.style['-webkit-animation-name'] = animation;
                                           current_1.addEventListener('animationend', function(){
                                                                                         this.style.animation='';
                                                                                         this.style.background = 'white';
                                                                                      });
                                       }
                                       for(var l=0; l<children.length; l++){
-                                          // let kids = children;
 
                                           if (children[l] != null){
                                               children[l].style.animation = 'fade 3s';
+                                              children[l].style['-webkit-animation-name'] = 'fade 3s';
                                               children[l].addEventListener('animationend', function(){
                                                                                                 this.style.animation='';
                                                                                                 this.style['fill-opacity'] = '0.0';
@@ -643,9 +668,9 @@ function over(parent, child, color, text_animation){
 
     parent.onmouseout  = function(){
                               parent.style.animation = text_animation;
-                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background     = 'white';});
+                              parent.addEventListener('animationend', function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style.background     = 'white';});
                               child.style.animation = 'fade 3s';
-                              child.addEventListener('animationend',  function(){child.style.animation='';  child.style['fill-opacity'] = '0';});
+                              child.addEventListener('animationend',  function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style['fill-opacity'] = '0';});
                          };
 
     child.onmouseover  = function(){
@@ -655,10 +680,17 @@ function over(parent, child, color, text_animation){
 
                          }
     child.onmouseout   = function(){
-                              parent.addEventListener('animationend', function(){parent.style.animation=''; parent.style.background     = 'white';});
-                              child.addEventListener('animationend',  function(){child.style.animation='';  child.style['fill-opacity'] = '0.0';});
+                              parent.addEventListener('animationend', function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style.background     = 'white';});
+                              child.addEventListener('animationend',  function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style['fill-opacity'] = '0.0';});
+
                               child.style.animation = 'fade 3s';
+                              child.style['-webit-animation-name'] = 'fade';
+                              child.style['-webit-animation-duration'] = '3s';
+
+
                               parent.style.animation = text_animation;
+                              parent.style['-webkit-animation-name'] = text_animation;
+                              parent.style['-webkit-animation-duration'] = '3s';
                          }
 
 }
