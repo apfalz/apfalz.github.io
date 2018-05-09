@@ -19,6 +19,9 @@ hr {
   font-weight: light;
 } */
 
+pre {
+  font-size : 12;
+}
 /*==========================classes==========================*/
 .containing_div{
     overflow     : auto;
@@ -27,11 +30,11 @@ hr {
     font-size    : 16;
     padding-left : 8%;
     padding-right: 8%;
-
 }
 
 .code_div{
     font-family: "Courier", Courier, monospace;
+    font-size  : 12;
 }
 
 .left_floating_div{
@@ -51,6 +54,7 @@ hr {
 
 .centered_text{
     text-align : center;
+    font-family : 'Arvo', sans-serif;
 }
 
 .vertical_align_div{
@@ -63,7 +67,9 @@ hr {
     to   {fill-opacity : 0.00;}
 }
 
-
+.title{
+    font-family : 'Arvo', sans-serif;
+}
 
 
 /*==========================IDs==========================*/
