@@ -70,7 +70,10 @@ pre {
 .title{
     font-family : 'Arvo', sans-serif;
 }
-
+.equation{
+    font-family : 'Arvo', sans-serif;
+    text-align  : center;
+}
 
 /*==========================IDs==========================*/
 #svg{
@@ -138,4 +141,8 @@ pre {
     content       : "";
     display       :table;
     clear         : both;
+}
+
+.equations_div{
+    text-align:center;
 }

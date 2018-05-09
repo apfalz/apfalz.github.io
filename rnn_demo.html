@@ -46,8 +46,8 @@
     <h2 class="centered_text title">a PhD Dissertation by Andrew Pfalz</h2>
     <p>This page is a brief overview of my dissertation work. I will explain:</p>
     <ul>
-        <li>how to <span class='train_word'>train</span> recurrent neural networks to predict audio</li>
-        <li>how these models can be sampled from to create new sequences of audio</li>
+        <li>how to <span class="train_word">train</span> recurrent neural networks to predict audio</li>
+        <li>how these models can be <span class="sampled_output_word">sampled</span> from to create new sequences of audio</li>
         <li>four concrete approaches to sampling from an LSTM with audio examples</li>
     </ul>
 </div>
@@ -62,19 +62,19 @@
             <br>
             <p>Input Audio x</p>
             <audio controls>
-              <source src="audio/column.wav" type="audio/wav">
+              <source src="audio/input.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
         <div id="rnn_image_div">
-            <img id=rnn_image src=rnn.png>
+          <object id="overview" data="overview.svg" type="image/svg+xml"></object>
         </div>
         <div class="right_floating_div" id="output_audio_div">
             <br>
             <br>
             <p>Sampled Output &#x0177;</p>
             <audio controls>
-              <source src="audio/column.wav" type="audio/wav">
+              <source src="audio/column.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
@@ -96,17 +96,16 @@
            They were designed for modeling sequence data.
            An LSTM computes a prediction and a new cell state at each timestep.
            The process can be broken down into four conceptual steps.</p>
-
-           <math>
-              <span class="equation" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br>
-              <span class="equation" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br>
-              <span class="equation" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br>
-              <span class="equation" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br>
-              <span class="equation" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br>
-              <span class="equation" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br>
-
-
-           </math>
+           <div id="equations_div">
+               <math>
+                  <center><span class="equation" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br></center>
+                  <center><span class="equation" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br></center>
+                  <center><span class="equation" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br></center>
+                  <center><span class="equation" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br></center>
+                  <center><span class="equation" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br></center>
+                  <center><span class="equation" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br></center>
+               </math>
+            </div>
     </div>
 </div>
 
@@ -147,7 +146,7 @@ for each time step:
     </div>
 
     <div class="half_size right_floating_div" id="sampling_text_div"><br>
-        <p class="centered_text">SAMPLING</p>
+        <p class="centered_text"><span class="sampled_output_word">SAMPLING</span></p>
         <!-- <p>To sample an output the model sees inputs and makes predictions in the same manner as during training. The nature of of the input and the handling of the output is the main difference. The algorithm used for generating and output is depicted in the figure at left.  It can be summarized as the following: -->
         <p>To generate an <span class="sampled_output_word">sampled output</span> the <span class="model_word">model</span> is shown an arbitrary <span class="seed_word">seed</span>.
            It is asked what it thinks comes next in the sequence after the <span class="seed_word">seed</span>.
@@ -184,7 +183,7 @@ for each epoch:
         y_hat, state = model.guess(input, state)
         loss         = loss(y_hat, label)
         model.update_weights(loss)
-        if timestep % wait == 0:
+        <span class="pause_training_word">if timestep % wait == 0:</span>
             seed   = get_seed()
             output = []
             for each dream_timestep:
@@ -199,9 +198,10 @@ for each epoch:
         </pre>
         </div>
         <div id="sampling_methods_text_div">
-            <p>When sampling from a model the simplest approach would be to periodically pause training to sample an output.
+            <p>When sampling from a model the simplest approach would be to <span class="pause_training_word">periodically pause training</span> to sample an output.
               This algorithm is shown in psuedocode to the left. In practice this method works some of the time but can get stuck predicting the same output over and over.
-              The pseudocode at right shows a slighlty different algorithm that performs better in practice. This method has the model train and sample concurrently.
+              The pseudocode at right shows a slighlty different algorithm that performs better in practice.
+              This method has the model <span class="concurrent_word">train and sample concurrently</span>.
         </div>
         <div class="code_div" id="concurrent_pseudocode_div">
         <p class="centered_text">CONCURRENT</p>
@@ -210,14 +210,14 @@ seed   = get_seed()
 output = []
 for each epoch:
     for each timestep:
-        #train normally
+        <span class="concurrent_word">#train normally</span>
         input= get_input()
         label = get_label()
         y_hat, state = model.guess(input, state)
         loss  = loss(y_hat, label)
         model.update_weights(loss)
 
-        #make a prediction
+        <span class="concurrent_word">#make a prediction</span>
         pred = model.guess(seed)
         output.append(pred[-1])
         seed.append(pred[-1])
@@ -234,10 +234,10 @@ for each epoch:
 <!--=========================Vector Approach=========================-->
 <hr>
 <div class="containing_div">
-    <div class="half_size left_floating_div" id="vector_text_div">
+    <div class="half_size left_floating_div" id="vector_text_div"><br><br>
     <p class="centered_text">VECTOR APPROACH</p>
     <p>The first approach to sampling from an LSTM has the model predict a vector of audio samples for each input vector.
-       These vectors are the same size and can contain overlapping or non-overlapping samples.
+       These vectors are the <span class="vector_len_word">same size</span> and can contain overlapping or non-overlapping samples.
        This approach is the fastest of the four presented here.
        The predicted vectors can sometimes have discontinuities at their extremities which are problematic.
     </div>
@@ -258,34 +258,34 @@ for each epoch:
         <div class="audio_div">
             <p>Vector length 1024</p>
             <audio controls>
-              <source src="audio/vector_1024.wav" type="audio/wav">
+              <source src="audio/vector_1024.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
         <div class="audio_div">
             <p>Vector length 512</p>
             <audio controls>
-              <source src="audio/vector_512.wav" type="audio/wav">
+              <source src="audio/vector_512.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
         <div class="audio_div">
             <p>Vector length 256</p>
             <audio controls>
-              <source src="audio/vector_256.wav" type="audio/wav">
+              <source src="audio/vector_256.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
         <div class="audio_div">
             <p>Vector length 128</p>
             <audio controls>
-              <source src="audio/vector_128.wav" type="audio/wav">
+              <source src="audio/vector_128.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
     </div>
     <div class="half_size right_floating_div">
-        <br><br><br>
+        <br><br><br><br><br>
         <p class="centered_text">VECTOR APPROACH ANALYSIS</p>
         <p>By changing the length of the predicted vectors the quality of the sampled outputs can be changed greatly.
            When the vectors are long, the model produces samples that evolve slowly.
@@ -293,17 +293,18 @@ for each epoch:
     </div>
 </div>
 <!--=========================Magnitude Spectrum Approach=========================-->
+<br>
 <hr>
 <div class="containing_div">
-    <div class="half_size left_floating_div">
+    <div class="half_size left_floating_div"><br><br>
         <p class="centered_text">MAGNITUDE SPECTRUM APPROACH</p>
-        <p>This approach formats the data in the same manner as the vector approach except that each vector is magnitude spectrum window.
+        <p>This approach formats the data in the same manner as the vector approach except that each vector is <span class="magnitude_word">magnitude spectrum window</span>.
            The raw audio is broken into vectors as before, then each vector is transformed via the <a href="https://ccrma.stanford.edu/~jos/parshl/Outline_Program.html">FFT</a>.
            The phase information is omitted and the magnitudes are normalized to the range 0 to 1.
            The sampled outputs are resynthesized via a channel vocoder.
            It works by linearly interpolating between the transpose of the predicted windows.
-           This produces a sampling rate envelope for each bin of the FFT.
-           Each envelope is applied to an oscillator with its frequency set to the center frequency of the corresponding FFT bin.
+           This produces a <span class="interpolated_word">sampling rate envelope</span> for each <span class="bin_word">bin</span> of the FFT.
+           Each envelope is applied to an <span class="oscillator_word">oscillator</span> with its frequency set to the center frequency of the corresponding <span class="bin_word">FFT bin</span>.
     </div>
 
     <div class="half_size right_floating_div" id="magnitude_spectrum_image_div">
@@ -313,12 +314,15 @@ for each epoch:
 
     </div>
 </div>
+<br>
+<br>
+
 <hr>
 <div class="containing_div">
     <br>
     <p class="centered_text">VOCODER DESIGN</p>
     <div id="vocoder_image_div">
-        <img id="vocoder_image" src="vocoder.png">
+      <object id="vocoder" width="100%" data="vocoder.svg" type="image/svg+xml"></object>
     </div>
 </div>
 <hr>
@@ -378,9 +382,9 @@ for each epoch:
     <div class="half_size left_floating_div">
         <p class="centered_text">TRANSPOSE APPROACH</p>
         <p>This approach features the most exotic handling of the model outputs.
-           The output of the LSTM is the same shape as the input [m,n].
-           It is passed through a fully connected layer to change the shape to [m, 1].
-           The transpose of this column vector is passed through another fully connected layer to change the shape to [1, 1].
+           The output of the LSTM is the same shape as the input <code><span class='trans_size_word'>[number_of_unrollings, vector_length]</span></code>.
+           It is passed through a fully connected layer to change the shape to <code>[number_of_unrollings, 1]</code>.
+           The transpose of this column vector is passed through another fully connected layer to change the shape to <code><span class="one_by_one_word">[1, 1]</span></code>.
         </p>
     </div>
     <div class="half_size right_floating_div">
@@ -397,7 +401,7 @@ for each epoch:
         <div class="audio_div">
             <p>Transpose</p>
             <audio controls>
-              <source src="audio/transpose.wav" type="audio/wav">
+              <source src="audio/transpose.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
@@ -440,7 +444,7 @@ for each epoch:
         <div class="audio_div">
             <p>Column Vector</p>
             <audio controls>
-              <source src="audio/column.wav" type="audio/wav">
+              <source src="audio/column.mp3" type="audio/mp3">
             Your browser does not support the audio element.
             </audio>
         </div>
@@ -482,27 +486,6 @@ function add_animations(){
     var y_hat          = document.getElementById('y_hat');
 
 
-    // var items   = [forget_gate, input_gate , update_gate, output_gate, forget_sigmoid, input_sigmoid, input_tanh, input_mult, update_mult, update_add, output_sigmoid, output_tanh, output_mult];
-
-    // var equations = [f, i, c_hat, c, o, y_hat];
-
-    // var train_words    = document.getElementsByClassName("train_word");
-    //
-    // for (var i = 0; i < train_words.length; i++){
-    //     console.log(train_words[i]);
-    //     train_words[i].addEventListener("animationend", function(){train_words[i].style.animation = ''; train_words[i].style.background = 'white';})
-    // }
-    //
-    // for (var i=0; i < items.length; i++){
-    //     let item = items[i];
-    //
-    //     item.addEventListener("animationend", function(){item.style.animation = ''; item.style['fill-opacity'] = 0;});
-    //     item.onmouseout      = function(){item.style.animation    = 'fade 3s'; };
-    //     item.onmouseover     = function(){item.style['fill-opacity'] = '0.75'};
-    // }
-
-
-
     over(f,     forget_gate, 'red',    'text_fade_red    3s');
     over(i,     input_gate,  'green',  'text_fade_green  3s');
     over(c_hat, input_gate,  'blue',   'text_fade_blue   3s');
@@ -521,11 +504,25 @@ function add_animations(){
     var label_words     = document.getElementsByClassName('label_word');
     var optim_words     = document.getElementsByClassName('optim_word');
     var train_words     = document.getElementsByClassName('train_word');
+    var pause_words     = document.getElementsByClassName('pause_training_word');
+    var concurrent      = document.getElementsByClassName('concurrent_word');
+    var vector_len_words= document.getElementsByClassName('vector_len_word');
+    var magnitude_words = document.getElementsByClassName('magnitude_word');
 
+    var osc_words       = document.getElementsByClassName('oscillator_word');
+    var interp_words    = document.getElementsByClassName('interpolated_word');
+    var bin_words       = document.getElementsByClassName('bin_word');
+
+    var one_one_words   = document.getElementsByClassName('one_by_one_word');
+    var trans_words     = document.getElementsByClassName('trans_size_word');
 
     //svgs
     var sampling_svg    = document.getElementById('sampling').contentDocument;
     var training_svg    = document.getElementById('training').contentDocument;
+    var vector_svg      = document.getElementById('vector_data').contentDocument;
+    var magnitude_svg   = document.getElementById('magnitude_data').contentDocument;
+    var vocoder_svg     = document.getElementById('vocoder').contentDocument;
+    var transpose_svg   = document.getElementById('transpose_data').contentDocument;
 
     //boxes in svgs
     var sampling_seed   = sampling_svg.getElementById('sampling_seed_box');
@@ -539,6 +536,29 @@ function add_animations(){
     var training_label  = training_svg.getElementById('training_label_box');
     var training_output = training_svg.getElementById('training_output_box');
     var training_optim  = training_svg.getElementById('optimizer');
+
+    var vector_len_0    = vector_svg.getElementById('vector_length_box_0');
+    var vector_len_1    = vector_svg.getElementById('vector_length_box_1');
+
+    var magnitude_box_0 = magnitude_svg.getElementById('vector_box_0');
+    var magnitude_box_1 = magnitude_svg.getElementById('vector_box_1');
+
+    var bin_box_0       = vocoder_svg.getElementById('bins_box_0');
+    var bin_box_1       = vocoder_svg.getElementById('bins_box_1');
+
+    var interp_box      = vocoder_svg.getElementById('interpolated');
+
+    var osc_0           = vocoder_svg.getElementById('osc_0');
+    var osc_1           = vocoder_svg.getElementById('osc_1');
+    var osc_2           = vocoder_svg.getElementById('osc_2');
+    var osc_3           = vocoder_svg.getElementById('osc_3');
+    var osc_4           = vocoder_svg.getElementById('osc_4');
+
+    var trans_unrolling = transpose_svg.getElementById('unrollings_box');
+    var trans_vec_len   = transpose_svg.getElementById('vector_length_box');
+    var one_0           = transpose_svg.getElementById('one_0');
+    var one_1           = transpose_svg.getElementById('one_1');
+
 
     function highlight_group(group, children, color, animation){
       let kids     = children;
@@ -590,12 +610,27 @@ function add_animations(){
     highlight_group(sampled_output, [],                'purple',  'text_fade_purple 3s');
     highlight_group(train_words,    [],                'red',     'text_fade_red    3s');
 
-    highlight_group(loss_words,  [training_loss],            'red',  'text_fade_red 3s');
-    highlight_group(input_words, [training_input],           'orange',  'text_fade_orange 3s');
-    highlight_group(label_words, [training_label],           'yellow',  'text_fade_yellow 3s');
-    highlight_group(optim_words, [training_optim],           'green',  'text_fade_green 3s');
+    highlight_group(loss_words,     [training_loss],   'red',     'text_fade_red    3s');
+    highlight_group(input_words,    [training_input],  'orange',  'text_fade_orange 3s');
+    highlight_group(label_words,    [training_label],  'yellow',  'text_fade_yellow 3s');
+    highlight_group(optim_words,    [training_optim],  'green',   'text_fade_green  3s');
 
 
+    highlight_group(pause_words,    [],                'green',   'text_fade_green  3s');
+    highlight_group(concurrent,     [],                'blue',    'text_fade_blue   3s');
+
+    highlight_group(vector_len_words, [vector_len_0,    vector_len_1],   'green',  'text_fade_green 3s');
+    highlight_group(magnitude_words,  [magnitude_box_0 , magnitude_box_1],'green',  'text_fade_green 3s');
+
+    highlight_group(bin_words,    [bin_box_0 , bin_box_1],'green',  'text_fade_green 3s');
+    highlight_group(interp_words, [interp_box],'blue',  'text_fade_blue 3s');
+    highlight_group(osc_words,    [osc_0, osc_1, osc_2, osc_3, osc_4],'red',  'text_fade_red 3s');
+
+    highlight_group(one_one_words,[one_0, one_1],  'red',  'text_fade_red 3s');
+    highlight_group(trans_words,  [trans_unrolling, trans_vec_len],'red',  'text_fade_red 3s');
+
+    // one_one_words
+    // trans_words
 }
 
 function over(parent, child, color, text_animation){
@@ -628,20 +663,7 @@ function over(parent, child, color, text_animation){
 
 }
 
-// function highlight_group(group, color, text_animation){
-//     for (var i=0; i<group.length; i++){
-//         for(var j=0; j<)
-//     }
-//
-// }
 
-function train_words_animation(){
-  let train_words = document.getElementsByClassName("train_word");
-  for (var i = 0; i < train_words.length; i++){
-      train_words[i].addEventListener("animationend", function(){train_words[i].style.animation = ''; train_words[i].style.background = 'white';})
-      train_words[i].style['animation'] = 'text_fade 3s';
-  }
-}
 
 
 
