@@ -146,3 +146,74 @@ pre {
 .equations_div{
     text-align:center;
 }
+
+/* colors */
+
+@keyframes text_fade_yellow{
+    from {background : #faf051ff;
+    to   {background : white}
+  }
+@keyframes text_fade_orange{
+    from {background : #f5aa27ff;
+    to   {background : white}
+  }
+@keyframes text_fade_d_orange{
+    from {background : b7147ff;
+    to   {background : white}
+  }
+@keyframes text_fade_sienna{
+    from {background : #c78720ff;
+    to   {background : white}
+  }
+@keyframes text_fade_red{
+    from {background :    #fb050aff;
+    to   {background : white}
+  }
+@keyframes text_fade_maroon{
+    from {background : #be0400ff;
+    to   {background : white}
+  }
+@keyframes text_fade_purple{
+    from {background : #712a6aff;
+    to   {background : white}
+  }
+@keyframes text_fade_l_green{
+    from {background : b4c524ff;
+    to   {background : white}
+  }
+@keyframes text_fade_green{
+    from {background :  #35b73eff;
+    to   {background : white}
+  }
+@keyframes text_fade_d_green{
+    from {background : 046437ff;
+    to   {background : white}
+  }
+@keyframes text_fade_teal_1{
+    from {background : #35c59fff;
+    to   {background : white}
+  }
+@keyframes text_fade_teal_2{
+    from {background : #0fafa8ff;
+    to   {background : white}
+  }
+@keyframes text_fade_teal_3{
+    from {background : #71c3c4ff;
+    to   {background : white}
+  }
+@keyframes text_fade_blue{
+    from {background :   #003e7dff;
+    to   {background : white}
+  }
+@keyframes text_fade_d_blue{
+    from {background : #052239ff;
+    to   {background : white}
+  }
+@keyframes text_fade_d_grey{
+    from {background : #3a444cff;
+    to   {background : white}
+  }
+@keyframes text_fade_l_grey{
+    from {background : #a6b6b5ff;
+    to   {background : white}
+  }

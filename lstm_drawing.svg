@@ -786,9 +786,6 @@
   <style
      id="style3986">
 
-
-
-
         @keyframes fade{
             from {fill-opacity : 0.75;}
             to   {fill-opacity : 0.00;}

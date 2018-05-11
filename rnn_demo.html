@@ -8,7 +8,9 @@
 <link rel="stylesheet" type="text/css" href="rnn_demo.css">
 <style>
 
-      @keyframes text_fade_red{
+
+
+      /* @keyframes text_fade_red{
           from {background : red;}
           to   {background : white;}
       }
@@ -31,9 +33,9 @@
       @keyframes text_fade_yellow{
           from {background : yellow;}
           to   {background : white;}
-      }
+      }*/
       /*====safari support=======*/
-      @-webkit-keyframes text_fade_red{
+      /* @-webkit-keyframes text_fade_red{
           from {background : red;}
           to   {background : white;}
       }
@@ -56,7 +58,86 @@
       @-webkit-keyframes text_fade_yellow{
           from {background : yellow;}
           to   {background : white;}
-      }
+      }  */
+
+
+@keyframes text_fade_yellow{
+    from {background : #faf051ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_orange{
+    from {background : #f5aa27ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_d_orange{
+    from {background : b7147ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_sienna{
+    from {background : #c78720ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_red{
+    from {background : #fb050aff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_maroon{
+    from {background : #be0400ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_purple{
+    from {background : #712a6aff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_l_green{
+    from {background : #b4c524ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_green{
+    from {background : #35b73eff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_d_green{
+    from {background : #046437ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_teal_1{
+    from {background : #35c59fff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_teal_2{
+    from {background : #0fafa8ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_teal_3{
+    from {background : #71c3c4ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_blue{
+    from {background : #003e7dff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_d_blue{
+    from {background : #052239ff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_d_grey{
+    from {background : #3a444cff;}
+    to   {background : #ffffffff;}
+  }
+@keyframes text_fade_l_grey{
+    from {background : #a6b6b5ff;}
+    to   {background : #ffffffff;}
+  }
+
+
+
+
+
+
+
+
+
 
 </style>
 
@@ -123,11 +204,11 @@
            The process can be broken down into four conceptual steps.</p>
            <div id="equations_div">
                <math>
-                  <center><span class="equation" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br></center>
-                  <center><span class="equation" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br></center>
-                  <center><span class="equation" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br></center>
+                  <center><span class="equation" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br></center>
+                  <center><span class="equation" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br></center>
+                  <center><span class="equation" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br></center>
                   <center><span class="equation" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br></center>
-                  <center><span class="equation" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[h<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br></center>
+                  <center><span class="equation" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br></center>
                   <center><span class="equation" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br></center>
                </math>
             </div>
@@ -510,13 +591,8 @@ function add_animations(){
     var o              = document.getElementById('o');
     var y_hat          = document.getElementById('y_hat');
 
+console.log(i);
 
-    over(f,     forget_gate, 'red',    'text_fade_red    3s');
-    over(i,     input_gate,  'green',  'text_fade_green  3s');
-    over(c_hat, input_gate,  'blue',   'text_fade_blue   3s');
-    over(c,     update_gate, 'purple', 'text_fade_purple 3s');
-    over(o,     output_gate, 'orange', 'text_fade_orange 3s');
-    over(y_hat, output_gate, 'yellow', 'text_fade_yellow 3s');
 
     //groups of words
     var seed_words      = document.getElementsByClassName('seed_word');
@@ -533,13 +609,13 @@ function add_animations(){
     var concurrent      = document.getElementsByClassName('concurrent_word');
     var vector_len_words= document.getElementsByClassName('vector_len_word');
     var magnitude_words = document.getElementsByClassName('magnitude_word');
-
     var osc_words       = document.getElementsByClassName('oscillator_word');
     var interp_words    = document.getElementsByClassName('interpolated_word');
     var bin_words       = document.getElementsByClassName('bin_word');
-
     var one_one_words   = document.getElementsByClassName('one_by_one_word');
     var trans_words     = document.getElementsByClassName('trans_size_word');
+
+
 
     //svgs
     var sampling_svg    = document.getElementById('sampling').contentDocument;
@@ -628,31 +704,57 @@ function add_animations(){
     }
 
 
-    highlight_group(seed_words,     [sampling_seed],   'red',     'text_fade_red    3s');
-    highlight_group(output_words,   [sampling_output], 'green',   'text_fade_green  3s');
-    highlight_group(keep_only,      [keep_1],          'blue',    'text_fade_blue   3s');
-    highlight_group(model_words,    [sampling_lstm],   'orange',  'text_fade_orange 3s');
-    highlight_group(sampled_output, [],                'purple',  'text_fade_purple 3s');
-    highlight_group(train_words,    [],                'red',     'text_fade_red    3s');
+    var yellow   = '#faf051ff';
+    var orange   = '#f5aa27ff';
+    var d_orange = '#fb7147ff';
+    var sienna   = '#c78720ff';
+    var red      = '#fb050aff';
+    var maroon   = '#be0400ff';
+    var purple   = '#712a6aff';
+    var l_green  = '#b4c524ff';
+    var green    = '#35b73eff';
+    var d_green  = '#046437ff';
+    var teal_1   = '#35c59fff';
+    var teal_2   = '#0fafa8ff';
+    var teal_3   = '#71c3c4ff';
+    var blue     = '#003e7dff';
+    var d_blue   = '#052239ff';
+    var d_grey   = '#3a444cff';
+    var l_grey   = '#a6b6b5ff';
 
-    highlight_group(loss_words,     [training_loss],   'red',     'text_fade_red    3s');
-    highlight_group(input_words,    [training_input],  'orange',  'text_fade_orange 3s');
-    highlight_group(label_words,    [training_label],  'yellow',  'text_fade_yellow 3s');
-    highlight_group(optim_words,    [training_optim],  'green',   'text_fade_green  3s');
+
+    over(f,     forget_gate, teal_2,    'text_fade_teal_2  3s');
+    over(i,     input_gate,  green,     'text_fade_green   3s');
+    over(c_hat, input_gate,  l_green,   'text_fade_l_green 3s');
+    over(c,     update_gate, purple,    'text_fade_purple  3s');
+    over(o,     output_gate, orange,    'text_fade_orange  3s');
+    over(y_hat, output_gate, yellow,    'text_fade_yellow  3s');
+
+    highlight_group(seed_words,     [sampling_seed],                      green,    'text_fade_green   3s');
+    highlight_group(output_words,   [sampling_output],                    teal_2,   'text_fade_teal_2  3s');
+    highlight_group(keep_only,      [keep_1],                             sienna,   'text_fade_sienna  3s');
+    highlight_group(model_words,    [sampling_lstm],                      l_green,  'text_fade_l_green 3s');
+    highlight_group(sampled_output, [],                                   purple,   'text_fade_purple  3s');
+    highlight_group(train_words,    [],                                   d_green,  'text_fade_d_green 3s');
+
+    highlight_group(loss_words,     [training_loss],                      orange,      'text_fade_orange    3s');
+    highlight_group(input_words,    [training_input],                     d_orange,   'text_fade_d_orange 3s');
+    highlight_group(label_words,    [training_label],                     teal_1,   'text_fade_yellow 3s');
+    highlight_group(optim_words,    [training_optim],                     yellow,    'text_fade_yellow  3s');
 
 
-    highlight_group(pause_words,    [],                'green',   'text_fade_green  3s');
-    highlight_group(concurrent,     [],                'blue',    'text_fade_blue   3s');
+    highlight_group(pause_words,    [],                                   l_green,   'text_fade_l_green  3s');
+    highlight_group(concurrent,     [],                                   sienna,    'text_fade_sienna   3s');
 
-    highlight_group(vector_len_words, [vector_len_0,    vector_len_1],   'green',  'text_fade_green 3s');
-    highlight_group(magnitude_words,  [magnitude_box_0 , magnitude_box_1],'green',  'text_fade_green 3s');
+    highlight_group(vector_len_words, [vector_len_0,    vector_len_1],    d_green,   'text_fade_d_green 3s');
+    highlight_group(magnitude_words,  [magnitude_box_0 , magnitude_box_1],purple,   'text_fade_purple 3s');
 
-    highlight_group(bin_words,    [bin_box_0 , bin_box_1],'green',  'text_fade_green 3s');
-    highlight_group(interp_words, [interp_box],'blue',  'text_fade_blue 3s');
-    highlight_group(osc_words,    [osc_0, osc_1, osc_2, osc_3, osc_4],'red',  'text_fade_red 3s');
+    highlight_group(bin_words,    [bin_box_0 , bin_box_1],                orange,  'text_fade_orange 3s');
+    highlight_group(interp_words, [interp_box],                           d_orange,  'text_fade_d_orange 3s');
+    highlight_group(osc_words,    [osc_0, osc_1, osc_2, osc_3, osc_4],    teal_3,  'text_fade_red 3s');
 
-    highlight_group(one_one_words,[one_0, one_1],  'red',  'text_fade_red 3s');
-    highlight_group(trans_words,  [trans_unrolling, trans_vec_len],'red',  'text_fade_red 3s');
+    highlight_group(one_one_words,[one_0, one_1],                         l_green,  'text_fade_l_green 3s');
+    highlight_group(trans_words,  [trans_unrolling, trans_vec_len],       orange,  'text_fade_orange 3s');
 
     // one_one_words
     // trans_words
