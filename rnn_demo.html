@@ -63,71 +63,71 @@
 
 @keyframes text_fade_yellow{
     from {background : #faf051ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_orange{
     from {background : #f5aa27ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_d_orange{
     from {background : b7147ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_sienna{
     from {background : #c78720ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_red{
     from {background : #fb050aff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_maroon{
     from {background : #be0400ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_purple{
     from {background : #712a6aff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_l_green{
     from {background : #b4c524ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_green{
     from {background : #35b73eff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_d_green{
     from {background : #046437ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_teal_1{
     from {background : #35c59fff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_teal_2{
     from {background : #0fafa8ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_teal_3{
     from {background : #71c3c4ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_blue{
     from {background : #003e7dff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_d_blue{
     from {background : #052239ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_d_grey{
     from {background : #3a444cff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 @keyframes text_fade_l_grey{
     from {background : #a6b6b5ff;}
-    to   {background : #ffffffff;}
+    to   {background : #ffffff00;}
   }
 
 
@@ -147,7 +147,7 @@
 
 <body onload="add_animations()">
 <!--=========================Title=========================-->
-<div class="containing_div">
+<div class="containing_div" id="title_cont">
     <h1 class="centered_text title">Generating Audio Using Recurrent Neural Networks</h1>
     <h2 class="centered_text title">a PhD Dissertation by Andrew Pfalz</h2>
     <p>This page is a brief overview of my dissertation work. I will explain:</p>
@@ -156,12 +156,12 @@
         <li>how these models can be <span class="sampled_output_word">sampled</span> from to create new sequences of audio</li>
         <li>four concrete approaches to sampling from an LSTM with audio examples</li>
     </ul>
-</div>
+<!-- </div> -->
 
 
 
 <!--=========================Audio files and picture=========================-->
-<div class="containing_div">
+<!-- <div class="containing_div"> -->
     <div class="highest_level" align="center">
         <div class="left_floating_div" id="input_audio_div">
             <br>
@@ -189,7 +189,7 @@
 
 <!--=========================overview=========================-->
 <hr>
-<div class="containing_div">
+<div class="containing_div" id='overview_cont'>
     <div class="half_size left_floating_div" id="lstm_image_div">
         <!-- <svg id="svg" shape-rendering="geometricPrecision">
         </svg> -->
@@ -218,7 +218,7 @@
 
 <!--=========================Training=========================-->
 <hr>
-<div class="containing_div" id="training_div">
+<div class="containing_div" id="training_cont">
     <div class="left_floating_div half_size" id="training_text_div">
     <p class="centered_text"><span class="train_word">TRAINING</span></p>
     <p>LSTMs learn by making <span class="output_word">predictions</span> based on <span class="input_word">inputs</span>.
@@ -245,7 +245,7 @@ for each time step:
 
 <!--=========================Sampling =========================-->
 <hr>
-<div class="containing_div" id="sampling_div">
+<div class="containing_div" id="sampling_cont">
     <div class="half_size left_floating_div" id="sampling_image_div">
         <!-- <img id="sampling_image" src="generation_futura.png"> -->
         <object id="sampling" width="100%" data="updated_sampling_drawing.svg" type="image/svg+xml"></object>
@@ -276,7 +276,7 @@ for each sampling time step:
 
 <!--=========================sampling methods and psuedocode=========================-->
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="methods_cont">
     <div class="row">
         <div class="code_div" id="sequential_pseudocode_div">
         <p class="centered_text">SEQUENTIAL</p>
@@ -339,7 +339,7 @@ for each epoch:
 
 <!--=========================Vector Approach=========================-->
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="vector_cont">
     <div class="half_size left_floating_div" id="vector_text_div"><br><br>
     <p class="centered_text">VECTOR APPROACH</p>
     <p>The first approach to sampling from an LSTM has the model predict a vector of audio samples for each input vector.
@@ -358,7 +358,7 @@ for each epoch:
 
 <!--=========================Vector Approach=========================-->
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="vector_audio_cont">
     <div class="half_size left_floating_div">
         <p class="centered_text">VECTOR APPROACH AUDIO</p>
         <div class="audio_div">
@@ -401,7 +401,7 @@ for each epoch:
 <!--=========================Magnitude Spectrum Approach=========================-->
 <br>
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="magnitude_cont">
     <div class="half_size left_floating_div"><br><br>
         <p class="centered_text">MAGNITUDE SPECTRUM APPROACH</p>
         <p>This approach formats the data in the same manner as the vector approach except that each vector is <span class="magnitude_word">magnitude spectrum window</span>.
@@ -424,7 +424,7 @@ for each epoch:
 <br>
 
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="vocoder_cont">
     <br>
     <p class="centered_text">VOCODER DESIGN</p>
     <div id="vocoder_image_div">
@@ -432,7 +432,7 @@ for each epoch:
     </div>
 </div>
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="mag_audio_cont">
     <div class="half_size left_floating_div">
         <p class="centered_text">MAGNITUDE SPECTRUM APPROACH AUDIO</p>
         <div class="audio_div">
@@ -484,7 +484,7 @@ for each epoch:
 
 <!--=========================Transpose Approach=========================-->
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="transpose_cont">
     <div class="half_size left_floating_div">
         <p class="centered_text">TRANSPOSE APPROACH</p>
         <p>This approach features the most exotic handling of the model outputs.
@@ -501,7 +501,7 @@ for each epoch:
 </div>
 
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="trans_audio_cont">
     <div class="half_size left_floating_div">
         <p class="centered_text">TRANSPOSE APPROACH AUDIO</p>
         <div class="audio_div">
@@ -523,7 +523,7 @@ for each epoch:
 
 <!--=========================Column Vector Approach=========================-->
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="column_cont">
     <div class="half_size left_floating_div">
         <p class="centered_text">COLUMN VECTOR APPROACH</p>
         <p>This the most successful approach. The model predicts one sample for each input vector.
@@ -544,7 +544,7 @@ for each epoch:
 </div>
 
 <hr>
-<div class="containing_div">
+<div class="containing_div" id="column_audio_cont">
     <div class="half_size left_floating_div">
         <p class="centered_text">COLUMN VECTOR APPROACH AUDIO</p>
         <div class="audio_div">
@@ -564,6 +564,24 @@ for each epoch:
     </div>
 </div>
 <script>
+
+var yellow   = '#faf051ff';
+var orange   = '#f5aa27ff';
+var d_orange = '#fb7147ff';
+var sienna   = '#c78720ff';
+var red      = '#fb050aff';
+var maroon   = '#be0400ff';
+var purple   = '#712a6aff';
+var l_green  = '#b4c524ff';
+var green    = '#35b73eff';
+var d_green  = '#046437ff';
+var teal_1   = '#35c59fff';
+var teal_2   = '#0fafa8ff';
+var teal_3   = '#71c3c4ff';
+var blue     = '#003e7dff';
+var d_blue   = '#052239ff';
+var d_grey   = '#3a444cff';
+var l_grey   = '#a6b6b5ff';
 
 function add_animations(){
 
@@ -661,65 +679,25 @@ console.log(i);
     var one_1           = transpose_svg.getElementById('one_1');
 
 
-    function highlight_group(group, children, color, animation){
-
-        for (var p=0; p<group.length; p++){
-            var cur_item = group[p];
-            cur_item.onmouseover = function(){
-                                      for(var i=0;i<group.length; i++){
-                                          group[i].style.background  = color;
-                                      }
-                                      for(var k=0; k<children.length; k++){
-                                          if (children[k] != null){
-                                              children[k].style['fill']         = color;
-                                              children[k].style['fill-opacity'] = '0.75';
-                                          }
-                                      }
-                                  };
-            cur_item.onmouseout  = function(){
-                                      for(var i=0;i<group.length; i++){
-                                          var current_1             = group[i];
-                                          current_1.style.animation = animation;
-                                          current_1.style['-webkit-animation-name'] = animation;
-                                          current_1.addEventListener('animationend', function(){
-                                                                                        this.style.animation='';
-                                                                                        this.style.background = 'white';
-                                                                                     });
-                                      }
-                                      for(var l=0; l<children.length; l++){
-
-                                          if (children[l] != null){
-                                              children[l].style.animation = 'fade 3s';
-                                              children[l].style['-webkit-animation-name'] = 'fade 3s';
-                                              children[l].addEventListener('animationend', function(){
-                                                                                                this.style.animation='';
-                                                                                                this.style['fill-opacity'] = '0.0';
-                                                                                           });
-                                          }
-                                      }
-                                  } ;
-        }
-
-    }
 
 
-    var yellow   = '#faf051ff';
-    var orange   = '#f5aa27ff';
-    var d_orange = '#fb7147ff';
-    var sienna   = '#c78720ff';
-    var red      = '#fb050aff';
-    var maroon   = '#be0400ff';
-    var purple   = '#712a6aff';
-    var l_green  = '#b4c524ff';
-    var green    = '#35b73eff';
-    var d_green  = '#046437ff';
-    var teal_1   = '#35c59fff';
-    var teal_2   = '#0fafa8ff';
-    var teal_3   = '#71c3c4ff';
-    var blue     = '#003e7dff';
-    var d_blue   = '#052239ff';
-    var d_grey   = '#3a444cff';
-    var l_grey   = '#a6b6b5ff';
+    // var yellow   = '#faf051ff';
+    // var orange   = '#f5aa27ff';
+    // var d_orange = '#fb7147ff';
+    // var sienna   = '#c78720ff';
+    // var red      = '#fb050aff';
+    // var maroon   = '#be0400ff';
+    // var purple   = '#712a6aff';
+    // var l_green  = '#b4c524ff';
+    // var green    = '#35b73eff';
+    // var d_green  = '#046437ff';
+    // var teal_1   = '#35c59fff';
+    // var teal_2   = '#0fafa8ff';
+    // var teal_3   = '#71c3c4ff';
+    // var blue     = '#003e7dff';
+    // var d_blue   = '#052239ff';
+    // var d_grey   = '#3a444cff';
+    // var l_grey   = '#a6b6b5ff';
 
 
     over(f,     forget_gate, teal_2,    'text_fade_teal_2  3s');
@@ -742,21 +720,62 @@ console.log(i);
     highlight_group(optim_words,    [training_optim],                     yellow,    'text_fade_yellow  3s');
 
 
-    highlight_group(pause_words,    [],                                   l_green,   'text_fade_l_green  3s');
+    highlight_group(pause_words,    [],                                   maroon,   'text_fade_maroon  3s');
     highlight_group(concurrent,     [],                                   sienna,    'text_fade_sienna   3s');
 
     highlight_group(vector_len_words, [vector_len_0,    vector_len_1],    d_green,   'text_fade_d_green 3s');
     highlight_group(magnitude_words,  [magnitude_box_0 , magnitude_box_1],purple,   'text_fade_purple 3s');
 
-    highlight_group(bin_words,    [bin_box_0 , bin_box_1],                orange,  'text_fade_orange 3s');
-    highlight_group(interp_words, [interp_box],                           d_orange,  'text_fade_d_orange 3s');
+    highlight_group(bin_words,    [bin_box_0 , bin_box_1],                purple,  'text_fade_purple 3s');
+    highlight_group(interp_words, [interp_box],                           maroon,  'text_fade_maroon 3s');
     highlight_group(osc_words,    [osc_0, osc_1, osc_2, osc_3, osc_4],    teal_3,  'text_fade_teal_3 3s');
 
     highlight_group(one_one_words,[one_0, one_1],                         l_green,  'text_fade_l_green 3s');
     highlight_group(trans_words,  [trans_unrolling, trans_vec_len],       orange,  'text_fade_orange 3s');
 
-    // one_one_words
-    // trans_words
+    handle_containing_divs();
+}
+
+
+function highlight_group(group, children, color, animation){
+
+    for (var p=0; p<group.length; p++){
+        var cur_item = group[p];
+        cur_item.onmouseover = function(){
+                                  for(var i=0;i<group.length; i++){
+                                      group[i].style.background  = color;
+                                  }
+                                  for(var k=0; k<children.length; k++){
+                                      if (children[k] != null){
+                                          children[k].style['fill']         = color;
+                                          children[k].style['fill-opacity'] = '0.75';
+                                      }
+                                  }
+                              };
+        cur_item.onmouseout  = function(){
+                                  for(var i=0;i<group.length; i++){
+                                      var current_1             = group[i];
+                                      current_1.style.animation = animation;
+                                      current_1.style['-webkit-animation-name'] = animation;
+                                      current_1.addEventListener('animationend', function(){
+                                                                                    this.style.animation='';
+                                                                                    this.style.background = '#ffffff00';
+                                                                                 });
+                                  }
+                                  for(var l=0; l<children.length; l++){
+
+                                      if (children[l] != null){
+                                          children[l].style.animation = 'fade 3s';
+                                          children[l].style['-webkit-animation-name'] = 'fade 3s';
+                                          children[l].addEventListener('animationend', function(){
+                                                                                            this.style.animation='';
+                                                                                            this.style['fill-opacity'] = '0.0';
+                                                                                       });
+                                      }
+                                  }
+                              } ;
+    }
+
 }
 
 function over(parent, child, color, text_animation){
@@ -769,7 +788,7 @@ function over(parent, child, color, text_animation){
 
     parent.onmouseout  = function(){
                               parent.style.animation = text_animation;
-                              parent.addEventListener('animationend', function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style.background     = 'white';});
+                              parent.addEventListener('animationend', function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style.background     = '#ffffff00';});
                               child.style.animation = 'fade 3s';
                               child.addEventListener('animationend',  function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style['fill-opacity'] = '0';});
                          };
@@ -781,7 +800,7 @@ function over(parent, child, color, text_animation){
 
                          }
     child.onmouseout   = function(){
-                              parent.addEventListener('animationend', function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style.background     = 'white';});
+                              parent.addEventListener('animationend', function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style.background     = '#ffffff00';});
                               child.addEventListener('animationend',  function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style['fill-opacity'] = '0.0';});
 
                               child.style.animation = 'fade 3s';
@@ -796,8 +815,36 @@ function over(parent, child, color, text_animation){
 
 }
 
+function handle_containing_divs(){
 
 
+
+
+    animate('title_cont',        l_green,   'text_fade_l_green 3s');
+    animate('overview_cont',     teal_2,    'text_fade_teal_2  3s');
+    animate('training_cont',     teal_1,    'text_fade_teal_1  3s');
+    animate('sampling_cont',     orange,    'text_fade_orange  3s');
+    animate('methods_cont',      l_green,   'text_fade_l_green 3s');
+    animate('vector_cont',       yellow,    'text_fade_yellow  3s');
+    animate('vector_audio_cont', teal_1,    'text_fade_teal_1  3s');
+    animate('magnitude_cont',    orange,    'text_fade_orange  3s');
+    animate('vocoder_cont',      l_green,    'text_fade_l_green  3s');
+    animate('mag_audio_cont',    yellow,    'text_fade_yellow  3s');
+    animate('transpose_cont',    red,       'text_fade_red  3s');
+    animate('trans_audio_cont',  purple,    'text_fade_purple  3s');
+    animate('column_cont',       l_green,    'text_fade_l_green  3s');
+    animate('column_audio_cont', purple,    'text_fade_purple  3s');
+
+
+}
+
+function animate(item_name, color, animation){
+    var item = document.getElementById(item_name);
+    item.onmouseover =     function(){this.style.background = color;};
+    // item.onmouseout  =     function(){this.style.animation  = animation;};
+    item.onmouseout  =     function(){this.style.background  = '#ffffff00';};
+    // item.addEventListener('animationend', function(){this.style.animation = ''; this.style.background  = '#ffffff00';});
+}
 
 
 
