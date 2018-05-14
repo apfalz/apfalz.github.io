@@ -430,23 +430,23 @@ for each epoch:
 </div>
 <script>
 
-var yellow   = '#faf051ff';
-var orange   = '#f5aa27ff';
-var d_orange = '#fb7147ff';
-var sienna   = '#c78720ff';
-var red      = '#fb050aff';
-var maroon   = '#be0400ff';
-var purple   = '#712a6aff';
-var l_green  = '#b4c524ff';
-var green    = '#35b73eff';
-var d_green  = '#046437ff';
-var teal_1   = '#35c59fff';
-var teal_2   = '#0fafa8ff';
-var teal_3   = '#71c3c4ff';
-var blue     = '#003e7dff';
-var d_blue   = '#052239ff';
-var d_grey   = '#3a444cff';
-var l_grey   = '#a6b6b5ff';
+var yellow   = '#faf051';
+var orange   = '#f5aa27';
+var d_orange = '#fb7147';
+var sienna   = '#c78720';
+var red      = '#fb050a';
+var maroon   = '#be0400';
+var purple   = '#712a6a';
+var l_green  = '#b4c524';
+var green    = '#35b73e';
+var d_green  = '#046437';
+var teal_1   = '#35c59f';
+var teal_2   = '#0fafa8';
+var teal_3   = '#71c3c4';
+var blue     = '#003e7d';
+var d_blue   = '#052239';
+var d_grey   = '#3a444c';
+var l_grey   = '#a6b6b5';
 
 function add_animations(){
 
@@ -565,12 +565,12 @@ console.log(i);
     // var l_grey   = '#a6b6b5ff';
 
 
-    over(f,     forget_gate, teal_2,    'text_fade_teal_2  3s');
-    over(i,     input_gate,  green,     'text_fade_green   3s');
-    over(c_hat, input_gate,  l_green,   'text_fade_l_green 3s');
-    over(c,     update_gate, purple,    'text_fade_purple  3s');
-    over(o,     output_gate, orange,    'text_fade_orange  3s');
-    over(y_hat, output_gate, yellow,    'text_fade_yellow  3s');
+    over(f,     forget_gate, red,       'text_fade_red  3s',    'text_fade_red');
+    over(i,     input_gate,  green,     'text_fade_green   3s', 'text_fade_green');
+    over(c_hat, input_gate,  l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    over(c,     update_gate, purple,    'text_fade_purple  3s', 'text_fade_purple');
+    over(o,     output_gate, orange,    'text_fade_orange  3s', 'text_fade_orange');
+    over(y_hat, output_gate, yellow,    'text_fade_yellow  3s', 'text_fade_yellow');
 
     highlight_group(seed_words,     [sampling_seed],                      green,    'text_fade_green   3s');
     highlight_group(output_words,   [sampling_output],                    teal_2,   'text_fade_teal_2  3s');
@@ -624,7 +624,7 @@ function highlight_group(group, children, color, animation){
                                       current_1.style['-webkit-animation-name'] = animation;
                                       current_1.addEventListener('animationend', function(){
                                                                                     this.style.animation='';
-                                                                                    this.style.background = '#ffffff00';
+                                                                                    this.style.background = 'rgba(0,0,0,0)';
                                                                                  });
                                   }
                                   for(var l=0; l<children.length; l++){
@@ -634,6 +634,7 @@ function highlight_group(group, children, color, animation){
                                           children[l].style['-webkit-animation-name'] = 'fade 3s';
                                           children[l].addEventListener('animationend', function(){
                                                                                             this.style.animation='';
+                                                                                            this.style['-webkit-animation-name']='';
                                                                                             this.style['fill-opacity'] = '0.0';
                                                                                        });
                                       }
@@ -643,7 +644,7 @@ function highlight_group(group, children, color, animation){
 
 }
 
-function over(parent, child, color, text_animation){
+function over(parent, child, color, text_animation, safari_anim){
     //parent is always an equation child is always a gate
     parent.onmouseover = function(){
                               parent.style.background     = color;
@@ -652,9 +653,14 @@ function over(parent, child, color, text_animation){
                          };
 
     parent.onmouseout  = function(){
-                              parent.style.animation = text_animation;
-                              parent.addEventListener('animationend', function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style.background     = '#ffffff00';});
+                              parent.style.animation                     = text_animation;
+                              parent.style['-webkit-animation-name']     = safari_anim;
+                              parent.style['-webkit-animation-duration'] = '3s';
+                              parent.addEventListener('animationend', function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style.background     = 'rgba(0, 0, 0, 0)';});
                               child.style.animation = 'fade 3s';
+                              child.style['-webkit-animation-name']      = 'fade';
+                              child.style['-webkit-animation-duration']  = '3s';
+
                               child.addEventListener('animationend',  function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style['fill-opacity'] = '0';});
                          };
 
@@ -665,16 +671,16 @@ function over(parent, child, color, text_animation){
 
                          }
     child.onmouseout   = function(){
-                              parent.addEventListener('animationend', function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style.background     = '#ffffff00';});
+                              parent.addEventListener('animationend', function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style.background     = 'rgba(0, 0, 0, 0)';});
                               child.addEventListener('animationend',  function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style['fill-opacity'] = '0.0';});
 
-                              child.style.animation = 'fade 3s';
-                              child.style['-webit-animation-name'] = 'fade';
+                              child.style.animation                    = 'fade 3s';
+                              child.style['-webit-animation-name']     = 'fade';
                               child.style['-webit-animation-duration'] = '3s';
 
 
-                              parent.style.animation = text_animation;
-                              parent.style['-webkit-animation-name'] = text_animation;
+                              parent.style.animation                     = text_animation;
+                              parent.style['-webkit-animation-name']     = safari_anim;
                               parent.style['-webkit-animation-duration'] = '3s';
                          }
 
@@ -685,20 +691,20 @@ function handle_containing_divs(){
 
 
 
-    animate('title_cont',        l_green,   'text_fade_l_green 3s');
-    animate('overview_cont',     teal_2,    'text_fade_teal_2  3s');
-    animate('training_cont',     teal_1,    'text_fade_teal_1  3s');
-    animate('sampling_cont',     orange,    'text_fade_orange  3s');
-    animate('methods_cont',      l_green,   'text_fade_l_green 3s');
-    animate('vector_cont',       yellow,    'text_fade_yellow  3s');
-    animate('vector_audio_cont', teal_1,    'text_fade_teal_1  3s');
-    animate('magnitude_cont',    orange,    'text_fade_orange  3s');
-    animate('vocoder_cont',      l_green,    'text_fade_l_green  3s');
-    animate('mag_audio_cont',    yellow,    'text_fade_yellow  3s');
-    animate('transpose_cont',    red,       'text_fade_red  3s');
-    animate('trans_audio_cont',  purple,    'text_fade_purple  3s');
-    animate('column_cont',       l_green,    'text_fade_l_green  3s');
-    animate('column_audio_cont', purple,    'text_fade_purple  3s');
+    animate('title_cont',        l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('overview_cont',     teal_2,    'text_fade_teal_2  3s', 'text_fade_teal_2');
+    animate('training_cont',     teal_1,    'text_fade_teal_1  3s', 'text_fade_teal_1');
+    animate('sampling_cont',     orange,    'text_fade_orange  3s', 'text_fade_orange');
+    animate('methods_cont',      l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('vector_cont',       yellow,    'text_fade_yellow  3s', 'text_fade_yellow');
+    animate('vector_audio_cont', teal_1,    'text_fade_teal_1  3s', 'text_fade_teal_1');
+    animate('magnitude_cont',    orange,    'text_fade_orange  3s', 'text_fade_orange');
+    animate('vocoder_cont',      l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('mag_audio_cont',    yellow,    'text_fade_yellow  3s', 'text_fade_yellow');
+    animate('transpose_cont',    red,       'text_fade_red     3s', 'text_fade_red');
+    animate('trans_audio_cont',  purple,    'text_fade_purple  3s', 'text_fade_purple');
+    animate('column_cont',       l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('column_audio_cont', purple,    'text_fade_purple  3s', 'text_fade_purple');
 
 
 }
@@ -706,9 +712,7 @@ function handle_containing_divs(){
 function animate(item_name, color, animation){
     var item = document.getElementById(item_name);
     item.onmouseover =     function(){this.style.background = color;};
-    // item.onmouseout  =     function(){this.style.animation  = animation;};
-    item.onmouseout  =     function(){this.style.background  = '#ffffff00';};
-    // item.addEventListener('animationend', function(){this.style.animation = ''; this.style.background  = '#ffffff00';});
+    item.onmouseout  =     function(){this.style.background  = 'rgba(0,0,0,0)';};
 }
 
 
