@@ -79,14 +79,15 @@ ga('send', 'pageview');
            The process can be broken down into four conceptual steps.
            Hover over the equations for more information.
         </p>
+            <br>
            <div id="equations_div">
                <math>
-                  <center><span class="equation tooltip" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br></center>
-                  <center><span class="equation tooltip" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br></center>
-                  <center><span class="equation tooltip" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br></center>
-                  <center><span class="equation tooltip" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br></center>
-                  <center><span class="equation tooltip" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br></center>
-                  <center><span class="equation tooltip" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br></center>
+                  <span class="equation tooltip" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br>
+                  <span class="equation tooltip" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br>
+                  <span class="equation tooltip" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br>
+                  <span class="equation tooltip" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br>
+                  <span class="equation tooltip" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br>
+                  <span class="equation tooltip" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br>
                </math>
             </div>
     </div>
@@ -725,9 +726,9 @@ function add_tooltips(){
                 'The update step applies the decisions made by the forget and input gates to produce the new cell state.',
                 'The output gate decides based on the input, which elements from the cell state will be output.',
                 'The output gate output for each timestep is computed based on the current input and the updated cell state. '];
-    var items = [i, f,  c_hat, c, o, y_hat];
+    var items = [f, i, c_hat, c, o, y_hat];
     var ids   = ['f_tooltip', 'i_tooltip', 'c_hat_tooltip', 'c_tooltip', 'o_tooltip', 'y_hat_tooltip'];
-    var offs  = ['10px', '-40px', '-50px', '-60px', '-70px', '-80px'];
+    var offs  = ['-30px', '-40px', '-50px', '-60px', '-70px', '-80px'];
 
     for (var item=0; item< msgs.length; item++){
         make_tooltip(items[item], msgs[item], ids[item], offs[item]);

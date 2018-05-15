@@ -36,7 +36,7 @@ pre {
     font-family   : "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
     font-size     : 16;
 
-    color         : #fff;
+    /* color         : #fff; */
     text-align    : center;
     padding       : 10px 0;
     border-radius : 0px;
@@ -174,8 +174,9 @@ pre {
     clear         : both;
 }
 
-.equations_div{
-    text-align:center;
+#equations_div{
+    text-align : right;
+    width      : 50%;
 }
 
 /* colors */
