@@ -710,7 +710,7 @@ function animate(item_name, color, animation){
     item.onmouseout  =     function(){this.style.background  = 'rgba(0,0,0,0)';};
 }
 
-function make_tooltip(eq, msg,  id, offset='-30px'){
+function make_tooltip(eq, msg,  id, offset){
     var tooltip         = document.createElement('span');
     tooltip.innerHTML   = msg;
     tooltip.id          = id;
