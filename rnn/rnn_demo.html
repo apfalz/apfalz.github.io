@@ -76,15 +76,17 @@ ga('send', 'pageview');
         <p>Long Short Term Memory networks (LSTMs) are a type of Recurrent Neural Network (RNN).
            They were designed for modeling sequence data.
            An LSTM computes a prediction and a new cell state at each timestep.
-           The process can be broken down into four conceptual steps.</p>
+           The process can be broken down into four conceptual steps.
+           Hover over the equations for more information.
+        </p>
            <div id="equations_div">
                <math>
-                  <center><span class="equation" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br></center>
-                  <center><span class="equation" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br></center>
-                  <center><span class="equation" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br></center>
-                  <center><span class="equation" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br></center>
-                  <center><span class="equation" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br></center>
-                  <center><span class="equation" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br></center>
+                  <center><span class="equation tooltip" id="f">     f<sub>t</sub> = &sigma;(W<sub>f</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>f</sub>)</span><br></center>
+                  <center><span class="equation tooltip" id="i">     i<sub>t</sub> = &sigma;(W<sub>i</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>i</sub>)</span><br></center>
+                  <center><span class="equation tooltip" id="c_hat"> &Ccirc;<sub>t</sub> = &sigma;(W<sub>C</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>C</sub>)</span><br></center>
+                  <center><span class="equation tooltip" id="c">     C<sub>t</sub> = f<sub>t</sub>*C<sub>t-1</sub>, i<sub>t</sub> * &Ccirc;<sub>t</sub></span><br></center>
+                  <center><span class="equation tooltip" id="o">     o<sub>t</sub> = &sigma;(W<sub>o</sub> &middot;[&ycirc;<sub>t-s</sub>, x<sub>t</sub>] + b<sub>o</sub>)</span><br></center>
+                  <center><span class="equation tooltip" id="y_hat"> &ycirc;<sub>t</sub> = o<sub>t</sub> * tanh(C<sub>t</sub>)</span><br></center>
                </math>
             </div>
     </div>
@@ -268,7 +270,7 @@ for each epoch:
     <div class="half_size right_floating_div">
         <br><br><br><br><br>
         <p class="centered_text">VECTOR APPROACH ANALYSIS</p>
-        <p>By changing the length of the predicted vectors the quality of the sampled outputs can be changed greatly.
+        <p>Changing the length of the predicted vectors drastically changes the quality of the sampled outputs.
            When the vectors are long, the model produces samples that evolve slowly.
            When the vectors are short, the model produces samples that change more rapidly but resemble in the input data less.
     </div>
@@ -303,7 +305,7 @@ for each epoch:
     <br>
     <p class="centered_text">VOCODER DESIGN</p>
     <div id="vocoder_image_div">
-      <object id="vocoder" width="100%" data="images/vocoder.svg" type="image/svg+xml"></object>
+      <object id="vocoder" width="90%" data="images/vocoder.svg" type="image/svg+xml"></object>
     </div>
 </div>
 <hr>
@@ -446,7 +448,7 @@ var d_orange = '#fb7147';
 var sienna   = '#c78720';
 var red      = '#fb050a';
 var maroon   = '#be0400';
-var purple   = '#712a6a';
+var purple   = '#962a58';
 var l_green  = '#b4c524';
 var green    = '#35b73e';
 var d_green  = '#046437';
@@ -484,7 +486,7 @@ function add_animations(){
     var o              = document.getElementById('o');
     var y_hat          = document.getElementById('y_hat');
 
-console.log(i);
+
 
 
     //groups of words
@@ -556,25 +558,6 @@ console.log(i);
 
 
 
-    // var yellow   = '#faf051ff';
-    // var orange   = '#f5aa27ff';
-    // var d_orange = '#fb7147ff';
-    // var sienna   = '#c78720ff';
-    // var red      = '#fb050aff';
-    // var maroon   = '#be0400ff';
-    // var purple   = '#712a6aff';
-    // var l_green  = '#b4c524ff';
-    // var green    = '#35b73eff';
-    // var d_green  = '#046437ff';
-    // var teal_1   = '#35c59fff';
-    // var teal_2   = '#0fafa8ff';
-    // var teal_3   = '#71c3c4ff';
-    // var blue     = '#003e7dff';
-    // var d_blue   = '#052239ff';
-    // var d_grey   = '#3a444cff';
-    // var l_grey   = '#a6b6b5ff';
-
-
     over(f,     forget_gate, red,       'text_fade_red  3s',    'text_fade_red');
     over(i,     input_gate,  green,     'text_fade_green   3s', 'text_fade_green');
     over(c_hat, input_gate,  l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
@@ -609,6 +592,7 @@ console.log(i);
     highlight_group(trans_words,  [trans_unrolling, trans_vec_len],       orange,  'text_fade_orange 3s');
 
     handle_containing_divs();
+    add_tooltips();
 }
 
 
@@ -725,7 +709,33 @@ function animate(item_name, color, animation){
     item.onmouseout  =     function(){this.style.background  = 'rgba(0,0,0,0)';};
 }
 
+function make_tooltip(eq, msg,  id, offset='-30px'){
+    var tooltip         = document.createElement('span');
+    tooltip.innerHTML   = msg;
+    tooltip.id          = id;
+    tooltip.style.top   = offset;
+    tooltip.classList.add('tooltiptext');
+    eq.appendChild(tooltip);
+}
 
+function add_tooltips(){
+    var msgs = ['The forget gate decides what should be erased from the cell state at the next timestep.',
+                'The input gate decides which elements from the current input should be added to the cell state.',
+                'The input gate also computes a vector of candidate values that will be selectively added to the cell state.',
+                'The update step applies the decisions made by the forget and input gates to produce the new cell state.',
+                'The output gate decides based on the input, which elements from the cell state will be output.',
+                'The output gate output for each timestep is computed based on the current input and the updated cell state. '];
+    var items = [i, f,  c_hat, c, o, y_hat];
+    var ids   = ['f_tooltip', 'i_tooltip', 'c_hat_tooltip', 'c_tooltip', 'o_tooltip', 'y_hat_tooltip'];
+    var offs  = ['10px', '-40px', '-50px', '-60px', '-70px', '-80px'];
+
+    for (var item=0; item< msgs.length; item++){
+        make_tooltip(items[item], msgs[item], ids[item], offs[item]);
+    }
+
+
+
+}
 
 </script>
 </body>
