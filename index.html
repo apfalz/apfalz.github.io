@@ -48,6 +48,24 @@
           width      : var(--end_width);
          }
   }
+
+@-webkit-keyframes move_div{
+    0%   {background : var(--start_color);
+          margin-left: var(--start_pos);
+          margin-top : var(--start_top);
+          height     : var(--start_height);
+          width      : var(--start_width);
+          }
+
+    50%  {background : var(--mid_color);}
+
+    100% {background : rgba(255, 255, 255, 0.0);
+          margin-left: var(--end_pos);
+          margin-top : var(--end_top);
+          height     : var(--end_height);
+          width      : var(--end_width);
+         }
+  }
   #indexText {
       margin-left: 30em;
       margin-top: 30em;
