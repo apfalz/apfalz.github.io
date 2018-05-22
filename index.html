@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
+<head>
         <title>Homepage</title>
         <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
-            <script>
+            <!-- <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -13,147 +13,155 @@
   ga('create', 'UA-69191717-1', 'auto');
   ga('send', 'pageview');
 
+</script> -->
+</head>
+
+<!-- =============================================   -->
+
+<style>
+
+.mover {
+  background-color : red;
+}
+
+
+#hard{
+    height   : 20px;
+    width    : 20px;
+    position : absolute;
+}
+
+
+@keyframes move_div{
+    0%   {background : var(--start_color);
+          margin-left: var(--start_pos);
+          margin-top : var(--start_top);
+          height     : var(--start_height);
+          width      : var(--start_width);
+          }
+
+    50%  {background : var(--mid_color);}
+
+    100% {background : rgba(255, 255, 255, 0.0);
+          margin-left: var(--end_pos);
+          margin-top : var(--end_top);
+          height     : var(--end_height);
+          width      : var(--end_width);
+         }
+  }
+  #indexText {
+      margin-left: 30em;
+      margin-top: 30em;
+      position:absolute;
+      text-decoration: none;
+      font-family:monospace;
+  }
+
+</style>
+<body >
+<!-- =============================================   -->
+<script>
+
+    function make_random_px(min, max){
+        return Math.floor((Math.random() * max) + min) + 'px';
+    }
+
+    function make_random_color(){
+        var firstDigit  = Math.floor(Math.random() * 10).toString();
+        var secondDigit = Math.floor(Math.random() * 10).toString();
+        var thirdDigit  = Math.floor(Math.random() * 10).toString();
+        var fourthDigit = Math.floor(Math.random() * 10).toString();
+        var fifthDigit  = Math.floor(Math.random() * 10).toString();
+        var sixthDigit  = Math.floor(Math.random() * 10).toString();
+        return "#" + firstDigit + secondDigit + thirdDigit + fourthDigit + fifthDigit + sixthDigit;
+    }
+
+    function make_random_rgba(base_r, base_g, base_b, base_a){
+        var r = Math.floor(Math.random() * base_r);
+        var g = Math.floor(Math.random() * base_g);
+        var b = Math.floor(Math.random() * base_b);
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + base_a + ')';
+    }
+
+    function coin(){
+        if (Math.floor(Math.random()* 10) % 2 == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function add_mouseover(element){
+        element.onmouseover = function(){
+
+                                  var cur_left    = this.style.marginLeft;
+                                  var cur_top     = this.style.marginTop;
+                                  var cur_color   = this.style.background;
+                                  var cur_height  = this.style.height;
+                                  var cur_width   = this.style.width;
+
+                                  var targ_height = (Number(cur_height.split('px')[0]) + 50) + 'px';
+                                  var targ_width  = (Number(cur_width.split('px')[0])  + 50) + 'px';
+
+                                  var direction = coin();
+                                  //coin == true move side to side, coin == false move up and down
+                                  if (direction == true){
+                                      var left_num  = Math.floor(Math.random()* 200) - 100;
+                                      var targ_left = (Number(cur_left.split('px')[0]) + left_num) + 'px';
+                                      var targ_top  = cur_top;
+                                  }else{
+                                      var top_num   = Math.floor(Math.random()* 200) - 100;
+                                      var targ_top  = (Number(cur_top.split('px')[0])  + top_num) + 'px';
+                                      var targ_left = cur_left;
+                                  }
+
+
+                                  element.style.setProperty("--start_pos",   cur_left);
+                                  element.style.setProperty("--end_pos",     targ_left);
+                                  element.style.setProperty("--start_color", cur_color);
+                                  element.style.setProperty("--start_top",   cur_top);
+                                  element.style.setProperty("--end_top",     targ_top);
+                                  element.style.setProperty("--start_height",cur_height);
+                                  element.style.setProperty("--start_width", cur_width);
+                                  element.style.setProperty("--end_height",  targ_height);
+                                  element.style.setProperty("--end_width",   targ_width);
+                                  element.style.setProperty("--mid_color",   make_random_rgba(100, 200, 50, 0.5));
+
+                                  this.style.animation     = 'move_div 5s';
+                                  this.style.pointerEvents = 'none';
+                              };
+
+        element.addEventListener('animationend', function(){document.body.removeChild(this);});
+    }
+
+
+
+    function make_random_div(){
+
+        var div = document.createElement('DIV');
+        div.style.background = make_random_rgba(50, 150, 255, 1.0);
+        div.style.height     = make_random_px(0, 350);
+        div.style.width      = make_random_px(0, 350);
+        div.style.marginTop  = make_random_px(0, 350);
+        div.style.marginLeft = make_random_px(0, 350);
+        div.style.position   = 'absolute';
+        add_mouseover(div);
+        rand_divs.push(div);
+        document.body.appendChild(div);
+    }
+
+
+    //====================procedure=======================//
+    var rand_divs = [];
+    var num_divs  = 20;
+
+    for (var i=0; i < num_divs; i ++){
+        make_random_div();
+    }
 </script>
-    </head>
-<body onload="makeRandomPosition(seventeen), makeRandomColor(seventeen),
-              makeRandomPosition(sixteen), makeRandomColor(sixteen),
-              makeRandomPosition(fifteen), makeRandomColor(fifteen),
-              makeRandomPosition(fourteen), makeRandomColor(fourteen),
-              makeRandomPosition(thirteen), makeRandomColor(thirteen),
-              makeRandomPosition(twelve), makeRandomColor(twelve),
-              makeRandomPosition(eleven), makeRandomColor(eleven),
-              makeRandomPosition(ten), makeRandomColor(ten),
-              makeRandomPosition(nine), makeRandomColor(nine),
-              makeRandomPosition(eight), makeRandomColor(eight),
-              makeRandomPosition(seven), makeRandomColor(seven),
-              makeRandomPosition(six), makeRandomColor(six),
-              makeRandomPosition(five), makeRandomColor(five),
-              makeRandomPosition(four), makeRandomColor(four),
-              makeRandomPosition(three), makeRandomColor(three),
-              makeRandomPosition(two), makeRandomColor(two),
-              makeRandomPosition(one), makeRandomColor(one),
-              newSize(one),
-              newSize(two),
-              newSize(three),
-              newSize(four),
-              newSize(five),
-              newSize(six),
-              newSize(seven),
-              newSize(eight),
-              newSize(nine),
-              newSize(ten)
-              newSize(eleven)
-              newSize(twelve)
-              newSize(thirteen)
-              newSize(fourteen)
-              newSize(fifteen)
-              newSize(sixteen)
-              newSize(seventeen)">
 
-    <div class="homeDiv" id="one"       onmouseover="shiftPositionLeft(one);        lightenColor(one)"       onmouseout="shiftPositionLeftOut(one)"></div>
-    <div class="homeDiv" id="two"       onmouseover="shiftPositionRight(two);       lightenColor(two)"       onmouseout="shiftPositionRightOut(two)"></div>
-    <div class="homeDiv" id="three"     onmouseover="shiftPositionUp(three);        lightenColor(three)"     onmouseout="shiftPositionUp(three)"></div>
-    <div class="homeDiv" id="four"      onmouseover="shiftPositionDown(four);       lightenColor(four)"      onmouseout="shiftPositionDown(four)"></div>
-    <div class="homeDiv" id="five"      onmouseover="shiftPositionLeft(five);       lightenColor(five)"      onmouseout="shiftPositionLeftOut(five)"></div>
-    <div class="homeDiv" id="six"       onmouseover="shiftPositionRight(six);       lightenColor(six)"       onmouseout="shiftPositionRightOut(six)"></div>
-    <div class="homeDiv" id="seven"     onmouseover="shiftPositionUp(seven);        lightenColor(seven)"     onmouseout="shiftPositionUp(seven)"></div>
-    <div class="homeDiv" id="eight"     onmouseover="shiftPositionDown(eight);      lightenColor(eight)"     onmouseout="shiftPositionDown(eight)"></div>
-    <div class="homeDiv" id="nine"      onmouseover="shiftPositionLeft(nine);       lightenColor(nine)"      onmouseout="shiftPositionLeftOut(nine)"></div>
-    <div class="homeDiv" id="ten"       onmouseover="shiftPositionRight(ten);       lightenColor(ten)"       onmouseout="shiftPositionRightOut(ten)"></div>
-    <div class="homeDiv" id="eleven"    onmouseover="shiftPositionUp(eleven);       lightenColor(eleven)"    onmouseout="shiftPositionUp(eleven)"></div>
-    <div class="homeDiv" id="twelve"    onmouseover="shiftPositionDown(twelve);     lightenColor(twelve)"    onmouseout="shiftPositionDown(twelve)"></div>
-    <div class="homeDiv" id="thirteen"  onmouseover="shiftPositionLeft(thirteen);   lightenColor(thirteen)"  onmouseout="shiftPositionLeftOut(thirteen)"></div>
-    <div class="homeDiv" id="fourteen"  onmouseover="shiftPositionRight(fourteen);  lightenColor(fourteen)"  onmouseout="shiftPositionRightOut(fourteen)"></div>
-    <div class="homeDiv" id="fifteen"   onmouseover="shiftPositionUp(fifteen);      lightenColor(fifteen)"   onmouseout="shiftPositionUp(fifteen)"></div>
-    <div class="homeDiv" id="sixteen"   onmouseover="shiftPositionLeft(sixteen);    lightenColor(sixteen)"   onmouseout="shiftPositionLeftOut(sixteen)"></div>
-    <div class="homeDiv" id="seventeen" onmouseover="shiftPositionRight(seventeen); lightenColor(seventeen)" onmouseout="shiftPositionRightOut(seventeen)"></div>
-
-    <a href="home.html"><p id="indexText">Andrew Pfalz</p></a>
-
-    <script type="text/javascript">
-
-    //-----------creation and moving functions ------------------
-
-           function makeRandomPosition(whichDiv) {
-                var randomLeftMargin = Math.floor((Math.random() * 250) + 250);
-                var randomTopMargin = Math.floor((Math.random() * 250) + 250);
-                whichDiv.style.marginLeft = randomLeftMargin + "px";
-                whichDiv.style.marginTop = randomTopMargin + "px";
-           }
-
-            function shiftPositionLeft(whichDiv) {
-                var num = Number(whichDiv.style.marginLeft.replace(/px/, ""));
-                num += 10;
-                whichDiv.style.marginLeft = num + "px";
-            }
-
-            function shiftPositionLeftOut(whichDiv) {
-                var num = Number(whichDiv.style.marginLeft.replace(/px/, ""));
-                num += 10;
-                whichDiv.style.marginLeft = num + "px";
-            }
-
-            function shiftPositionRight(whichDiv) {
-                var num = Number(whichDiv.style.marginLeft.replace(/px/, ""));
-                num -= 10;
-                whichDiv.style.marginLeft = num + "px";
-
-            }
-
-            function shiftPositionRightOut(whichDiv) {
-                var num = Number(whichDiv.style.marginLeft.replace(/px/, ""));
-                num -= 10;
-                whichDiv.style.marginLeft = num + "px";
-            }
-
-            function shiftPositionUp(whichDiv) {
-                var num = Number(whichDiv.style.marginTop.replace(/px/, ""));
-                num -= 10;
-                whichDiv.style.marginTop = num + "px";
-
-            }
-
-            function shiftPositionDown(whichDiv) {
-                var num = Number(whichDiv.style.marginTop.replace(/px/, ""));
-                num += 10;
-                whichDiv.style.marginTop = num + "px";
+<a href="home.html"><p id="indexText">Andrew Pfalz</p></a>
 
 
-            }
 
-           function lightenColor(whichDiv) {
-                var rgb = whichDiv.style.backgroundColor;
-                rgb = rgb.replace(/[^\d,]/g, '').split(',');
-                var r = Number(rgb[0]);
-                var g = Number(rgb[1]);
-                var b = Number(rgb[2]);
-                r += 10;
-                g += 10;
-                b += 10;
-                whichDiv.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
-           }
-
-            function makeRandomColor(whichDiv) {
-                var firstDigit = Math.floor(Math.random() * 10).toString();
-                var secondDigit = Math.floor(Math.random() * 10).toString();
-                var thirdDigit = Math.floor(Math.random() * 10).toString();
-                var fourthDigit = Math.floor(Math.random() * 10).toString();
-                var fifthDigit = Math.floor(Math.random() * 10).toString();
-                var sixthDigit = Math.floor(Math.random() * 10).toString();
-                var newHexCode = "#" + firstDigit + secondDigit + thirdDigit + fourthDigit + fifthDigit + sixthDigit;
-
-                whichDiv.style.backgroundColor = newHexCode;
-            }
-
-            function newSize(whichDiv) {
-                var newHeight = Math.floor((Math.random() * 10) + 1);
-                whichDiv.style.height = newHeight + "em";
-                var newWidth = Math.floor((Math.random() * 10) + 1);
-                whichDiv.style.width = newWidth + "em";
-                }
-
-        </script>
 </body>
-
-
-</html>
