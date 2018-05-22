@@ -117,12 +117,15 @@
 
                                     vertDiv.style.setProperty("--start_color", cur_color);
                                     vertDiv.style.setProperty("--end_color",   targ_color);
-                                    vertDiv.style.animation = 'move_vert 1s';
+                                    vertDiv.style.animation                     = 'move_vert 1s';
+                                    vertDiv.style['-webkit-animation-name']     = 'move_vert';
+                                    vertDiv.style['-webkit-animation-duration'] = '3s';
                                     vertDiv.addEventListener('animationend', function(){
-                                                                                  this.style.marginTop  = targ_top;
-                                                                                  this.style.height     = targ_height;
-                                                                                  this.style.animation  = '';
-                                                                                  this.style.background = targ_color;
+                                                                                  this.style.marginTop                   = targ_top;
+                                                                                  this.style.height                      = targ_height;
+                                                                                  this.style.animation                   = '';
+                                                                                  this.style['-webkit-animation-name']  = '';
+                                                                                  this.style.background                  = targ_color;
                                                                               })
 
                                 };
@@ -174,11 +177,14 @@
                                     horz_div.style.setProperty("--start_color", cur_color);
                                     horz_div.style.setProperty("--end_color",   targ_color);
                                     horz_div.style.animation = 'move_horz 1s';
+                                    horz_div.style['-webkit-animation-name']     = 'move_horz';
+                                    horz_div.style['-webkit-animation-duration'] = '1s';
                                     horz_div.addEventListener('animationend', function(){
-                                                                                  this.style.marginLeft = targ_left;
-                                                                                  this.style.width      = targ_width;
-                                                                                  this.style.animation  = '';
-                                                                                  this.style.background = targ_color;
+                                                                                  this.style.marginLeft                  = targ_left;
+                                                                                  this.style.width                       = targ_width;
+                                                                                  this.style.animation                   = '';
+                                                                                  this.style['-webkit-animation-name']  = '';
+                                                                                  this.style.background                  = targ_color;
                                                                               })
 
                                 };

@@ -126,8 +126,10 @@
                                   element.style.setProperty("--end_width",   targ_width);
                                   element.style.setProperty("--mid_color",   make_random_rgba(100, 200, 50, 0.5));
 
-                                  this.style.animation     = 'move_div 5s';
-                                  this.style.pointerEvents = 'none';
+                                  this.style.animation                 = 'move_div 5s';
+                                  this.style['-webkit-animation-name'] = 'move_div';
+                                  this.style['-webkit-animation-name'] = '5s';
+                                  this.style.pointerEvents             = 'none';
                               };
 
         element.addEventListener('animationend', function(){document.body.removeChild(this);});
