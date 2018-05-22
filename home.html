@@ -2,139 +2,42 @@
 <head>
 <title>Andrew Pfalz</title>
 <link rel="stylesheet" href="stylesheetasdf.css" type="text/css">
+<style>
+
+@keyframes move_vert{
+    from   {
+          margin-top : var(--start_top);
+          height     : var(--start_height);
+          background : var(--start_color);
+          }
+    to    {
+          margin-top : var(--end_top);
+          height     : var(--end_height);
+          background : var(--end_color);
+          }
+}
+
+@keyframes move_horz{
+    from   {
+          margin-left : var(--start_left);
+          width       : var(--start_width);
+          background  : var(--start_color);
+
+          }
+    to    {
+          margin-left : var(--end_left);
+          width       : var(--end_width);
+          background  : var(--end_color);
+
+          }
+}
 
 
-    <script type="text/javascript">
 
 
-         function makeVerticalDivs() {
 
-            var w = 10 + "px";
-
-             for(var i = 0; i<50; i ++) {
-
-                var h = Math.floor(Math.random() * 250) + 75 + "px";
-                var offset = Math.floor(Math.random() * 100)  + "px";
-
-                var rR = Math.floor(Math.random() * 200) % 255;
-                var rG = Math.floor(Math.random() * 200) % 255;
-                var rB = Math.floor(Math.random() * 200) % 255;
-                var rColor = rR + rG + rB;
-
-                var vertDiv = document.createElement("div");
-                vertDiv.id = "vertical" + i;
-                vertDiv.style.height = h;
-                vertDiv.style.width  = w;
-                vertDiv.style.backgroundColor = rColor;
-                vertDiv.style.marginLeft = i * 10 + 200 +"px";
-                vertDiv.style.marginTop = offset;
-                vertDiv.style.position = "absolute";
-
-                if(i % 2 == 0) {
-                    vertDiv.style.zIndex = 3;
-                    }else{
-                    vertDiv.style.zIndex =1;
-                    };
-
-                vertDiv.onmouseover = function() {
-
-                    var num = Number(this.style.marginTop.replace(/px/, ""));
-                    num +=10;
-                    this.style.marginTop = num + "px";
-                    var h = Number(this.style.height.replace(/px/, ""));
-                    h +=10;
-                    this.style.height = h + "px";
-                    };
-
-                vertDiv.onmouseout = function () {
-                    var num = Number(this.style.marginTop.replace(/px/, ""));
-                    num +=10;
-                    this.style.marginTop = num + "px";
-                    var h = Number(this.style.height.replace(/px/, ""));
-                    h +=10;
-                    this.style.height = h + "px";
-                    };
-
-                 vertDiv.onclick = function () {
-                    var num = Number(this.style.marginTop.replace(/px/, ""));
-                    num -=10;
-                    this.style.marginTop = num + "px";
-                    var h = Number(this.style.height.replace(/px/, ""));
-                    h -=7;
-                    this.style.height = h + "px";
-
-
-                    };
-
-                var body = document.getElementsByTagName("body")[0];
-                body.appendChild(vertDiv);
-
-         }
-         }
-     //------------------------------------------------------------------------------------------
-        function makeHorizontalDivs() {
-
-            var h = 10 + "px";
-
-             for(var i = 0; i<40; i ++) {
-                var w = Math.floor(Math.random() * 250)+75 + "px";
-                var offset = Math.floor(Math.random() * 100)+ 250 + "px";
-
-                var rR = Math.floor(Math.random() * 200) % 255;
-                var rG = Math.floor(Math.random() * 200) % 255;
-                var rB = Math.floor(Math.random() * 200) % 255;
-                var rColor = rR + rG + rB;
-
-                var horiDiv = document.createElement("div");
-                horiDiv.id = "horizontal" + i;
-                horiDiv.style.height = h;
-                horiDiv.style.width  = w;
-                horiDiv.style.backgroundColor = rColor;
-                horiDiv.style.marginLeft = offset;
-                horiDiv.style.marginTop = i * 10 + "px";
-                horiDiv.style.position = "absolute";
-
-                if(i % 2 == 0) {
-                    horiDiv.style.zIndex = 2;
-                    }else{
-                    horiDiv.style.zIndex =4;
-                    };
-
-                horiDiv.onmouseover = function() {
-
-                    var num = Number(this.style.marginLeft.replace(/px/, ""));
-                    num -=10;
-                    this.style.marginLeft = num + "px";
-                    var h = Number(this.style.width.replace(/px/, ""));
-                    h += 10;
-                    this.style.width = h + "px";
-                    };
-
-                horiDiv.onmouseout = function () {
-
-                    var num = Number(this.style.marginLeft.replace(/px/, ""));
-                    num -=10;
-                    this.style.marginLeft = num + "px";
-                    var h = Number(this.style.width.replace(/px/, ""));
-                    this.style.width = h + "px";
-                    };
-
-                horiDiv.onclick = function () {
-
-                    var num = Number(this.style.marginLeft.replace(/px/, ""));
-                    num +=10;
-                    this.style.marginLeft = num + "px";
-                    var w = Number(this.style.width.replace(/px/, ""));
-                    w -=7;
-                    this.style.width = w + "px";
-
-                  }
-                var body = document.getElementsByTagName("body")[0];
-                body.appendChild(horiDiv);
-             }
-        }
-    </script>
-    <script>
+</style>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -145,12 +48,163 @@
 
 </script>
 
-<body onload="makeVerticalDivs(); makeHorizontalDivs()">
+
+
+</head>
+<body >
+
+  <script type="text/javascript">
+       function make_random_color(){
+           var rand_r = Math.floor(Math.random() * 10);
+           var rand_g = Math.floor(Math.random() * 200);
+           var rand_b = Math.floor(Math.random() * 200);
+           var alpha  = 0.99;
+           return 'rgba(' + rand_r + ',' +  rand_g + ',' + rand_b + ',' + alpha + ')';
+       }
+
+
+       function split_rgba(rgba){
+          var list = rgba.split(',');
+          list[0] = Number(list[0].replace(/rgba\(/, ''));
+          list[1] = Number(list[1].replace(/,/, ''));
+          list[2] = Number(list[2]);
+          list[3] = Number(list[3].replace(/\)/, ''));
+          return list
+       }
+
+       function join_rgba(list){
+          return 'rgba(' + list[0] + ',' + list[1] + ',' + list[2] + ',' + list[3] + ')';
+       }
+
+
+       function make_vert_div(index){
+          var width                     = 10 + "px";
+          var height                    = Math.floor(Math.random() * 400) + 75 + "px";
+          var offset                    = Math.floor(Math.random() * 100) + "px";
+
+          var vertDiv                   = document.createElement("div");
+
+          vertDiv.id                    = "vertical" + index;
+          vertDiv.style.height          = height;
+          vertDiv.style.width           = width;
+          vertDiv.style.backgroundColor = make_random_color();
+          vertDiv.style.marginLeft      = index * 10 + 200 +"px";
+          vertDiv.style.marginTop       = offset;
+          vertDiv.style.position        = "absolute";
+
+          if(index % 2 == 0) {
+              vertDiv.style.zIndex = 3;
+          }else{
+              vertDiv.style.zIndex = 1;
+          }
+          vertDiv.onmouseover = function() {
+                                    var cur_top          = Number(this.style.marginTop.replace(/px/, ""));
+                                    var cur_height       = Number(this.style.height.replace(/px/, ""));
+                                    var cur_color        = split_rgba(this.style.backgroundColor);
+
+
+                                    var targ_top         = (cur_top    + 50) + 'px';
+                                    var targ_height      = (cur_height + 50) + 'px';
+                                    var targ_color       = cur_color.slice();
+                                    targ_color[3]       *= 0.75;
+                                    cur_color            = join_rgba(cur_color);
+                                    targ_color           = join_rgba(targ_color);
+
+                                    vertDiv.style.setProperty("--start_top",    cur_top);
+                                    vertDiv.style.setProperty("--start_height", cur_height);
+                                    vertDiv.style.setProperty("--end_top",      targ_top);
+                                    vertDiv.style.setProperty("--end_height",   targ_height);
+
+                                    vertDiv.style.setProperty("--start_color", cur_color);
+                                    vertDiv.style.setProperty("--end_color",   targ_color);
+                                    vertDiv.style.animation = 'move_vert 1s';
+                                    vertDiv.addEventListener('animationend', function(){
+                                                                                  this.style.marginTop  = targ_top;
+                                                                                  this.style.height     = targ_height;
+                                                                                  this.style.animation  = '';
+                                                                                  this.style.background = targ_color;
+                                                                              })
+
+                                };
+          var body = document.getElementsByTagName("body")[0];
+          body.appendChild(vertDiv);
+
+       }
+
+
+
+
+
+       function make_horz_div(index){
+          var height                    = 10 + "px";
+          var width                     = Math.floor(Math.random() * 400) + 75 + "px";
+          var offset                    = Math.floor(Math.random() * 100)+ 250 + "px";
+
+          var horz_div                   = document.createElement("div");
+
+          horz_div.id                    = "vertical" + index;
+          horz_div.style.height          = height;
+          horz_div.style.width           = width;
+          horz_div.style.backgroundColor = make_random_color();
+          horz_div.style.marginLeft      = offset;
+          horz_div.style.marginTop       = i * 10 + "px";
+          horz_div.style.position        = "absolute";
+
+          if(index % 2 == 0) {
+              horz_div.style.zIndex = 2;
+          }else{
+              horz_div.style.zIndex = 4;
+          }
+          horz_div.onmouseover = function() {
+                                    var cur_left        = Number(this.style.marginLeft.replace(/px/, ""));
+                                    var cur_width       = Number(this.style.width.replace(/px/, ""));
+                                    var cur_color       = split_rgba(this.style.backgroundColor);
+
+                                    var targ_left       = (cur_left  + 50) + 'px';
+                                    var targ_width      = (cur_width + 50) + 'px';
+                                    var targ_color       = cur_color.slice();
+                                    targ_color[3]       *= 0.75;
+                                    cur_color            = join_rgba(cur_color);
+                                    targ_color           = join_rgba(targ_color);
+
+                                    horz_div.style.setProperty("--start_left",  cur_left);
+                                    horz_div.style.setProperty("--start_width", cur_width);
+                                    horz_div.style.setProperty("--end_left",    targ_left);
+                                    horz_div.style.setProperty("--end_width",   targ_width);
+                                    horz_div.style.setProperty("--start_color", cur_color);
+                                    horz_div.style.setProperty("--end_color",   targ_color);
+                                    horz_div.style.animation = 'move_horz 1s';
+                                    horz_div.addEventListener('animationend', function(){
+                                                                                  this.style.marginLeft = targ_left;
+                                                                                  this.style.width      = targ_width;
+                                                                                  this.style.animation  = '';
+                                                                                  this.style.background = targ_color;
+                                                                              })
+
+                                };
+          var body = document.getElementsByTagName("body")[0];
+          body.appendChild(horz_div);
+
+       }
+
+
+
+
+
+
+      //============================procedure=============================//
+      var num_vert = 50;
+      for (var i=0; i<num_vert; i++){
+          make_horz_div(i);
+          make_vert_div(i);
+      }
+
+  </script>
     <!-- menu divs -->
-<div class="menuDiv"  id="worksDiv"; ><a class="menuLink"; href="rnn/rnn_demo.html">projects</a></div><br>
-<div class="menuDiv" id="contactDiv"; ><a class="menuLink";  href="contact.html">contact</a></div><br>
-<div class="menuDiv" id="bioDiv"; ><a class="menuLink"; href="bio.html">bio</a></div><br>
-<div class="menuDiv" id="homeDiv"; ><a class="menuLink"; href="home.html">home</a></div><br>
+<div class="menuDiv"  id="worksDiv"; > <a class="menuLink"; href="rnn/rnn_demo.html">projects</a></div><br>
+<div class="menuDiv"  id="contactDiv";><a class="menuLink"; href="contact.html">     contact</a></div><br>
+<div class="menuDiv"  id="bioDiv"; >   <a class="menuLink"; href="bio.html">         bio</a></div><br>
+<div class="menuDiv"  id="homeDiv"; >  <a class="menuLink"; href="home.html">        home</a></div><br>
 
 
     </body>
