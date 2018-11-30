@@ -73,6 +73,12 @@ pre {
     display : inline;
 }
 
+.left_floating_div_nips{
+    float   : left;
+    display : inline;
+    /* border-right: 1px solid black; */
+}
+
 
 .right_floating_div{
     float   : right;
