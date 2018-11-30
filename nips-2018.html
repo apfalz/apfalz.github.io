@@ -36,14 +36,15 @@ ga('send', 'pageview');
 
 
         <div class="half_size left_floating_div_nips" id="output_audio_div">
-            <p>To create this piece a Long Short Memory Cell network was trained to predict audio one sample at a time.
+            <p>To create this piece, a Long Short Memory Cell network was trained to predict audio one sample at a time in the following way.
               The model is shown several seconds of input audio, then it is asked to predict a single audio sample.
               The input is treated as a FIFO queue with the predicted sample being appended to its end and the first sample being popped off.
-              By saving only the prediction portions, the model creates arbitrarily long passages of new audio that are heavily colored by the input,
-              but not identical to any part of it.
-            <p>In this piece the input data is a short passage played on the guitar.
-              This content is accompanied by the audio the model produced. The predicted audio is presented unchanged aside from some minor filtering,
-              but arranged in an overlapping fashion to produce a full accompaniment.
+              By saving only the prediction portions, the model creates arbitrarily long passages of new audio that are heavily colored by the input, but not identical to any part of it.
+            <p>
+              In this piece the input data is a short passage played on the guitar.
+              This content is accompanied by the audio the model produced.
+              The predicted audio is presented unchanged aside from some minor filtering, but arranged in an overlapping fashion to produce a full accompaniment.
+
 
             <br><br>
         </div>
