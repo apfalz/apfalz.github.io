@@ -1,0 +1,402 @@
+<html>
+<head>
+<title>NIPS Creativtiy 2019</title>
+ <meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css?family=Arvo|Nunito+Sans|Pathway+Gothic+One" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="rnn/rnn_demo.css">
+
+</head>
+
+
+<body onload="add_animations()">
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-69191717-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!--=========================Title=========================-->
+<div class="containing_div" id="title_cont">
+    <h1 class="centered_text title">The moon who makes the birds dream in the trees</h1>
+    <h2 class="centered_text title">by Andrew Pfalz</h2>
+    <h2 class="centered_text title">for the NIPS 2019 workshop on creativity</h2>
+
+    <hr>
+
+
+<!--=========================Audio files and picture=========================-->
+<!-- <div class="containing_div"> -->
+    <div class="highest_level" align="center">
+
+
+        <div class="half_size left_floating_div_nips" id="output_audio_div">
+            <p>This work was produced by training a model to predict audio one sample at a time.
+                It generated all the audio heard in the piece by listening to a segment from a famous work of the
+                Classical canon and trying to guess what comes next. The results were arranged to create the final
+                piece.  I am presenting this work in order to raise a number of ethical questions that are relevant
+                to the field of work created with AI. These questions fall into three categories: authorship, privilege,
+                and algorithmic integrity.</p>
+
+                <p>
+                Is it morally imperative to give credit for the borrowed source material if it is so transformed that
+                    the original source cannot be easily recognized? Who is the author of such a work? Does it make
+                    more sense to ask who contributed the most to the final product? Was it the composer of the source
+                    material, or the performer who interpreted it, or the designer of the algorithm, or the model who
+                    actually generated the new audio, or the final arranger of the new audio to form a new piece?</p>
+                <p>
+                The machine used to train this model was purchased by a large research university and required special
+                    electrical and cooling infrastructure to run and maintain. If tax payers funded it, and we all
+                    suffer the effects of climate change incurred, in part, by running large high-performance computing
+                    centers, shouldn’t more than an elite handful of researchers have access to such exclusive hardware?
+                </p>
+
+                <p>
+                The algorithm that generated this audio allows the model to learn while it makes predictions. What can
+                    we say the model learned based on the output it generated? Does it matter what the model learned?
+                    Is it wrong to cherry pick the results in order to hide weaknesses in the algorithm? Wouldn’t
+                    sharing bad results along with good help others gauge the success of their own experiments? If the
+                    project isn’t open source, or if the algorithm isn’t presented so as to be easily understood,
+                    does it count as a contribution to the field? If the process is part of the art, then don’t artists
+                    bear some responsibility to explain themselves? If the results of an algorithm are difficult to
+                    reproduce does this take away from the value of the artifacts or does it make them all the more
+                    precious?
+                </p>
+
+
+                <br><br>
+        </div>
+
+        <div class="half_size right_floating_div" id="input_audio_div" >
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <audio controls>
+              <source src="the_moon_who_makes_the_birds_dream_in_the_trees.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+            </audio>
+            <p>
+              A more detailed description of the algorithm is available at <a href="http://apfalz.github.io/rnn/rnn_demo.html">apfalz.github.io/rnn/rnn_demo.html</a>.
+            <p>
+              The code used to produce this work is available at <a href="http://github.com/apfalz/audio_lstm">github.com/apfalz/audio_lstm</a>
+
+        </div>
+        <!-- <div id="rnn_image_div">
+          <object id="overview" data="rnn/images/overview.svg" type="image/svg+xml"></object>
+        </div> -->
+
+      </div>
+
+</div>
+<!--  -->
+<!--=========================overview=========================-->
+<!--
+<script>
+
+var yellow   = '#faf051';
+var orange   = '#f5aa27';
+var d_orange = '#fb7147';
+var sienna   = '#c78720';
+var red      = '#fb050a';
+var maroon   = '#be0400';
+var purple   = '#962a58';
+var l_green  = '#b4c524';
+var green    = '#35b73e';
+var d_green  = '#046437';
+var teal_1   = '#35c59f';
+var teal_2   = '#0fafa8';
+var teal_3   = '#71c3c4';
+var blue     = '#003e7d';
+var d_blue   = '#052239';
+var d_grey   = '#3a444c';
+var l_grey   = '#a6b6b5';
+
+function add_animations(){
+
+    var drawing        = document.getElementById('lstm_drawing');
+    var content        = drawing.contentDocument;
+
+    var forget_gate    = content.getElementById("forget_gate");
+    var input_gate     = content.getElementById("input_gate");
+    var update_gate    = content.getElementById("update_gate");
+    var output_gate    = content.getElementById("output_gate");
+    var forget_sigmoid = content.getElementById("forget_sigmoid");
+    var input_sigmoid  = content.getElementById("input_sigmoid");
+    var input_tanh     = content.getElementById("input_tanh");
+    var input_mult     = content.getElementById("input_mult");
+    var update_mult    = content.getElementById("update_mult");
+    var update_add     = content.getElementById("update_add");
+    var output_sigmoid = content.getElementById("output_sigmoid");
+    var output_tanh    = content.getElementById("output_tanh");
+    var output_mult    = content.getElementById("output_mult");
+    //equations
+    var f              = document.getElementById('f');
+    var i              = document.getElementById('i');
+    var c_hat          = document.getElementById('c_hat');
+    var c              = document.getElementById('c');
+    var o              = document.getElementById('o');
+    var y_hat          = document.getElementById('y_hat');
+
+
+
+
+    //groups of words
+    var seed_words      = document.getElementsByClassName('seed_word');
+    var output_words    = document.getElementsByClassName('output_word');
+    var keep_only       = document.getElementsByClassName('keep_portion');
+    var model_words     = document.getElementsByClassName('model_word');
+    var sampled_output  = document.getElementsByClassName('sampled_output_word');
+    var loss_words      = document.getElementsByClassName('loss_word');
+    var input_words     = document.getElementsByClassName('input_word');
+    var label_words     = document.getElementsByClassName('label_word');
+    var optim_words     = document.getElementsByClassName('optim_word');
+    var train_words     = document.getElementsByClassName('train_word');
+    var pause_words     = document.getElementsByClassName('pause_training_word');
+    var concurrent      = document.getElementsByClassName('concurrent_word');
+    var vector_len_words= document.getElementsByClassName('vector_len_word');
+    var magnitude_words = document.getElementsByClassName('magnitude_word');
+    var osc_words       = document.getElementsByClassName('oscillator_word');
+    var interp_words    = document.getElementsByClassName('interpolated_word');
+    var bin_words       = document.getElementsByClassName('bin_word');
+    var one_one_words   = document.getElementsByClassName('one_by_one_word');
+    var trans_words     = document.getElementsByClassName('trans_size_word');
+
+
+
+    //svgs
+    var sampling_svg    = document.getElementById('sampling').contentDocument;
+    var training_svg    = document.getElementById('training').contentDocument;
+    var vector_svg      = document.getElementById('vector_data').contentDocument;
+    var magnitude_svg   = document.getElementById('magnitude_data').contentDocument;
+    var vocoder_svg     = document.getElementById('vocoder').contentDocument;
+    var transpose_svg   = document.getElementById('transpose_data').contentDocument;
+
+    //boxes in svgs
+    var sampling_seed   = sampling_svg.getElementById('sampling_seed_box');
+    var sampling_output = sampling_svg.getElementById('sampling_output_box');
+    var keep_0          = sampling_svg.getElementById('sampling_keep_text_0');
+    var keep_1          = sampling_svg.getElementById('sampling_keep_portion_1');
+    var sampling_lstm   = sampling_svg.getElementById('sampling_lstm_box');
+
+    var training_loss   = training_svg.getElementById('loss');
+    var training_input  = training_svg.getElementById('input');
+    var training_label  = training_svg.getElementById('training_label_box');
+    var training_output = training_svg.getElementById('training_output_box');
+    var training_optim  = training_svg.getElementById('optimizer');
+
+    var vector_len_0    = vector_svg.getElementById('vector_length_box_0');
+    var vector_len_1    = vector_svg.getElementById('vector_length_box_1');
+
+    var magnitude_box_0 = magnitude_svg.getElementById('vector_box_0');
+    var magnitude_box_1 = magnitude_svg.getElementById('vector_box_1');
+
+    var bin_box_0       = vocoder_svg.getElementById('bins_box_0');
+    var bin_box_1       = vocoder_svg.getElementById('bins_box_1');
+
+    var interp_box      = vocoder_svg.getElementById('interpolated');
+
+    var osc_0           = vocoder_svg.getElementById('osc_0');
+    var osc_1           = vocoder_svg.getElementById('osc_1');
+    var osc_2           = vocoder_svg.getElementById('osc_2');
+    var osc_3           = vocoder_svg.getElementById('osc_3');
+    var osc_4           = vocoder_svg.getElementById('osc_4');
+
+    var trans_unrolling = transpose_svg.getElementById('unrollings_box');
+    var trans_vec_len   = transpose_svg.getElementById('vector_length_box');
+    var one_0           = transpose_svg.getElementById('one_0');
+    var one_1           = transpose_svg.getElementById('one_1');
+
+
+
+
+    over(f,     forget_gate, red,       'text_fade_red  3s',    'text_fade_red');
+    over(i,     input_gate,  green,     'text_fade_green   3s', 'text_fade_green');
+    over(c_hat, input_gate,  l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    over(c,     update_gate, purple,    'text_fade_purple  3s', 'text_fade_purple');
+    over(o,     output_gate, orange,    'text_fade_orange  3s', 'text_fade_orange');
+    over(y_hat, output_gate, yellow,    'text_fade_yellow  3s', 'text_fade_yellow');
+
+    highlight_group(seed_words,     [sampling_seed],                      green,    'text_fade_green   3s');
+    highlight_group(output_words,   [sampling_output],                    teal_2,   'text_fade_teal_2  3s');
+    highlight_group(keep_only,      [keep_1],                             sienna,   'text_fade_sienna  3s');
+    highlight_group(model_words,    [sampling_lstm],                      l_green,  'text_fade_l_green 3s');
+    highlight_group(sampled_output, [],                                   purple,   'text_fade_purple  3s');
+    highlight_group(train_words,    [],                                   d_green,  'text_fade_d_green 3s');
+
+    highlight_group(loss_words,     [training_loss],                      orange,      'text_fade_orange    3s');
+    highlight_group(input_words,    [training_input],                     d_orange,   'text_fade_d_orange 3s');
+    highlight_group(label_words,    [training_label],                     teal_1,   'text_fade_yellow 3s');
+    highlight_group(optim_words,    [training_optim],                     yellow,    'text_fade_yellow  3s');
+
+
+    highlight_group(pause_words,    [],                                   maroon,   'text_fade_maroon  3s');
+    highlight_group(concurrent,     [],                                   sienna,    'text_fade_sienna   3s');
+
+    highlight_group(vector_len_words, [vector_len_0,    vector_len_1],    d_green,   'text_fade_d_green 3s');
+    highlight_group(magnitude_words,  [magnitude_box_0 , magnitude_box_1],purple,   'text_fade_purple 3s');
+
+    highlight_group(bin_words,    [bin_box_0 , bin_box_1],                purple,  'text_fade_purple 3s');
+    highlight_group(interp_words, [interp_box],                           maroon,  'text_fade_maroon 3s');
+    highlight_group(osc_words,    [osc_0, osc_1, osc_2, osc_3, osc_4],    teal_3,  'text_fade_teal_3 3s');
+
+    highlight_group(one_one_words,[one_0, one_1],                         l_green,  'text_fade_l_green 3s');
+    highlight_group(trans_words,  [trans_unrolling, trans_vec_len],       orange,  'text_fade_orange 3s');
+
+    handle_containing_divs();
+    add_tooltips();
+}
+
+
+function highlight_group(group, children, color, animation){
+
+    for (var p=0; p<group.length; p++){
+        var cur_item = group[p];
+        cur_item.onmouseover = function(){
+                                  for(var i=0;i<group.length; i++){
+                                      group[i].style.background  = color;
+                                  }
+                                  for(var k=0; k<children.length; k++){
+                                      if (children[k] != null){
+                                          children[k].style['fill']         = color;
+                                          children[k].style['fill-opacity'] = '0.75';
+                                      }
+                                  }
+                              };
+        cur_item.onmouseout  = function(){
+                                  for(var i=0;i<group.length; i++){
+                                      var current_1             = group[i];
+                                      current_1.style.animation = animation;
+                                      current_1.style['-webkit-animation-name'] = animation;
+                                      current_1.addEventListener('animationend', function(){
+                                                                                    this.style.animation='';
+                                                                                    this.style.background = 'rgba(0,0,0,0)';
+                                                                                 });
+                                  }
+                                  for(var l=0; l<children.length; l++){
+
+                                      if (children[l] != null){
+                                          children[l].style.animation = 'fade 3s';
+                                          children[l].style['-webkit-animation-name'] = 'fade 3s';
+                                          children[l].addEventListener('animationend', function(){
+                                                                                            this.style.animation='';
+                                                                                            this.style['-webkit-animation-name']='';
+                                                                                            this.style['fill-opacity'] = '0.0';
+                                                                                       });
+                                      }
+                                  }
+                              } ;
+    }
+
+}
+
+function over(parent, child, color, text_animation, safari_anim){
+    //parent is always an equation child is always a gate
+    parent.onmouseover = function(){
+                              parent.style.background     = color;
+                              child.style['fill-opacity'] = '1';
+                              child.style.fill            = color;
+                         };
+
+    parent.onmouseout  = function(){
+                              parent.style.animation                     = text_animation;
+                              parent.style['-webkit-animation-name']     = safari_anim;
+                              parent.style['-webkit-animation-duration'] = '3s';
+                              parent.addEventListener('animationend', function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style.background     = 'rgba(0, 0, 0, 0)';});
+                              child.style.animation = 'fade 3s';
+                              child.style['-webkit-animation-name']      = 'fade';
+                              child.style['-webkit-animation-duration']  = '3s';
+
+                              child.addEventListener('animationend',  function(){this.style.animation=''; this.style['-webkit-animation-name'] = ''; this.style['fill-opacity'] = '0';});
+                         };
+
+    child.onmouseover  = function(){
+                              child.style.fill            = color;
+                              child.style['fill-opacity'] = '0.75';
+                              parent.style.background     = color;
+
+                         }
+    child.onmouseout   = function(){
+                              parent.addEventListener('animationend', function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style.background     = 'rgba(0, 0, 0, 0)';});
+                              child.addEventListener('animationend',  function(){this.style.animation='';   this.style['-webkit-animation-name'] = '';  this.style['fill-opacity'] = '0.0';});
+
+                              child.style.animation                    = 'fade 3s';
+                              child.style['-webit-animation-name']     = 'fade';
+                              child.style['-webit-animation-duration'] = '3s';
+
+
+                              parent.style.animation                     = text_animation;
+                              parent.style['-webkit-animation-name']     = safari_anim;
+                              parent.style['-webkit-animation-duration'] = '3s';
+                         }
+
+}
+
+function handle_containing_divs(){
+
+
+
+
+    animate('title_cont',        l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('overview_cont',     teal_2,    'text_fade_teal_2  3s', 'text_fade_teal_2');
+    animate('training_cont',     teal_1,    'text_fade_teal_1  3s', 'text_fade_teal_1');
+    animate('sampling_cont',     orange,    'text_fade_orange  3s', 'text_fade_orange');
+    animate('methods_cont',      l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('vector_cont',       yellow,    'text_fade_yellow  3s', 'text_fade_yellow');
+    animate('vector_audio_cont', teal_1,    'text_fade_teal_1  3s', 'text_fade_teal_1');
+    animate('magnitude_cont',    orange,    'text_fade_orange  3s', 'text_fade_orange');
+    animate('vocoder_cont',      l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('mag_audio_cont',    yellow,    'text_fade_yellow  3s', 'text_fade_yellow');
+    animate('transpose_cont',    red,       'text_fade_red     3s', 'text_fade_red');
+    animate('trans_audio_cont',  purple,    'text_fade_purple  3s', 'text_fade_purple');
+    animate('column_cont',       l_green,   'text_fade_l_green 3s', 'text_fade_l_green');
+    animate('column_audio_cont', purple,    'text_fade_purple  3s', 'text_fade_purple');
+
+
+}
+
+function animate(item_name, color, animation){
+    var item = document.getElementById(item_name);
+    item.onmouseover =     function(){this.style.background = color;};
+    item.onmouseout  =     function(){this.style.background  = 'rgba(0,0,0,0)';};
+}
+
+function make_tooltip(eq, msg,  id, offset){
+    var tooltip         = document.createElement('span');
+    tooltip.innerHTML   = msg;
+    tooltip.id          = id;
+    tooltip.style.top   = offset;
+    tooltip.classList.add('tooltiptext');
+    eq.appendChild(tooltip);
+}
+
+function add_tooltips(){
+    var msgs = ['The forget gate decides what should be erased from the cell state at the next timestep.',
+                'The input gate decides which elements from the current input should be added to the cell state.',
+                'The input gate also computes a vector of candidate values that will be selectively added to the cell state.',
+                'The update step applies the decisions made by the forget and input gates to produce the new cell state.',
+                'The output gate decides based on the input, which elements from the cell state will be output.',
+                'The output gate output for each timestep is computed based on the current input and the updated cell state. '];
+    var items = [f, i, c_hat, c, o, y_hat];
+    var ids   = ['f_tooltip', 'i_tooltip', 'c_hat_tooltip', 'c_tooltip', 'o_tooltip', 'y_hat_tooltip'];
+    var offs  = ['-30px', '-40px', '-50px', '-60px', '-70px', '-80px'];
+
+    for (var item=0; item< msgs.length; item++){
+        make_tooltip(items[item], msgs[item], ids[item], offs[item]);
+    }
+
+
+
+}
+
+</script> -->
+</body>
+</html>
